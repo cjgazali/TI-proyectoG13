@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+# DS_Store
+*.DS_Store
+
+# .idea from PyCharm
+.idea/*
