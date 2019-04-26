@@ -4,6 +4,7 @@ from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
 from rest_framework.parsers import JSONParser
 from rest_framework import status
+from app.services import obtener_almacenes
 from app.models import Order
 from app.serializers import OrderSerializer
 
@@ -14,7 +15,8 @@ def stock_list(request):
     Entrega stock disponible por sku en toda la bodega.
     :return: lista con cada { sku, nombre, total }
     """
-    return Response({"hola": "mundo"})
+    prueba = obtener_almacenes()
+    return Response(prueba)
 
 
 @api_view(['POST'])
