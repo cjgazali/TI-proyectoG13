@@ -16,7 +16,7 @@ def stock_list(request):
     """
     almacenes = [] #Para almacenar los id de los almacenes
     skus = [] #Para llevar cuenta de qué skus ya he considerado
-    respuesta_stock = [] #Stock de todos los almacenes 
+    respuesta_stock = [] #Stock de todos los almacenes
     respuesta_final = []
     prueba = obtener_almacenes()
     for almacen in prueba:
@@ -30,11 +30,11 @@ def stock_list(request):
 
             if producto["_id"] not in skus:
                 skus.append(producto["_id"])
-                respuesta_final.append({"Sku":producto["_id"] , "Cantidad": producto["total"]})
+                respuesta_final.append({"sku":producto["_id"] , "nombre": "", "total": producto["total"]})
             else:
                 for elemento in respuesta_final:
                     if producto["_id"] in elemento.values():
-                        elemento["Cantidad"]=elemento["Cantidad"]+int(producto["total"])
+                        elemento["total"] = elemento["total"] + int(producto["total"])
 
     return Response(respuesta_final)
 
