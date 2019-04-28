@@ -4,9 +4,13 @@ import hashlib
 import hmac
 from base64 import encodestring
 
-
+# url API profe
 url_base = 'https://integracion-2019-dev.herokuapp.com/bodega'
 
+# url API grupos
+server_url = "http://tuerca{}.ing.puc.cl"
+inventories_url = server_url + "/inventories"
+orders_url = server_url + "/orders"
 
 # Código replicado de https://sites.google.com/site/studyingpython/home/basis/hmac-sha1
 # Esta función recibe texto a hashear (ejemplo API profe: GET534960ccc88ee69029cd3fb2)
@@ -96,6 +100,12 @@ def mover_entre_bodegas(id_producto, id_almacen_destino):
     return response
 
 
+def get_group_stock(n_group):
+    result = requests.get(inventories_url.format(n_group))
+    response = json.loads(result.text)
+    return response
+
+
 if __name__ == '__main__':
     #a = obtener_almacenes()
     #for elem in a:
@@ -111,4 +121,3 @@ if __name__ == '__main__':
 
     #print(obtener_productos_almacen('5cbd3ce444f67600049431fc', '1001'))
     #print(fabricar_sin_pago("1001", 10))
-
