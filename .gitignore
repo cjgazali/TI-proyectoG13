@@ -1,5 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
 
+# celery env
+celerybeat-schedule
+celerybeat.pid
+
 # DS_Store
 .DS_Store
 **/.DS_Store
