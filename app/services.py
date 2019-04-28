@@ -81,7 +81,6 @@ def mover_entre_almacenes(id_producto, id_almacen_destino):
     return response
 
 
-#
 # Mueve un producto no vencido desde un almacén de despacho de un grupo a un almacén de recepcion de otro grupo.
 # En caso que almacén de recepción se encuentre lleno, los productos quedan en almacén pulmón.  Recibe id_producto
 # a mover (string) y el id  del almacén de destino (string)
