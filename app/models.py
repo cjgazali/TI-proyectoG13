@@ -16,7 +16,7 @@ class Order(models.Model):
 
 class Product(models.Model):
     # created = models.DateTimeField(auto_now_add=True)
-    sku = models.CharField(max_length=10, default='')
+    sku = models.CharField(primary_key=True, max_length=10, default='')
     name = models.TextField()
     description = models.TextField()
     sale_price = models.IntegerField(default=0) # Quizás puede no ser entero?

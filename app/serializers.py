@@ -12,7 +12,7 @@ class OrderSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ('id', 'sku', 'name', 'description', 'sale_price', 'number_ingredients_needed',
+        fields = ('sku', 'name', 'description', 'sale_price', 'number_ingredients_needed',
                   'number_products', 'expected_duration_time', 'equivalence_units',
                   'measurement_unit', 'production_lot', 'expected_production_time',
                   'producer_groups', 'dispatch_space', 'reception_space', 'minimum_stock')
