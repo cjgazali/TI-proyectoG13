@@ -26,8 +26,9 @@ def main():
     products_set = Product.objects.filter(minimum_stock__gt=0)
 
     for product in products_set:
-        if totals[product.sku] < product.minimum_stock:
-            try_manufacture(totals, product.sku)
+        desired_stock = product.minimum_stock
+        if totals[product.sku] < desired_stock:
+            try_manufacture(totals, product.sku, desired_stock, product.production_lot)
             print(product.name)
 
     print("hello main end")

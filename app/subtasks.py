@@ -1,6 +1,7 @@
 from collections import defaultdict
-from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock
-from app.models import Ingredient
+from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock, fabricar_sin_pago
+from app.models import Ingredient, Product
+
 
 def empty_receptions():
     """Vacía recepción y pulmón hacia bodegas extra."""
@@ -57,10 +58,63 @@ def get_groups_stock():
     return dicts
 
 
-def try_manufacture(products, sku):
+def try_manufacture(products, sku, stock_minimo, lote_minimo):
     """Intenta producir el producto correspondiente a sku,
      si no, pide materias primas necesarias"""
+
+    # Calculo la cantidad de unidades que me faltan en bodega
+    diference = stock_minimo - products[sku]
+
+    # Calculo la cantidad de lotes que necesito
+    lots = (diference // lote_minimo) + 1
+
     ingredients = {}
     query = Ingredient.objects.filter(product_sku__exact=sku)
     for elem in query:
         ingredients[elem.ingredient_sku.sku] = elem.units_quantity
+
+    for i in range(0, lots):
+        producir = True
+        for ingredient in ingredients.keys():
+            if products[ingredient] < ingredients[ingredient]:
+                producir = False
+        if producir:
+            manufacture(ingredients, sku, lote_minimo)
+        else:
+            break
+
+
+def manufacture(ingredients, sku, cantidad):
+    """Produce un lote del producto sku"""
+    # Obtenemos el id del almacén de despacho
+    # Obtenemos los demás ids de los almacenes de la bodega
+    id_almacen_despacho = ""
+    ids_origen = []
+    almacenes = obtener_almacenes()
+    for almacen in almacenes:
+        if almacen['despacho']:
+            id_almacen_despacho = almacen["_id"]
+        else:
+            ids_origen.append(almacen["_id"])
+
+    # Debemos mover los ingredientes a despacho
+    for ingredient in ingredients.keys():
+        move_product_dispatch(ids_origen, id_almacen_despacho, ingredients[ingredient], ingredient)
+
+    # Ahora podemos fabricar un lote
+    fabricar_sin_pago(sku, cantidad)
+
+
+def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
+    """Esta función mueve una cantidad del producto con sku desde una lista
+    de almacenes a almacen de destino"""
+    contador = 0
+    while contador != cantidad and len(lista_almacenes) != 0:
+        id_actual = lista_almacenes.pop()
+        lista_ingredientes = obtener_productos_almacen(id_actual, sku)
+        for elemento in lista_ingredientes:
+            mover_entre_almacenes(elemento['_id'], almacen_destino)
+            contador += 1
+            if contador == cantidad:
+                return
+    return

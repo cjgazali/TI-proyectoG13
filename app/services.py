@@ -116,8 +116,11 @@ if __name__ == '__main__':
        #     print(elem2)
 
     # Este método es el que no está testeado aún, le pregunté al profe en una issue que onda
-    f = mover_entre_bodegas('5cc22e96aa013f0004f0867e', '5cbd3ce444f67600049431d1')
+    #f = mover_entre_bodegas('5cc22e96aa013f0004f0867e', '5cbd3ce444f67600049431d1')
+    #print(f)
+    f = obtener_productos_almacen('5cbd3ce444f67600049431ff', '1001')
     print(f)
+
 
     #print(obtener_productos_almacen('5cbd3ce444f67600049431fc', '1001'))
     #print(fabricar_sin_pago("1001", 10))
