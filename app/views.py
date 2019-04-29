@@ -48,18 +48,25 @@ def create_order(request):
                     aceptado, despachado }
     """
     serializer = OrderSerializer(data=request.data)
+    sku = request.POST['sku']
+    grupo = int(request.META['HTTP_GROUP'])
     respuesta = {
-		"sku" : request.POST['sku'],
+		"sku" : sku,
 		"cantidad" : int(request.POST['amount']),
 		"almacenId" : request.POST['storeId'],
-		"grupoProveedor" : int(request.META['HTTP_GROUP']),
+		"grupoProveedor" : grupo,
 		"aceptado" : False,
 		"despachado" : False
 	}
-    #sku_list = Product.objects.filer(sku=1001)
-    #print(sku_list)
+    query = Product.objects.all().values()
+    sku_list=[]
+    for p in query:
+        sku_list.append(p['sku'])
+
     if serializer.is_valid():
-        serializer.save(client_group=request.META['HTTP_GROUP'])
-        print(serializer)
-        return Response(respuesta, status=status.HTTP_201_CREATED)
+        serializer.save(client_group=grupo)
+        if sku not in sku_list:
+            return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+        else:
+            return Response(respuesta, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
