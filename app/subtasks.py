@@ -60,7 +60,7 @@ def get_groups_stock():
 def try_manufacture(products, sku):
     """Intenta producir el producto correspondiente a sku,
      si no, pide materias primas necesarias"""
-    ingredients = []
+    ingredients = {}
     query = Ingredient.objects.filter(product_sku__exact=sku)
     for elem in query:
-        ingredients.append(elem.ingredient_sku)
+        ingredients[elem.ingredient_sku.sku] = elem.units_quantity
