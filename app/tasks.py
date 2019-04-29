@@ -1,7 +1,7 @@
 from celery import shared_task
 from collections import defaultdict
 from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, fabricar_sin_pago
-from app.subtasks import get_current_stock, empty_receptions, get_groups_stock
+from app.subtasks import get_current_stock, empty_receptions, get_groups_stock, try_manufacture
 from app.models import Product
 
 
@@ -27,6 +27,7 @@ def main():
 
     for product in products_set:
         if totals[product.sku] < product.minimum_stock:
+            try_manufacture(totals, product.sku)
             print(product.name)
 
     print("hello main end")

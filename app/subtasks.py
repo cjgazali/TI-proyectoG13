@@ -1,6 +1,6 @@
 from collections import defaultdict
 from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock
-
+from app.models import Ingredient
 
 def empty_receptions():
     """Vacía recepción y pulmón hacia bodegas extra."""
@@ -55,3 +55,12 @@ def get_groups_stock():
         dicts.append(totals)
     # print(dicts)
     return dicts
+
+
+def try_manufacture(products, sku):
+    """Intenta producir el producto correspondiente a sku,
+     si no, pide materias primas necesarias"""
+    ingredients = []
+    query = Ingredient.objects.filter(product_sku__exact=sku)
+    for elem in query:
+        ingredients.append(elem.ingredient_sku)
