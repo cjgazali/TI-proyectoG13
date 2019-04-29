@@ -7,6 +7,7 @@ from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles
 from app.models import Order
 from app.serializers import OrderSerializer
+from app.models import Product
 
 @api_view(['GET'])  # only allows GET, else error code 405
 def stock_list(request):
@@ -55,6 +56,8 @@ def create_order(request):
 		"aceptado" : False,
 		"despachado" : False
 	}
+    #sku_list = Product.objects.filer(sku=1001)
+    #print(sku_list)
     if serializer.is_valid():
         serializer.save(client_group=request.META['HTTP_GROUP'])
         print(serializer)
