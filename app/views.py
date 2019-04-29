@@ -7,6 +7,7 @@ from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles
 from app.models import Order, Product
 from app.serializers import OrderSerializer
+from app.models import Product
 
 @api_view(['GET'])  # only allows GET, else error code 405
 def stock_list(request):
@@ -52,8 +53,19 @@ def create_order(request):
     :return: json { sku, cantidad, almacenId, grupoProveedor,
                     aceptado, despachado }
     """
-    serializer = OrderSerializer(data=request.data)  # solo guarda bien sku por ahora
+    serializer = OrderSerializer(data=request.data)
+    respuesta = {
+		"sku" : request.POST['sku'],
+		"cantidad" : int(request.POST['amount']),
+		"almacenId" : request.POST['storeId'],
+		"grupoProveedor" : int(request.META['HTTP_GROUP']),
+		"aceptado" : False,
+		"despachado" : False
+	}
+    #sku_list = Product.objects.filer(sku=1001)
+    #print(sku_list)
     if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        serializer.save(client_group=request.META['HTTP_GROUP'])
+        print(serializer)
+        return Response(respuesta, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
