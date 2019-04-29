@@ -105,6 +105,22 @@ def get_group_stock(n_group):
     response = json.loads(result.text)
     return response
 
+def post_order(n_group, sku, quantity):
+    aceptado = False
+    headers = {"group":"13"}
+    body = {'sku': str(sku), 'cantidad': str(quantity), "almacenID": "5cbd3ce444f67600049431fb"}
+    try:
+        result = requests.post(orders_url.format(n_group), data=json.dumps(body), headers=headers)
+    except:
+        return aceptado
+    try:
+        response = json.loads(result.text)
+        if "aceptado" in response:
+            aceptado = response["aceptado"]
+    except:
+        return aceptado
+    return aceptado
+
 
 if __name__ == '__main__':
     #a = obtener_almacenes()
