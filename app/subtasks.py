@@ -1,6 +1,6 @@
 from collections import defaultdict
 from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock, fabricar_sin_pago
-from app.models import Ingredient, Product
+from app.models import Ingredient, Product, RawMaterial, Assigment
 
 
 def empty_receptions():
@@ -118,3 +118,20 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
             if contador == cantidad:
                 return
     return
+
+
+def review_raw_material(totals):
+    query = Assigment.object.filter(group__exact=13)
+    skus_fabricables = []
+    for dato in query:
+        skus_fabricables.append(dato.sku.sku)
+    materias_primas = RawMaterial.objects.all()
+    for materia in materias_primas:
+        if totals[materia.sku.sku] < materia.stock:
+            if materia.sku.sku in skus_fabricables:
+                # Fabrico
+                pass
+            else:
+                # Pido a los demás grupos
+                pass
+
