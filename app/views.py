@@ -50,7 +50,7 @@ def create_order(request):
     if 'sku' not in request.data or 'cantidad' not in request.data or 'almacenId' not in request.data:
         return Response({ "error": "400 (Bad Request): Falta parámetro obligatorio." }, status=status.HTTP_400_BAD_REQUEST)
 
-    data = {'amount': int(request.data['cantidad']), 'sku':request.data['sku'], 'storeId':request.data['almacenId'], 'client_group':int(request.META['HTTP_GRUPO'])}
+    data = {'amount': int(request.data['cantidad']), 'sku':request.data['sku'], 'storeId':request.data['almacenId'], 'client_group':int(request.META['HTTP_GROUP'])}
 
     query = Product.objects.all().values()  # esto se debe poder mejorar...
     sku_list=[]
@@ -62,7 +62,7 @@ def create_order(request):
         return Response({ "error": "404 (Not Found): sku no existe."}, status=status.HTTP_404_NOT_FOUND)
         #return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
-
+    print("ok")
 
     get_almacenes = obtener_almacenes()
     sku_stock = 0
@@ -85,19 +85,19 @@ def create_order(request):
     #         accepted_and_dispatched = True
     # else:
     # respecto stock mínimo
-    min_product = Product.objects.filter(sku=data["sku"]).values()  # double check
-    if sku_stock > min_product.minimum_stock + data["amount"]:
-        # mover a despacho
-        almacenes = obtener_almacenes()
-        for almacen in almacenes:
-            if almacen['despacho']:
-                id_almacen_despacho = almacen["_id"]
-            else:
-                ids_origen.append(almacen["_id"])
-        # move_product_dispatch(ids_origen, id_almacen_despacho, data["amount"], data["sku"])
-        # Mover entre bodegas
-        # subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos
-        accepted_and_dispatched = True
+    # min_product = Product.objects.filter(sku=data["sku"]).values()  # double check
+    # if sku_stock > min_product.minimum_stock + data["amount"]:
+    #     # mover a despacho
+    #     almacenes = obtener_almacenes()
+    #     for almacen in almacenes:
+    #         if almacen['despacho']:
+    #             id_almacen_despacho = almacen["_id"]
+    #         else:
+    #             ids_origen.append(almacen["_id"])
+    #     # move_product_dispatch(ids_origen, id_almacen_despacho, data["amount"], data["sku"])
+    #     # Mover entre bodegas
+    #     # subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos
+    #     accepted_and_dispatched = True
 
     respuesta = {
 		"sku" : data['sku'],
@@ -110,8 +110,11 @@ def create_order(request):
 
     # falta accepted y dispatched en data
 
+    print("ok")
+
     serializer = OrderSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
+        print("ok")
         return Response(respuesta, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
