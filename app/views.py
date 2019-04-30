@@ -15,6 +15,11 @@ def stock_list(request):
     Entrega stock disponible por sku en toda la bodega.
     :return: lista con cada { sku, nombre, total }
     """
+    # Hacemos un diccionario sku - nombre producto
+    aux_dict = {}
+    for p in Product.objects.raw('SELECT sku, name FROM app_product'):
+        aux_dict[p.sku] = p.name
+
     almacenes = [] #Para almacenar los id de los almacenes
     skus = [] #Para llevar cuenta de qué skus ya he considerado
     respuesta_stock = [] #Stock de todos los almacenes
@@ -31,7 +36,8 @@ def stock_list(request):
 
             if producto["_id"] not in skus:
                 skus.append(producto["_id"])
-                respuesta_final.append({"sku":producto["_id"] , "nombre": "", "total": producto["total"]})
+                respuesta_final.append({"sku": producto["_id"], "nombre": aux_dict[producto["_id"]],
+                                        "total": producto["total"]})
             else:
                 for elemento in respuesta_final:
                     if producto["_id"] in elemento.values():
