@@ -58,15 +58,38 @@ def get_groups_stock():
                     totals[product["sku"]] += product["total"]
                 except:
                     print("KeyError", n_group)
+                    break
         dicts.append(totals)
         print(totals)
     return dicts
 
 
-def post_to_all(sku, quantity):
-    for group in range(1,15):
-        if group!= 13:
-            post_order(group, sku, quantity)
+def post_to_all(sku, quantity, groups_stock):
+    almacenes = obtener_almacenes()
+    for almacen in almacenes:
+        if almacen['despacho']:
+            id_almacen_despacho = almacen["_id"]
+    for n_group in range(1,15):
+        if n_group == 13:
+            continue
+        # pido lo que quiero, o lo que tengan, si tienen pero menos
+        group_post_quantity = min(groups_stock[n_group - 1][sku], quantity)
+        if group_post_quantity > 0:  # si tienen
+            try:
+                response = post_order(n_group, sku, group_post_quantity, id_almacen_despacho)
+            except:
+                print("fail", n_group)
+                continue
+            try:
+                if response["aceptado"]:
+                    # veo cuánto me falta
+                    accepted_amount = response["cantidad"]
+                    quantity = max(0, quantity - accepted_amount)
+            except:
+                print("KeyError", n_group)
+                continue
+            print("OK", n_group)
+    return quantity
 
 
 def try_manufacture(products, sku, stock_minimo, lote_minimo):
@@ -90,8 +113,11 @@ def try_manufacture(products, sku, stock_minimo, lote_minimo):
             if products[ingredient] < ingredients[ingredient]:
                 producir = False
         if producir:
+            print("manufacture")
             manufacture(ingredients, sku, lote_minimo)
+            print("manufacture done")
         else:
+            print("no ingredients")
             break
 
 
