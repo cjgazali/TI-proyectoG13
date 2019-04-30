@@ -51,3 +51,8 @@ class Assigment(models.Model):
     group = models.IntegerField()
 
 
+class RawMaterial(models.Model):
+    sku = models.ForeignKey(Product, on_delete=models.CASCADE)
+    stock = models.IntegerField()
+
+

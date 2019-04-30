@@ -4983,5 +4983,133 @@
             "sku": "1016",
             "group": 14
         }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "1",
+        "fields": {
+            "sku": "1001",
+            "stock": 32
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "2",
+        "fields": {
+            "sku": "1003",
+            "stock": 120
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "3",
+        "fields": {
+            "sku": "1004",
+            "stock": 64
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "4",
+        "fields": {
+            "sku": "1002",
+            "stock": 16
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "5",
+        "fields": {
+            "sku": "1005",
+            "stock": 6
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "6",
+        "fields": {
+            "sku": "1006",
+            "stock": 5
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "7",
+        "fields": {
+            "sku": "1007",
+            "stock": 26
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "8",
+        "fields": {
+            "sku": "1008",
+            "stock": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "9",
+        "fields": {
+            "sku": "1009",
+            "stock": 23
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "10",
+        "fields": {
+            "sku": "1010",
+            "stock": 33
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "11",
+        "fields": {
+            "sku": "1011",
+            "stock": 8
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "12",
+        "fields": {
+            "sku": "1012",
+            "stock": 7
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "13",
+        "fields": {
+            "sku": "1014",
+            "stock": 13
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "14",
+        "fields": {
+            "sku": "1015",
+            "stock": 20
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "15",
+        "fields": {
+            "sku": "1016",
+            "stock": 298
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "16",
+        "fields": {
+            "sku": "1013",
+            "stock": 300
+        }
     }
 ]
