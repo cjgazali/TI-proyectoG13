@@ -1,5 +1,5 @@
 from collections import defaultdict
-from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock, fabricar_sin_pago
+from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock, fabricar_sin_pago, post_order
 from app.models import Ingredient, Product, RawMaterial, Assigment
 
 
@@ -50,11 +50,10 @@ def get_groups_stock():
             group_stock = get_group_stock(n_group)
         except:
             group_stock = []
-        # print(group_stock)
         for product in group_stock:
-            totals[product["sku"]] += product["total"]
+            if isinstance(product, dict):
+                totals[product["sku"]] += product["total"]
         dicts.append(totals)
-    # print(dicts)
     return dicts
 
 
@@ -135,3 +134,8 @@ def review_raw_material(totals):
                 # Pido a los demás grupos
                 pass
 
+
+def post_to_all(sku, quantity):
+    for group in range(1,15):
+        if group!= 13:
+            post_order(group, sku, quantity)
