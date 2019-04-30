@@ -22,7 +22,8 @@ def main():
     groups_stock = get_groups_stock()
     print(groups_stock)
 
-    # review_raw_materials(totals)
+    review_raw_materials(totals, groups_stock)
+    print("raws reviewed")
 
     # products with minimum stock:
     products_set = Product.objects.filter(minimum_stock__gt=0)

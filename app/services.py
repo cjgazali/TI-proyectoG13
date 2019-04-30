@@ -68,8 +68,8 @@ def fabricar_sin_pago(sku, cantidad):
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     body = {'sku': sku, 'cantidad': cantidad}
     result = requests.put(url, data=json.dumps(body), headers=headers)
-    skus = json.loads(result.text)
-    return skus
+    response = json.loads(result.text)
+    return response
 
 
 # Mueve un producto de un almacén a otro dentro de una misma bodega. Recibe id_producto a mover (string) y el id
