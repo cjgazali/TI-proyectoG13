@@ -5,9 +5,10 @@ from rest_framework.decorators import api_view  # DRF improves function view to 
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas
-from app.models import Order, Product  # , RawMaterial
+from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from django.http import Http404
+from app.subtasks import move_product_dispatch, move_product_client
 
 @api_view(['GET'])  # only allows GET, else error code 405
 def stock_list(request):
@@ -79,42 +80,55 @@ def create_order(request):
     print(sku_stock)
 
     accepted_and_dispatched = False
-
     # aceptar y despachar si tenemos excedente de ese sku...
+
     # respecto materias primas
-    # usar info Seba
-    # min_raw = RawMaterial.objects.filter(sku=data["sku"])
-    # if min_raw:
-    #     if sku_stock > min_raw.values().stock + data["amount"]:  # double check
-    #         # mover a despacho
-    #         # Mover entre bodegas
-    #         accepted_and_dispatched = True
-    # else:
-    # respecto stock mínimo
-    # min_product = Product.objects.filter(sku=data["sku"]).values()  # double check
-    # if sku_stock > min_product.minimum_stock + data["amount"]:
-    #     # mover a despacho
-    #     almacenes = obtener_almacenes()
-    #     for almacen in almacenes:
-    #         if almacen['despacho']:
-    #             id_almacen_despacho = almacen["_id"]
-    #         else:
-    #             ids_origen.append(almacen["_id"])
-    #     # move_product_dispatch(ids_origen, id_almacen_despacho, data["amount"], data["sku"])
-    #     # Mover entre bodegas
-    #     # subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos
-    #     accepted_and_dispatched = True
+    min_raw = RawMaterial.objects.filter(sku=data["sku"]).values()
+    if min_raw:
+        if sku_stock > min_raw[0]['stock'] + data["amount"]:
+            # mover a despacho
+            almacenes = obtener_almacenes()
+            ids_origen=[]
+            for almacen in almacenes:
+                if almacen['despacho']:
+                    id_almacen_despacho = almacen["_id"]
+                else:
+                    ids_origen.append(almacen["_id"])
+            # Mover entre bodegas
+            move_product_dispatch(ids_origen, id_almacen_despacho, data["amount"], data["sku"])
+            #subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos
+            move_product_client(data["sku"], data["amount"], id_almacen_despacho, data["storeId"])
+            accepted_and_dispatched = True
+    else:
+        #respecto stock mínimo
+        minimum_stock = Product.objects.filter(sku=data["sku"]).values('minimum_stock')[0]['minimum_stock']  # double check
+        if sku_stock > minimum_stock + data["amount"]:
+            # mover a despacho
+            almacenes = obtener_almacenes()
+            ids_origen=[]
+            for almacen in almacenes:
+                if almacen['despacho']:
+                    id_almacen_despacho = almacen["_id"]
+                else:
+                    ids_origen.append(almacen["_id"])   #(QUE ES IDS_ORIGEN, NO ESTA DEFINIDO)
+            # Mover entre bodegas
+            move_product_dispatch(ids_origen, id_almacen_despacho, data["amount"], data["sku"]) #(IMPORTAR move_product_dispatch DE subtask)
+            #subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos #(DONDE ESTA LA FUNCION? SUPONGO QUE MUEVE DE DESPACHO NUESTRA A RECEPCION DEL OTRO GRUPO)
+            move_product_client(data["sku"], data["amount"], id_almacen_despacho, data["storeId"])
+            accepted_and_dispatched = True #(YO SOLO DEJARIA ACCEPTED EN TRUE, NO DISPATCHED)
 
     respuesta = {
-		"sku" : data['sku'],
-		"cantidad" : data['amount'],
-		"almacenId" : data['storeId'],
+		"sku" : data["sku"],
+		"cantidad" : data["amount"],
+		"almacenId" : data["storeId"],
 		"grupoProveedor" : 13,
 		"aceptado" : accepted_and_dispatched,
 		"despachado" : accepted_and_dispatched
 	}
 
     # falta accepted y dispatched en data
+    data['accepted'] = accepted_and_dispatched
+    data['dispatched'] = accepted_and_dispatched
 
     print("ok")
 
