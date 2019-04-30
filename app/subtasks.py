@@ -1,5 +1,5 @@
 from collections import defaultdict
-from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock, fabricar_sin_pago, post_order
+from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock, fabricar_sin_pago, post_order, mover_entre_bodegas
 from app.models import Ingredient, Product, RawMaterial, Assigment
 
 
@@ -129,6 +129,13 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
             if contador == cantidad:
                 return
     return
+
+def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen_destino):
+    lista_productos = obtener_productos_almacen(id_almacen_despacho, sku)
+    for i in range(cantidad_productos):
+        mover_entre_bodegas(lista_productos[i], id_almacen_destino)
+    return
+
 
 
 def review_raw_materials(totals):
