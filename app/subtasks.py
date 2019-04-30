@@ -46,15 +46,27 @@ def get_groups_stock():
         totals = defaultdict(int)  # sku: total
         if n_group == 13:  # diccionario vacío para nosotros
             dicts.append(totals)
+            continue
         try:
             group_stock = get_group_stock(n_group)
         except:
+            print("fail", n_group)
             group_stock = []
         for product in group_stock:
             if isinstance(product, dict):
-                totals[product["sku"]] += product["total"]
+                try:
+                    totals[product["sku"]] += product["total"]
+                except:
+                    print("KeyError", n_group)
         dicts.append(totals)
+        print(totals)
     return dicts
+
+
+def post_to_all(sku, quantity):
+    for group in range(1,15):
+        if group!= 13:
+            post_order(group, sku, quantity)
 
 
 def try_manufacture(products, sku, stock_minimo, lote_minimo):
@@ -119,7 +131,7 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
     return
 
 
-def review_raw_material(totals):
+def review_raw_materials(totals):
     query = Assigment.object.filter(group__exact=13)
     skus_fabricables = []
     for dato in query:
@@ -133,9 +145,3 @@ def review_raw_material(totals):
             else:
                 # Pido a los demás grupos
                 pass
-
-
-def post_to_all(sku, quantity):
-    for group in range(1,15):
-        if group!= 13:
-            post_order(group, sku, quantity)

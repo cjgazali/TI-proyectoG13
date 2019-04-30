@@ -13,8 +13,8 @@ def hello():
 def main():
     print("hello main")
 
-    empty_receptions()
-    print("empty_receptions")
+    # empty_receptions()
+    # print("empty_receptions")
 
     totals = get_current_stock()
     print(totals)
@@ -22,7 +22,7 @@ def main():
     groups_stock = get_groups_stock()
     print(groups_stock)
 
-    review_raw_materials(totals)
+    # review_raw_materials(totals)
 
     # products with minimum stock:
     products_set = Product.objects.filter(minimum_stock__gt=0)
