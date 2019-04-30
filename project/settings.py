@@ -94,13 +94,13 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 CELERY_BEAT_SCHEDULE = {
-    'hello': {
-        'task': 'app.tasks.hello',
-        'schedule': crontab()  # execute every minute
-    },
+    # 'hello': {
+    #     'task': 'app.tasks.hello',
+    #     'schedule': crontab()  # execute every minute
+    # },
     'main': {
         'task': 'app.tasks.main',
-        'schedule': crontab(minute='*/15')  # execute every 15 min
+        'schedule': crontab(minute='*/10')  # execute every x min
     }
 }
 # Password validation

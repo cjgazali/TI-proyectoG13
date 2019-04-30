@@ -5,9 +5,9 @@ from app.subtasks import get_current_stock, empty_receptions, get_groups_stock, 
 from app.models import Product
 
 
-@shared_task
-def hello():
-    print("Hello there!")
+# @shared_task
+# def hello():
+#     print("Hello there!")
 
 @shared_task
 def main():
