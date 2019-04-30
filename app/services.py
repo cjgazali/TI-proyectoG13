@@ -85,7 +85,6 @@ def mover_entre_almacenes(id_producto, id_almacen_destino):
     return response
 
 
-#
 # Mueve un producto no vencido desde un almacén de despacho de un grupo a un almacén de recepcion de otro grupo.
 # En caso que almacén de recepción se encuentre lleno, los productos quedan en almacén pulmón.  Recibe id_producto
 # a mover (string) y el id  del almacén de destino (string)
@@ -94,7 +93,7 @@ def mover_entre_bodegas(id_producto, id_almacen_destino):
     frase_hasheada = calcular_hash(frase_a_hashear)
     url = url_base + '/moveStockBodega'
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
-    body = {'productoId': id_producto, 'almacenId': id_almacen_destino, 'oc': 'YY'}
+    body = {'productoId': id_producto, 'almacenId': id_almacen_destino, 'oc': 'BLABLA', "precio": 10}
     result = requests.post(url, data=json.dumps(body), headers=headers)
     response = json.loads(result.text)
     return response
@@ -127,10 +126,12 @@ if __name__ == '__main__':
     #for elem in a:
     #    print(elem)
     #for elem in a:
-     #   f = obtener_productos_almacen(elem['_id'], '1001')
-      #  for elem2 in f:
-       #     print(elem2)
+    #    f = obtener_productos_almacen(elem['_id'], '1001')
+    #    for elem2 in f:
+    #        print(elem2)
 
+    #l = mover_entre_almacenes('5cc6250c93360b0004f0431b', '5cbd3ce444f67600049431fc')
+    #print(l)
     # Este método es el que no está testeado aún, le pregunté al profe en una issue que onda
     #f = mover_entre_bodegas('5cc22e96aa013f0004f0867e', '5cbd3ce444f67600049431d1')
     #print(f)
