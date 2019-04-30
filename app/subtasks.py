@@ -133,7 +133,7 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
 def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen_destino):
     lista_productos = obtener_productos_almacen(id_almacen_despacho, sku)
     for i in range(cantidad_productos):
-        mover_entre_bodegas(lista_productos[i], id_almacen_destino)
+        mover_entre_bodegas(lista_productos[i]['_id'], id_almacen_destino)
     return
 
 
