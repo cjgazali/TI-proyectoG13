@@ -1,5 +1,5 @@
 from collections import defaultdict
-from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock, fabricar_sin_pago, post_order, mover_entre_bodegas
+from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock, fabricar_sin_pago, post_order, mover_entre_bodegas, min_raws_factor
 from app.models import Ingredient, Product, RawMaterial, Assigment
 
 
@@ -50,17 +50,17 @@ def get_groups_stock():
         try:
             group_stock = get_group_stock(n_group)
         except:
-            print("fail", n_group)
+            # print("fail", n_group)
             group_stock = []
         for product in group_stock:
             if isinstance(product, dict):
                 try:
                     totals[product["sku"]] += product["total"]
                 except:
-                    print("KeyError", n_group)
+                    # print("KeyError", n_group)
                     break
         dicts.append(totals)
-        print(totals)
+        # print(totals)
     return dicts
 
 
@@ -78,7 +78,7 @@ def post_to_all(sku, quantity, groups_stock):
             try:
                 response = post_order(n_group, sku, group_post_quantity, id_almacen_despacho)
             except:
-                print("fail", n_group)
+                # print("fail", n_group)
                 continue
             try:
                 if response["aceptado"]:
@@ -86,18 +86,39 @@ def post_to_all(sku, quantity, groups_stock):
                     accepted_amount = response["cantidad"]
                     quantity = max(0, quantity - accepted_amount)
             except:
-                print("KeyError", n_group)
+                # print("KeyError", n_group)
                 continue
-            print("OK", n_group)
+            # print("OK", n_group)
     return quantity
 
+def post_to_all_test(sku, quantity):
+    """post_to_all para testear APIs desde shell"""
+    almacenes = obtener_almacenes()
+    for almacen in almacenes:
+        if almacen['despacho']:
+            id_almacen_despacho = almacen["_id"]
+    for n_group in range(1,15):
+        if n_group == 13:
+            continue
+        try:
+            response = post_order(n_group, sku, quantity, id_almacen_despacho)
+        except:
+            print("fail", n_group)
+            continue
+        try:
+            if response["aceptado"]:
+                print("OK", n_group, response["cantidad"])
+        except:
+            print("KeyError", n_group)
+            continue
+    return quantity
 
-def try_manufacture(products, sku, stock_minimo, lote_minimo):
+def try_manufacture(products, sku, diference, lote_minimo):
     """Intenta producir el producto correspondiente a sku,
      si no, pide materias primas necesarias"""
 
     # Calculo la cantidad de unidades que me faltan en bodega
-    diference = stock_minimo - products[sku]
+    # diference = stock_minimo - products[sku]
 
     # Calculo la cantidad de lotes que necesito
     lots = (diference // lote_minimo) + 1
@@ -113,11 +134,11 @@ def try_manufacture(products, sku, stock_minimo, lote_minimo):
             if products[ingredient] < ingredients[ingredient]:
                 producir = False
         if producir:
-            print("manufacture")
+            # print("manufacture")
             manufacture(ingredients, sku, lote_minimo)
-            print("manufacture done")
+            # print("manufacture done")
         else:
-            print("no ingredients")
+            # print("no ingredients")
             break
 
 
@@ -163,18 +184,27 @@ def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen
     return
 
 
-
-def review_raw_materials(totals):
-    query = Assigment.object.filter(group__exact=13)
+def review_raw_materials(totals, groups_stock):
+    query = Assigment.objects.filter(group__exact=13)
     skus_fabricables = []
     for dato in query:
         skus_fabricables.append(dato.sku.sku)
     materias_primas = RawMaterial.objects.all()
     for materia in materias_primas:
-        if totals[materia.sku.sku] < materia.stock:
-            if materia.sku.sku in skus_fabricables:
-                # Fabrico
-                pass
-            else:
-                # Pido a los demás grupos
-                pass
+        desired_stock = min_raws_factor * materia.stock
+        if totals[materia.sku.sku] < desired_stock:
+            remaining = desired_stock - totals[materia.sku.sku]  # lo que me falta para tener lo que quiero
+            # print(desired_stock, totals[materia.sku.sku], remaining)
+            # print(materia.sku.sku, remaining)
+            remaining = post_to_all(materia.sku.sku, remaining, groups_stock)  # descuenta lo que me acepten
+            # print(materia.sku.sku, remaining)
+            if remaining > 0 and materia.sku.sku in skus_fabricables:  # trato de fabricar si no me dieron suficiente
+                product_lot = Product.objects.filter(sku=materia.sku.sku).values("production_lot")[0]["production_lot"]
+                manufacture_raws(materia.sku.sku, remaining, product_lot)
+
+def manufacture_raws(sku, diference, production_lot):
+    lots = (diference // production_lot) + 1
+    amount = lots * production_lot
+    response = fabricar_sin_pago(sku, amount)
+    # print(response)
+    # print("manufactured", sku, response["cantidad"])

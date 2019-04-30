@@ -4,13 +4,20 @@ import hashlib
 import hmac
 from base64 import encodestring
 
+context = "PRODUCTION"  # or DEVELOPMENT
 # url API profe
-url_base = 'https://integracion-2019-dev.herokuapp.com/bodega'
+if context == "PRODUCTION":
+    url_base = "https://integracion-2019-prod.herokuapp.com/bodega"
+else:
+    url_base = "https://integracion-2019-dev.herokuapp.com/bodega"
 
 # url API grupos
 server_url = "http://tuerca{}.ing.puc.cl"
 inventories_url = server_url + "/inventories"
 orders_url = server_url + "/orders"
+
+min_stock_factor = 2
+min_raws_factor = 2
 
 # Código replicado de https://sites.google.com/site/studyingpython/home/basis/hmac-sha1
 # Esta función recibe texto a hashear (ejemplo API profe: GET534960ccc88ee69029cd3fb2)
@@ -31,6 +38,7 @@ def obtener_almacenes():
     url = url_base + '/almacenes'
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     result = requests.get(url, headers=headers)
+    # print(result)
     almacenes = json.loads(result.text)
     return almacenes
 
@@ -68,8 +76,8 @@ def fabricar_sin_pago(sku, cantidad):
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     body = {'sku': sku, 'cantidad': cantidad}
     result = requests.put(url, data=json.dumps(body), headers=headers)
-    skus = json.loads(result.text)
-    return skus
+    response = json.loads(result.text)
+    return response
 
 
 # Mueve un producto de un almacén a otro dentro de una misma bodega. Recibe id_producto a mover (string) y el id
