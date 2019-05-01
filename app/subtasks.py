@@ -113,7 +113,6 @@ def post_to_all_test(sku, quantity):
             continue
     return quantity
 
-
 def try_manufacture(products, sku, diference, lote_minimo):
     """Intenta producir el producto correspondiente a sku,
      si no, pide materias primas necesarias"""
@@ -178,7 +177,6 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
                 return
     return
 
-
 def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen_destino):
     lista_productos = obtener_productos_almacen(id_almacen_despacho, sku)
     for i in range(cantidad_productos):
@@ -203,7 +201,6 @@ def review_raw_materials(totals, groups_stock):
             if remaining > 0 and materia.sku.sku in skus_fabricables:  # trato de fabricar si no me dieron suficiente
                 product_lot = Product.objects.filter(sku=materia.sku.sku).values("production_lot")[0]["production_lot"]
                 manufacture_raws(materia.sku.sku, remaining, product_lot)
-
 
 def manufacture_raws(sku, diference, production_lot):
     lots = (diference // production_lot) + 1
