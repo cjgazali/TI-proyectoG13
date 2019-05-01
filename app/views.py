@@ -94,10 +94,17 @@ def create_order(request):
                     id_almacen_despacho = almacen["_id"]
                 else:
                     ids_origen.append(almacen["_id"])
-            # Mover entre bodegas
-            move_product_dispatch(ids_origen, id_almacen_despacho, data["amount"], data["sku"])
-            #subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos
-            move_product_client(data["sku"], data["amount"], id_almacen_despacho, data["storeId"])
+            cantidad_lote = 50
+            ciclos = data["amount"] // cantidad_lote
+            sobra = data["amount"] % cantidad_lote
+
+            for i in range(ciclos):
+                move_product_dispatch(ids_origen, id_almacen_despacho, cantidad_lote, data["sku"])
+                move_product_client(data["sku"], cantidad_lote, id_almacen_despacho, data["storeId"])
+
+            move_product_dispatch(ids_origen, id_almacen_despacho, sobra, data["sku"])
+            move_product_client(data["sku"], sobra, id_almacen_despacho, data["storeId"])
+
             accepted_and_dispatched = True
     else:
         #respecto stock mínimo
