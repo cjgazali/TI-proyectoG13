@@ -67,8 +67,8 @@ def get_groups_stock():
 def post_to_all(sku, quantity, groups_stock):
     almacenes = obtener_almacenes()
     for almacen in almacenes:
-        if almacen['despacho']:
-            id_almacen_despacho = almacen["_id"]
+        if almacen['recepcion']:
+            id_almacen_recepcion = almacen["_id"]
     for n_group in range(1,15):
         if n_group == 13:
             continue
@@ -76,7 +76,7 @@ def post_to_all(sku, quantity, groups_stock):
         group_post_quantity = min(groups_stock[n_group - 1][sku], quantity)
         if group_post_quantity > 0:  # si tienen
             try:
-                response = post_order(n_group, sku, group_post_quantity, id_almacen_despacho)
+                response = post_order(n_group, sku, group_post_quantity, id_almacen_recepcion)
             except:
                 # print("fail", n_group)
                 continue
@@ -134,6 +134,7 @@ def try_manufacture(products, sku, diference, lote_minimo):
             if products[ingredient] < ingredients[ingredient]:
                 producir = False
         if producir:
+            print('Mandando a manufacturar {}'.format(sku))
             # print("manufacture")
             manufacture(ingredients, sku, lote_minimo)
             # print("manufacture done")
@@ -157,9 +158,11 @@ def manufacture(ingredients, sku, cantidad):
 
     # Debemos mover los ingredientes a despacho
     for ingredient in ingredients.keys():
+        print('Moviendo {} a despacho'.format(ingredient))
         move_product_dispatch(ids_origen, id_almacen_despacho, ingredients[ingredient], ingredient)
 
     # Ahora podemos fabricar un lote
+    print('Fabricando {}'.format(sku))
     fabricar_sin_pago(sku, cantidad)
 
 
@@ -208,3 +211,70 @@ def manufacture_raws(sku, diference, production_lot):
     response = fabricar_sin_pago(sku, amount)
     # print(response)
     # print("manufactured", sku, response["cantidad"])
+
+def request_raw_materials_c(totals):
+    materias_primas = RawMaterial.objects.all()
+    for materia in materias_primas:
+        desired_stock = min_raws_factor * materia.stock
+        if totals[materia.sku.sku] < desired_stock:
+            post_all_c(materia.sku.sku, 3)  # descuenta lo que me acepten
+            # Pido constantemente 3 unidades, para evitar pedir mas de lo que esten dispuestos a darme
+
+def post_all_c(sku, quantity):
+    almacenes = obtener_almacenes()
+    for almacen in almacenes:
+        if almacen['recepcion']:
+            id_almacen_recepcion = almacen["_id"]
+    for n_group in range(1,15):
+        if n_group == 13:
+            continue
+
+        try:
+            #print('Intentare pedir {} al grupo {}'.format(sku, n_group))
+            response = post_order(n_group, sku, quantity, id_almacen_recepcion)
+            #print('Le pedi {} al grupo {}'.format(sku, n_group))
+        except:
+            # print("fail", n_group)
+            continue
+
+        try:
+            if response["aceptado"]:
+
+                # veo cuánto me falta
+                accepted_amount = response["cantidad"]
+                #print('Me dieron {} de {}'.format(accepted_amount, sku))
+                #quantity = max(0, quantity - accepted_amount)
+        except:
+            # print("KeyError", n_group)
+            continue
+
+    return quantity
+
+def intermediate_manufacture_c():
+    intermediate_skus = {'1101':200, '1111':50}
+    # Los valores de intermediate_skus son el stock que queremos tener
+
+    intermediate_lot = {}
+    products_set = Ingredient.objects.filter(product_sku__exact=1101)
+    for product in products_set:
+        intermediate_lot.update({'1101':product.production_lot})
+
+    products_set = Ingredient.objects.filter(product_sku__exact=1111)
+    for product in products_set:
+        intermediate_lot.update({'1111':product.production_lot})
+
+    # Los valores de intermediate_lot son los lotes del producto: siempre hay
+    # que pedir multiplos de ese valor
+
+    stock = get_current_stock()
+
+    for sku in intermediate_skus:
+        if sku in stock.keys():
+            if stock[sku] < intermediate_skus[sku]:
+                #print('Me falta {}'.format(sku))
+                diference = intermediate_skus[sku] - stock[sku]
+                try_manufacture(stock, sku, diference, intermediate_lot[sku])
+
+        # Si no tenemos del producto, lo producimos
+        else:
+            try_manufacture(stock, sku, intermediate_skus[sku], intermediate_lot[sku])

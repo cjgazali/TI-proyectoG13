@@ -101,6 +101,16 @@ CELERY_BEAT_SCHEDULE = {
     'main': {
         'task': 'app.tasks.main',
         'schedule': crontab(minute='*/10')  # execute every x min
+    },
+
+    'post': {
+        'task': 'app.tasks.post',
+        'schedule': crontab(minute='*/2')  # execute every x min
+    },
+
+    'intermediate': {
+        'task': 'app.tasks.intermediate',
+        'schedule': crontab(minute='*/2')  # execute every x min
     }
 }
 # Password validation
