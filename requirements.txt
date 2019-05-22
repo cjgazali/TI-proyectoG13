@@ -4,3 +4,4 @@ djangorestframework>=3.9.0
 requests==2.21.0
 celery>=4.3
 redis>=3.2
+pysftp==0.2.9
