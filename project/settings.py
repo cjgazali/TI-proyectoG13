@@ -26,7 +26,7 @@ SECRET_KEY = '5xf%m2oojzfhf-11@_)ym#*s1t$^+p6vn0l#@(hk3h3)*v1o(%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tuerca13.ing.puc.cl']
 
 APPEND_SLASH=False
 
