@@ -4,7 +4,6 @@ import json
 import hashlib
 import xml.etree.ElementTree as ET
 import pysftp
-import dateutil.parser
 import hmac
 from base64 import encodestring
 
@@ -203,8 +202,6 @@ def prueba_servidor():
                             print('id a consultar: {}'.format(elem.text))
                             response = consultar_oc(elem.text)
                             fecha_entrega = response[0]['fechaEntrega']
-                            fecha_aux = dateutil.parser.parse(fecha_entrega)
-                            print(fecha_aux, type(fecha_aux))
                             print(fecha_entrega)
                             # Desarrollar algoritmo
             print(attr.filename, type(attr.filename))
