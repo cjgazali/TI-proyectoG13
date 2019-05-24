@@ -5757,5 +5757,131 @@
             "stock": 40,
             "material_type": 2
         }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "1",
+        "fields": {
+            "group": 1,
+            "develop": "5cbd31b7c445af0004739be3",
+            "production": "5cc66e378820160004a4c3bc"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "2",
+        "fields": {
+            "group": 2,
+            "develop": "5cbd31b7c445af0004739be4",
+            "production": "5cc66e378820160004a4c3bd"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "3",
+        "fields": {
+            "group": 3,
+            "develop": "5cbd31b7c445af0004739be5",
+            "production": "5cc66e378820160004a4c3be"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "4",
+        "fields": {
+            "group": 4,
+            "develop": "5cbd31b7c445af0004739be6",
+            "production": "5cc66e378820160004a4c3bf"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "5",
+        "fields": {
+            "group": 5,
+            "develop": "5cbd31b7c445af0004739be7",
+            "production": "5cc66e378820160004a4c3c0"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "6",
+        "fields": {
+            "group": 6,
+            "develop": "5cbd31b7c445af0004739be8",
+            "production": "5cc66e378820160004a4c3c1"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "7",
+        "fields": {
+            "group": 7,
+            "develop": "5cbd31b7c445af0004739be9",
+            "production": "5cc66e378820160004a4c3c2"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "8",
+        "fields": {
+            "group": 8,
+            "develop": "5cbd31b7c445af0004739bea",
+            "production": "5cc66e378820160004a4c3c3"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "9",
+        "fields": {
+            "group": 9,
+            "develop": "5cbd31b7c445af0004739beb",
+            "production": "5cc66e378820160004a4c3c4"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "10",
+        "fields": {
+            "group": 10,
+            "develop": "5cbd31b7c445af0004739bec",
+            "production": "5cc66e378820160004a4c3c5"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "11",
+        "fields": {
+            "group": 11,
+            "develop": "5cbd31b7c445af0004739bed",
+            "production": "5cc66e378820160004a4c3c6"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "12",
+        "fields": {
+            "group": 12,
+            "develop": "5cbd31b7c445af0004739bee",
+            "production": "5cc66e378820160004a4c3c7"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "13",
+        "fields": {
+            "group": 13,
+            "develop": "5cbd31b7c445af0004739bef",
+            "production": "5cc66e378820160004a4c3c8"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "14",
+        "fields": {
+            "group": 14,
+            "develop": "5cbd31b7c445af0004739bf0",
+            "production": "5cc66e378820160004a4c3c9"
+        }
     }
 ]

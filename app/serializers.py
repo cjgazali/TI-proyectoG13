@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from app.models import Order, Product, Ingredient, Assigment, RawMaterial
+from app.models import Order, Product, Ingredient, Assigment, RawMaterial, IdOc
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -37,3 +37,9 @@ class RawMaterialSerializer(serializers.ModelSerializer):
     class Meta:
         model = RawMaterial
         fields = ('id', 'sku', 'stock', 'material_type')
+
+
+class IdOcSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = IdOc
+        fields = ('id', 'group', 'develop', 'production')

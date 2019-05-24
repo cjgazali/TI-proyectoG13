@@ -58,3 +58,7 @@ class RawMaterial(models.Model):
     material_type = models.IntegerField(default=1)
 
 
+class IdOc(models.Model):
+    group = models.IntegerField()
+    develop = models.TextField()
+    production = models.TextField()
