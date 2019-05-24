@@ -1,0 +1,5115 @@
+[
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1001",
+            "name": "Arroz grano corto",
+            "description": "Arroz crudo grano corto, especial para sushi",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 1,
+            "expected_duration_time": 720.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Kg",
+            "production_lot": 10,
+            "expected_production_time": 240,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 0,
+            "reception_space": 10,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1002",
+            "name": "Vinagre de arroz",
+            "description": "",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 1,
+            "expected_duration_time": 720.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Lt",
+            "production_lot": 10,
+            "expected_production_time": 300,
+            "producer_groups": "6,8,14",
+            "dispatch_space": 0,
+            "reception_space": 10,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1003",
+            "name": "Az\u00facar",
+            "description": "Az\u00facar granel",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 1,
+            "expected_duration_time": 720.0,
+            "equivalence_units": 0.1,
+            "measurement_unit": "Kg",
+            "production_lot": 100,
+            "expected_production_time": 320,
+            "producer_groups": "2,6,7",
+            "dispatch_space": 0,
+            "reception_space": 100,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1004",
+            "name": "Sal",
+            "description": "Sal granel",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 1,
+            "expected_duration_time": 720.0,
+            "equivalence_units": 0.1,
+            "measurement_unit": "Kg",
+            "production_lot": 100,
+            "expected_production_time": 400,
+            "producer_groups": "3,4,10",
+            "dispatch_space": 0,
+            "reception_space": 100,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1005",
+            "name": "Kanikama entero",
+            "description": "",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 1,
+            "expected_duration_time": 24.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Kg",
+            "production_lot": 5,
+            "expected_production_time": 260,
+            "producer_groups": "4,5,8",
+            "dispatch_space": 0,
+            "reception_space": 5,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1006",
+            "name": "Camar\u00f3n",
+            "description": "Camar\u00f3n congelado a granel",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 1,
+            "expected_duration_time": 720.0,
+            "equivalence_units": 100.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 120,
+            "producer_groups": "2,5,7",
+            "dispatch_space": 0,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1007",
+            "name": "Filete de salm\u00f3n",
+            "description": "Filete de salm\u00f3n fresco",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 4,
+            "expected_duration_time": 20.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Kg",
+            "production_lot": 8,
+            "expected_production_time": 300,
+            "producer_groups": "6,11,13",
+            "dispatch_space": 0,
+            "reception_space": 8,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1008",
+            "name": "Filete de salm\u00f3n ahumado",
+            "description": "Filete de salm\u00f3n ahudo para preparaciones",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 1,
+            "expected_duration_time": 48.0,
+            "equivalence_units": 0.5,
+            "measurement_unit": "Kg",
+            "production_lot": 10,
+            "expected_production_time": 220,
+            "producer_groups": "1,5,7",
+            "dispatch_space": 0,
+            "reception_space": 10,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1009",
+            "name": "Filete de at\u00fan",
+            "description": "Filete de at\u00fan fresco",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 3,
+            "expected_duration_time": 15.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Kg",
+            "production_lot": 3,
+            "expected_production_time": 400,
+            "producer_groups": "1,8,9",
+            "dispatch_space": 0,
+            "reception_space": 3,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1010",
+            "name": "Palta",
+            "description": "Palta entera",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 3,
+            "expected_duration_time": 30.0,
+            "equivalence_units": 3.0,
+            "measurement_unit": "Unid",
+            "production_lot": 5,
+            "expected_production_time": 480,
+            "producer_groups": "3,9,13",
+            "dispatch_space": 0,
+            "reception_space": 5,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1011",
+            "name": "S\u00e9samo",
+            "description": "S\u00e9samo granel",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 1,
+            "expected_duration_time": 168.0,
+            "equivalence_units": 0.55,
+            "measurement_unit": "Kg",
+            "production_lot": 4,
+            "expected_production_time": 120,
+            "producer_groups": "2,10,11",
+            "dispatch_space": 0,
+            "reception_space": 4,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1012",
+            "name": "Queso crema",
+            "description": "Queso crema granel",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 1,
+            "expected_duration_time": 72.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Kg",
+            "production_lot": 7,
+            "expected_production_time": 150,
+            "producer_groups": "11,12,13",
+            "dispatch_space": 0,
+            "reception_space": 7,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1013",
+            "name": "Masago",
+            "description": "Huevos de Capel\u00e1n",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 6,
+            "expected_duration_time": 12.0,
+            "equivalence_units": 0.01,
+            "measurement_unit": "Kg",
+            "production_lot": 10,
+            "expected_production_time": 320,
+            "producer_groups": "10,12,14",
+            "dispatch_space": 0,
+            "reception_space": 10,
+            "minimum_stock": 300
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1014",
+            "name": "Ceboll\u00edn entero",
+            "description": "Unidad de ceboll\u00edn entero, con tallo y hojas",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 1,
+            "expected_duration_time": 24.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 5,
+            "expected_production_time": 240,
+            "producer_groups": "3,4,9",
+            "dispatch_space": 0,
+            "reception_space": 5,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1015",
+            "name": "Ciboulette entero",
+            "description": "Ciboulette fresco a granel, entero",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 2,
+            "expected_duration_time": 30.0,
+            "equivalence_units": 0.1,
+            "measurement_unit": "Kg",
+            "production_lot": 4,
+            "expected_production_time": 400,
+            "producer_groups": "1,12,14",
+            "dispatch_space": 0,
+            "reception_space": 4,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1016",
+            "name": "Nori entero",
+            "description": "Alga Nori deshidratada entera",
+            "sale_price": 0,
+            "number_ingredients_needed": 0,
+            "number_products": 2,
+            "expected_duration_time": 240.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Kg",
+            "production_lot": 8,
+            "expected_production_time": 600,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 0,
+            "reception_space": 8,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1101",
+            "name": "Arroz cocido",
+            "description": "Arroz cocido para sushi, con vinagre de arroz, az\u00facar y sal",
+            "sale_price": 0,
+            "number_ingredients_needed": 4,
+            "number_products": 2,
+            "expected_duration_time": 3.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Kg",
+            "production_lot": 10,
+            "expected_production_time": 40,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 58,
+            "reception_space": 10,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1105",
+            "name": "Kanikama para roll",
+            "description": "Kanikama cortado y porcionado para un roll ",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 5,
+            "expected_duration_time": 3.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 10,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 10,
+            "minimum_stock": 50
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1106",
+            "name": "Camar\u00f3n cocido",
+            "description": "Camar\u00f3n cocido al agua, porcionado para un roll o nigiri",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 10,
+            "expected_duration_time": 4.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 100,
+            "expected_production_time": 30,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 100,
+            "minimum_stock": 400
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1107",
+            "name": "Salm\u00f3n cortado para roll",
+            "description": "Filete de salm\u00f3n cortado y porcionado para un roll",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 5,
+            "expected_duration_time": 2.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 11,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 11,
+            "minimum_stock": 50
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1108",
+            "name": "Salm\u00f3n ahumado cortado para roll",
+            "description": "Filete de salm\u00f3n ahumado cortado y porcionado para un roll",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 1,
+            "expected_duration_time": 4.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 6,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 6,
+            "minimum_stock": 10
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1109",
+            "name": "At\u00fan cortado para roll",
+            "description": "Filete de at\u00fan cortado y porcionado para un roll",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 5,
+            "expected_duration_time": 1.5,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 12,
+            "expected_production_time": 30,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 12,
+            "minimum_stock": 50
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1110",
+            "name": "Palta cortada para envoltura",
+            "description": "Palta fileteada para envoltura de un roll",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 8,
+            "expected_duration_time": 2.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 6,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 6,
+            "minimum_stock": 80
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1111",
+            "name": "S\u00e9samo tostado",
+            "description": "S\u00e9samo tostado",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 1,
+            "expected_duration_time": 12.0,
+            "equivalence_units": 0.5,
+            "measurement_unit": "Kg",
+            "production_lot": 2,
+            "expected_production_time": 30,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 2,
+            "reception_space": 2,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1112",
+            "name": "Queso crema para roll",
+            "description": "Queso crema porcionado para un roll o nigiri",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 13,
+            "expected_duration_time": 24.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 20,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 20,
+            "minimum_stock": 130
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1114",
+            "name": "Ceboll\u00edn cortado para roll",
+            "description": "Ceboll\u00edn cortado y porcionado para un roll",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 5,
+            "expected_duration_time": 2.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 4,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 4,
+            "minimum_stock": 50
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1115",
+            "name": "Ciboulette picado para roll",
+            "description": "Ciboulette cortado y porcionado para un roll",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 3,
+            "expected_duration_time": 3.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 8,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 2,
+            "reception_space": 8,
+            "minimum_stock": 30
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1116",
+            "name": "Nori entero cortado para roll",
+            "description": "Alga Nori cortada para relleno interior de roll",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 25,
+            "expected_duration_time": 24.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 10,
+            "expected_production_time": 40,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 11,
+            "reception_space": 10,
+            "minimum_stock": 250
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1201",
+            "name": "Arroz cocido para roll",
+            "description": "Arroz cocido, porcionado para un roll",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 25,
+            "expected_duration_time": 2.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 10,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 10,
+            "minimum_stock": 250
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1207",
+            "name": "Salm\u00f3n cortado para nigiri",
+            "description": "Filete de salm\u00f3n cortado y porcionado para nigiri",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 2,
+            "expected_duration_time": 2.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 12,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 12,
+            "minimum_stock": 20
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1209",
+            "name": "At\u00fan cortado para nigiri",
+            "description": "Filete de at\u00fan cortado y porcionado para nigiri",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 2,
+            "expected_duration_time": 1.5,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 14,
+            "expected_production_time": 30,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 14,
+            "minimum_stock": 20
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1210",
+            "name": "Palta cortada para roll",
+            "description": "Palta cortada en cubos, porcionada para un roll con palta",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 15,
+            "expected_duration_time": 2.3,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 9,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 9,
+            "minimum_stock": 150
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1211",
+            "name": "S\u00e9samo tostado para envoltura",
+            "description": "S\u00e9samo tostado, porcionado para envoltura de un roll",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 6,
+            "expected_duration_time": 12.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 10,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 10,
+            "minimum_stock": 60
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1215",
+            "name": "Ciboulette picado para envoltura",
+            "description": "Ciboulette cortado finamente para ser usado de envoltura",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 2,
+            "expected_duration_time": 3.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 8,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 4,
+            "reception_space": 8,
+            "minimum_stock": 20
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1216",
+            "name": "Nori entero cortado para nigiri",
+            "description": "Alga Nori cortada envolver nigiri",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 5,
+            "expected_duration_time": 24.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 10,
+            "expected_production_time": 30,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 2,
+            "reception_space": 10,
+            "minimum_stock": 50
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1301",
+            "name": "Arroz cocido para nigiri",
+            "description": "Arroz cocido, pocionado para nigiri",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 5,
+            "expected_duration_time": 2.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 5,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 5,
+            "minimum_stock": 50
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1307",
+            "name": "Salm\u00f3n cortado para sashimi",
+            "description": "Filete de salm\u00f3n cortado para sashimi, porcionado en 3 cortes",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 5,
+            "expected_duration_time": 1.2,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 11,
+            "expected_production_time": 30,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 11,
+            "minimum_stock": 170
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1309",
+            "name": "At\u00fan cortado para sashimi",
+            "description": "Filete de at\u00fan cortado para sashimi, porcionado en 3 cortes",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 5,
+            "expected_duration_time": 1.2,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 11,
+            "expected_production_time": 50,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 11,
+            "minimum_stock": 170
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1310",
+            "name": "Palta cortada para nigiri",
+            "description": "Palta cortada en l\u00e1minas, porcionada para nigiri con palta",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 2,
+            "expected_duration_time": 2.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 12,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 12,
+            "minimum_stock": 20
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "1407",
+            "name": "Salm\u00f3n cortado para envoltura",
+            "description": "Salm\u00f3n cortado finamente y porcionado para envoltura de roll",
+            "sale_price": 0,
+            "number_ingredients_needed": 1,
+            "number_products": 4,
+            "expected_duration_time": 2.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 14,
+            "expected_production_time": 30,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 1,
+            "reception_space": 14,
+            "minimum_stock": 40
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10001",
+            "name": "California Maki S\u00e9samo",
+            "description": "Roll kanikama, palta, envuelto en s\u00e9samo",
+            "sale_price": 4500,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 5,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10002",
+            "name": "California Maki Masago",
+            "description": "Roll kanikama, palta, envuelto en masago",
+            "sale_price": 4500,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 9,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10003",
+            "name": "California Maki Mix",
+            "description": "Roll kanikama, palta, envuelto en mezcla de masago y s\u00e9samo",
+            "sale_price": 4700,
+            "number_ingredients_needed": 6,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 30,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 10,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10004",
+            "name": "California Ebi S\u00e9samo",
+            "description": "Roll con camar\u00f3n, palta, envuelto en s\u00e9samo",
+            "sale_price": 4700,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 8,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10005",
+            "name": "California Ebi Masago",
+            "description": "Roll con camar\u00f3n, palta, envuelto en masago",
+            "sale_price": 4700,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 12,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10006",
+            "name": "California Sake S\u00e9samo",
+            "description": "Roll salm\u00f3n, palta, envuelto en s\u00e9samo",
+            "sale_price": 4900,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 5,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10007",
+            "name": "California Sake Masago",
+            "description": "Roll salm\u00f3n, palta, envuelto en masago",
+            "sale_price": 4900,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 9,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10008",
+            "name": "California Maguro S\u00e9samo",
+            "description": "Roll at\u00fan, palta, envuelto en s\u00e9samo",
+            "sale_price": 4900,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 5,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10009",
+            "name": "California Maguro Masago",
+            "description": "Roll at\u00fan, palta, envuelto en masago",
+            "sale_price": 4900,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 30,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 9,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10010",
+            "name": "Ebi",
+            "description": "Roll con camar\u00f3n y palta, envuelto en palta",
+            "sale_price": 4900,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 8,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10011",
+            "name": "Ebi Especial",
+            "description": "Roll con camar\u00f3n, queso crema, ceboll\u00edn, envuelto en palta",
+            "sale_price": 5700,
+            "number_ingredients_needed": 6,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 9,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10012",
+            "name": "Turo",
+            "description": "Roll con salm\u00f3n ahumado, camar\u00f3n y queso crema, envuelto en palta",
+            "sale_price": 5700,
+            "number_ingredients_needed": 6,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 9,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10013",
+            "name": "Coca",
+            "description": "Roll con camar\u00f3n y queso crema, envuelto en palta",
+            "sale_price": 5700,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 8,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10014",
+            "name": "Akita",
+            "description": "Roll kanikama y queso crema, envuelto en palta",
+            "sale_price": 4900,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 5,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10015",
+            "name": "Delicia",
+            "description": "Roll con camar\u00f3n, queso crema y ciboulette, envuelto en palta",
+            "sale_price": 5700,
+            "number_ingredients_needed": 6,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 6,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10016",
+            "name": "Beto",
+            "description": "Roll con salm\u00f3n, camar\u00f3n y queso crema, envuelto en palta",
+            "sale_price": 5700,
+            "number_ingredients_needed": 6,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 9,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10017",
+            "name": "Avocado",
+            "description": "Roll salm\u00f3n y queso crema, envuelto en palta",
+            "sale_price": 5700,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 5,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10018",
+            "name": "Maki Salm\u00f3n",
+            "description": "Kanikama, palta y queso crema envuelto en salm\u00f3n",
+            "sale_price": 5700,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 5,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10019",
+            "name": "Ebi Salm\u00f3n",
+            "description": "Camar\u00f3n y palta envuelto en salm\u00f3n",
+            "sale_price": 5700,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 8,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10020",
+            "name": "Ebi Salm\u00f3n Especial",
+            "description": "Camar\u00f3n, queso crema y ceboll\u00edn, envuelto en salm\u00f3n",
+            "sale_price": 5900,
+            "number_ingredients_needed": 6,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 9,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10021",
+            "name": "Maguro Salm\u00f3n",
+            "description": "At\u00fan, palta y ceboll\u00edn, envuelto en salm\u00f3n",
+            "sale_price": 5900,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 5,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10022",
+            "name": "Sake Ciboulette",
+            "description": "Salm\u00f3n, palta y queso crema envuelto en Ciboulette",
+            "sale_price": 5500,
+            "number_ingredients_needed": 6,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 6,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10023",
+            "name": "Maguro Ciboulette",
+            "description": "At\u00fan, palta y queso crema envuelto en Ciboulette",
+            "sale_price": 5500,
+            "number_ingredients_needed": 6,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 6,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10024",
+            "name": "Vegan S\u00e9samo",
+            "description": "Roll vegano con palta, ceboll\u00edn y ciboulette envuelto en s\u00e9samo",
+            "sale_price": 4900,
+            "number_ingredients_needed": 6,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 6,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "10025",
+            "name": "Vegan Masago",
+            "description": "Roll vegano con palta, ceboll\u00edn y ciboulette envuelto en masago",
+            "sale_price": 4900,
+            "number_ingredients_needed": 6,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 10,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "20001",
+            "name": "Nigiri Avocado",
+            "description": "Nigiri con salm\u00f3n, palta y queso crema",
+            "sale_price": 2700,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 5,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "20002",
+            "name": "Nigiri Ebi",
+            "description": "Nigiri con camar\u00f3n",
+            "sale_price": 2700,
+            "number_ingredients_needed": 3,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 6,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "20003",
+            "name": "Nigiri Sake",
+            "description": "Nigiri con salm\u00f3n",
+            "sale_price": 2700,
+            "number_ingredients_needed": 3,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 3,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "20004",
+            "name": "Nigiri Maguro",
+            "description": "Nigiri con at\u00fan",
+            "sale_price": 2700,
+            "number_ingredients_needed": 3,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 3,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "20005",
+            "name": "Nigiri Maguro Especial",
+            "description": "Nigiri con at\u00fan, palta y queso crema",
+            "sale_price": 2700,
+            "number_ingredients_needed": 5,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 20,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 5,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "30001",
+            "name": "Sashimi Salm\u00f3n 9 cortes",
+            "description": "Sashimi de salm\u00f3n, 9 cortes",
+            "sale_price": 7900,
+            "number_ingredients_needed": 1,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 3,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "30002",
+            "name": "Sashimi Salm\u00f3n 12 cortes",
+            "description": "Sashimi de salm\u00f3n, 12 cortes",
+            "sale_price": 9900,
+            "number_ingredients_needed": 1,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 4,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "30003",
+            "name": "Sashimi Salm\u00f3n 15 cortes",
+            "description": "Sashimi de salm\u00f3n, 15 cortes",
+            "sale_price": 12500,
+            "number_ingredients_needed": 1,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 5,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "30004",
+            "name": "Sashimi At\u00fan 9 cortes",
+            "description": "Sashimi de at\u00fan, 9 cortes",
+            "sale_price": 7900,
+            "number_ingredients_needed": 1,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 3,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "30005",
+            "name": "Sashimi At\u00fan 12 cortes",
+            "description": "Sashimi de at\u00fan, 12 cortes",
+            "sale_price": 9900,
+            "number_ingredients_needed": 1,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 4,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "30006",
+            "name": "Sashimi At\u00fan 15 cortes",
+            "description": "Sashimi de at\u00fan, 15 cortes",
+            "sale_price": 12500,
+            "number_ingredients_needed": 1,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 5,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "30007",
+            "name": "Sashimi Mix 12 cortes",
+            "description": "Mix de 6 cortes de sashimi de at\u00fan y 6 cortes de sashimi de salm\u00f3n",
+            "sale_price": 9900,
+            "number_ingredients_needed": 2,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 4,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.product",
+        "fields": {
+            "sku": "30008",
+            "name": "Sashimi Mix 18 cortes",
+            "description": "Mix de 9 cortes de sashimi de at\u00fan y 9 cortes de sashimi de salm\u00f3n",
+            "sale_price": 15990,
+            "number_ingredients_needed": 2,
+            "number_products": 0,
+            "expected_duration_time": 1.0,
+            "equivalence_units": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "expected_production_time": 10,
+            "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "dispatch_space": 6,
+            "reception_space": 1,
+            "minimum_stock": 0
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "1",
+        "fields": {
+            "product_sku": "1101",
+            "product_name": "Arroz cocido",
+            "ingredient_sku": "1001",
+            "ingredient_name": "Arroz grano corto",
+            "quantity": 0.8,
+            "measurement_unit": "Kg",
+            "production_lot": 10,
+            "quantity_for_lot": 8.0,
+            "units_quantity": 8
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "2",
+        "fields": {
+            "product_sku": "1101",
+            "product_name": "Arroz cocido",
+            "ingredient_sku": "1003",
+            "ingredient_name": "Az\u00facar",
+            "quantity": 0.3,
+            "measurement_unit": "Kg",
+            "production_lot": 10,
+            "quantity_for_lot": 3.0,
+            "units_quantity": 30
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "3",
+        "fields": {
+            "product_sku": "1101",
+            "product_name": "Arroz cocido",
+            "ingredient_sku": "1004",
+            "ingredient_name": "Sal",
+            "quantity": 0.16,
+            "measurement_unit": "Kg",
+            "production_lot": 10,
+            "quantity_for_lot": 1.6,
+            "units_quantity": 16
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "4",
+        "fields": {
+            "product_sku": "1101",
+            "product_name": "Arroz cocido",
+            "ingredient_sku": "1002",
+            "ingredient_name": "Vinagre de arroz",
+            "quantity": 0.4,
+            "measurement_unit": "Lt",
+            "production_lot": 10,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "5",
+        "fields": {
+            "product_sku": "1105",
+            "product_name": "Kanikama para roll",
+            "ingredient_sku": "1005",
+            "ingredient_name": "Kanikama entero",
+            "quantity": 0.1,
+            "measurement_unit": "Kg",
+            "production_lot": 10,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "6",
+        "fields": {
+            "product_sku": "1106",
+            "product_name": "Camar\u00f3n cocido",
+            "ingredient_sku": "1006",
+            "ingredient_name": "Camar\u00f3n",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 100,
+            "quantity_for_lot": 100.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "7",
+        "fields": {
+            "product_sku": "1107",
+            "product_name": "Salm\u00f3n cortado para roll",
+            "ingredient_sku": "1007",
+            "ingredient_name": "Filete de salm\u00f3n",
+            "quantity": 0.09,
+            "measurement_unit": "Kg",
+            "production_lot": 11,
+            "quantity_for_lot": 0.99,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "8",
+        "fields": {
+            "product_sku": "1108",
+            "product_name": "Salm\u00f3n ahumado cortado para roll",
+            "ingredient_sku": "1008",
+            "ingredient_name": "Filete de salm\u00f3n ahumado",
+            "quantity": 0.08,
+            "measurement_unit": "Kg",
+            "production_lot": 6,
+            "quantity_for_lot": 0.48,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "9",
+        "fields": {
+            "product_sku": "1109",
+            "product_name": "At\u00fan cortado para roll",
+            "ingredient_sku": "1009",
+            "ingredient_name": "Filete de at\u00fan",
+            "quantity": 0.08,
+            "measurement_unit": "Kg",
+            "production_lot": 12,
+            "quantity_for_lot": 0.96,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "10",
+        "fields": {
+            "product_sku": "1110",
+            "product_name": "Palta cortada para envoltura",
+            "ingredient_sku": "1010",
+            "ingredient_name": "Palta",
+            "quantity": 0.5,
+            "measurement_unit": "Unid",
+            "production_lot": 6,
+            "quantity_for_lot": 3.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "11",
+        "fields": {
+            "product_sku": "1111",
+            "product_name": "S\u00e9samo tostado",
+            "ingredient_sku": "1011",
+            "ingredient_name": "S\u00e9samo",
+            "quantity": 0.55,
+            "measurement_unit": "Kg",
+            "production_lot": 2,
+            "quantity_for_lot": 1.1,
+            "units_quantity": 2
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "12",
+        "fields": {
+            "product_sku": "1211",
+            "product_name": "S\u00e9samo tostado para envoltura",
+            "ingredient_sku": "1111",
+            "ingredient_name": "S\u00e9samo tostado",
+            "quantity": 0.05,
+            "measurement_unit": "Kg",
+            "production_lot": 10,
+            "quantity_for_lot": 0.5,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "13",
+        "fields": {
+            "product_sku": "1112",
+            "product_name": "Queso crema para roll",
+            "ingredient_sku": "1012",
+            "ingredient_name": "Queso crema",
+            "quantity": 0.05,
+            "measurement_unit": "Kg",
+            "production_lot": 20,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "14",
+        "fields": {
+            "product_sku": "1114",
+            "product_name": "Ceboll\u00edn cortado para roll",
+            "ingredient_sku": "1014",
+            "ingredient_name": "Ceboll\u00edn entero",
+            "quantity": 0.25,
+            "measurement_unit": "Unid",
+            "production_lot": 4,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "15",
+        "fields": {
+            "product_sku": "1115",
+            "product_name": "Ciboulette picado para roll",
+            "ingredient_sku": "1015",
+            "ingredient_name": "Ciboulette entero",
+            "quantity": 0.025,
+            "measurement_unit": "Kg",
+            "production_lot": 8,
+            "quantity_for_lot": 0.2,
+            "units_quantity": 2
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "16",
+        "fields": {
+            "product_sku": "1116",
+            "product_name": "Nori entero cortado para roll",
+            "ingredient_sku": "1016",
+            "ingredient_name": "Nori entero",
+            "quantity": 1.1,
+            "measurement_unit": "Unid",
+            "production_lot": 10,
+            "quantity_for_lot": 11.0,
+            "units_quantity": 11
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "17",
+        "fields": {
+            "product_sku": "1201",
+            "product_name": "Arroz cocido para roll",
+            "ingredient_sku": "1101",
+            "ingredient_name": "Arroz cocido",
+            "quantity": 0.1,
+            "measurement_unit": "Kg",
+            "production_lot": 10,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "18",
+        "fields": {
+            "product_sku": "1207",
+            "product_name": "Salm\u00f3n cortado para nigiri",
+            "ingredient_sku": "1007",
+            "ingredient_name": "Filete de salm\u00f3n",
+            "quantity": 0.08,
+            "measurement_unit": "Kg",
+            "production_lot": 12,
+            "quantity_for_lot": 0.96,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "19",
+        "fields": {
+            "product_sku": "1209",
+            "product_name": "At\u00fan cortado para nigiri",
+            "ingredient_sku": "1009",
+            "ingredient_name": "Filete de at\u00fan",
+            "quantity": 0.07,
+            "measurement_unit": "Kg",
+            "production_lot": 14,
+            "quantity_for_lot": 0.98,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "20",
+        "fields": {
+            "product_sku": "1210",
+            "product_name": "Palta cortada para roll",
+            "ingredient_sku": "1010",
+            "ingredient_name": "Palta",
+            "quantity": 0.33,
+            "measurement_unit": "Unid",
+            "production_lot": 9,
+            "quantity_for_lot": 3.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "21",
+        "fields": {
+            "product_sku": "1215",
+            "product_name": "Ciboulette picado para envoltura",
+            "ingredient_sku": "1015",
+            "ingredient_name": "Ciboulette entero",
+            "quantity": 0.05,
+            "measurement_unit": "Kg",
+            "production_lot": 8,
+            "quantity_for_lot": 0.4,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "22",
+        "fields": {
+            "product_sku": "1216",
+            "product_name": "Nori entero cortado para nigiri",
+            "ingredient_sku": "1016",
+            "ingredient_name": "Nori entero",
+            "quantity": 0.2,
+            "measurement_unit": "Unid",
+            "production_lot": 10,
+            "quantity_for_lot": 2.0,
+            "units_quantity": 2
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "23",
+        "fields": {
+            "product_sku": "1301",
+            "product_name": "Arroz cocido para nigiri",
+            "ingredient_sku": "1101",
+            "ingredient_name": "Arroz cocido",
+            "quantity": 0.2,
+            "measurement_unit": "Kg",
+            "production_lot": 5,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "24",
+        "fields": {
+            "product_sku": "1307",
+            "product_name": "Salm\u00f3n cortado para sashimi",
+            "ingredient_sku": "1007",
+            "ingredient_name": "Filete de salm\u00f3n",
+            "quantity": 0.09,
+            "measurement_unit": "Kg",
+            "production_lot": 11,
+            "quantity_for_lot": 0.99,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "25",
+        "fields": {
+            "product_sku": "1309",
+            "product_name": "At\u00fan cortado para sashimi",
+            "ingredient_sku": "1009",
+            "ingredient_name": "Filete de at\u00fan",
+            "quantity": 0.09,
+            "measurement_unit": "Kg",
+            "production_lot": 11,
+            "quantity_for_lot": 0.99,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "26",
+        "fields": {
+            "product_sku": "1310",
+            "product_name": "Palta cortada para nigiri",
+            "ingredient_sku": "1010",
+            "ingredient_name": "Palta",
+            "quantity": 0.25,
+            "measurement_unit": "Unid",
+            "production_lot": 12,
+            "quantity_for_lot": 3.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "27",
+        "fields": {
+            "product_sku": "1407",
+            "product_name": "Salm\u00f3n cortado para envoltura",
+            "ingredient_sku": "1007",
+            "ingredient_name": "Filete de salm\u00f3n",
+            "quantity": 0.07,
+            "measurement_unit": "Kg",
+            "production_lot": 14,
+            "quantity_for_lot": 0.98,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "28",
+        "fields": {
+            "product_sku": "10001",
+            "product_name": "California Maki S\u00e9samo",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "29",
+        "fields": {
+            "product_sku": "10001",
+            "product_name": "California Maki S\u00e9samo",
+            "ingredient_sku": "1105",
+            "ingredient_name": "Kanikama para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "30",
+        "fields": {
+            "product_sku": "10001",
+            "product_name": "California Maki S\u00e9samo",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "31",
+        "fields": {
+            "product_sku": "10001",
+            "product_name": "California Maki S\u00e9samo",
+            "ingredient_sku": "1211",
+            "ingredient_name": "S\u00e9samo tostado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "32",
+        "fields": {
+            "product_sku": "10001",
+            "product_name": "California Maki S\u00e9samo",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "33",
+        "fields": {
+            "product_sku": "10002",
+            "product_name": "California Maki Masago",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "34",
+        "fields": {
+            "product_sku": "10002",
+            "product_name": "California Maki Masago",
+            "ingredient_sku": "1105",
+            "ingredient_name": "Kanikama para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "35",
+        "fields": {
+            "product_sku": "10002",
+            "product_name": "California Maki Masago",
+            "ingredient_sku": "1013",
+            "ingredient_name": "Masago",
+            "quantity": 0.05,
+            "measurement_unit": "Kg",
+            "production_lot": 1,
+            "quantity_for_lot": 0.05,
+            "units_quantity": 5
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "36",
+        "fields": {
+            "product_sku": "10002",
+            "product_name": "California Maki Masago",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "37",
+        "fields": {
+            "product_sku": "10002",
+            "product_name": "California Maki Masago",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "38",
+        "fields": {
+            "product_sku": "10003",
+            "product_name": "California Maki Mix",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "39",
+        "fields": {
+            "product_sku": "10003",
+            "product_name": "California Maki Mix",
+            "ingredient_sku": "1105",
+            "ingredient_name": "Kanikama para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "40",
+        "fields": {
+            "product_sku": "10003",
+            "product_name": "California Maki Mix",
+            "ingredient_sku": "1013",
+            "ingredient_name": "Masago",
+            "quantity": 0.05,
+            "measurement_unit": "Kg",
+            "production_lot": 1,
+            "quantity_for_lot": 0.05,
+            "units_quantity": 5
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "41",
+        "fields": {
+            "product_sku": "10003",
+            "product_name": "California Maki Mix",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "42",
+        "fields": {
+            "product_sku": "10003",
+            "product_name": "California Maki Mix",
+            "ingredient_sku": "1211",
+            "ingredient_name": "S\u00e9samo tostado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "43",
+        "fields": {
+            "product_sku": "10003",
+            "product_name": "California Maki Mix",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "44",
+        "fields": {
+            "product_sku": "10004",
+            "product_name": "California Ebi S\u00e9samo",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "45",
+        "fields": {
+            "product_sku": "10004",
+            "product_name": "California Ebi S\u00e9samo",
+            "ingredient_sku": "1106",
+            "ingredient_name": "Camar\u00f3n cocido",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "46",
+        "fields": {
+            "product_sku": "10004",
+            "product_name": "California Ebi S\u00e9samo",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "47",
+        "fields": {
+            "product_sku": "10004",
+            "product_name": "California Ebi S\u00e9samo",
+            "ingredient_sku": "1211",
+            "ingredient_name": "S\u00e9samo tostado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "48",
+        "fields": {
+            "product_sku": "10004",
+            "product_name": "California Ebi S\u00e9samo",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "49",
+        "fields": {
+            "product_sku": "10005",
+            "product_name": "California Ebi Masago",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "50",
+        "fields": {
+            "product_sku": "10005",
+            "product_name": "California Ebi Masago",
+            "ingredient_sku": "1106",
+            "ingredient_name": "Camar\u00f3n cocido",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "51",
+        "fields": {
+            "product_sku": "10005",
+            "product_name": "California Ebi Masago",
+            "ingredient_sku": "1013",
+            "ingredient_name": "Masago",
+            "quantity": 0.05,
+            "measurement_unit": "Kg",
+            "production_lot": 1,
+            "quantity_for_lot": 0.05,
+            "units_quantity": 5
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "52",
+        "fields": {
+            "product_sku": "10005",
+            "product_name": "California Ebi Masago",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "53",
+        "fields": {
+            "product_sku": "10005",
+            "product_name": "California Ebi Masago",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "54",
+        "fields": {
+            "product_sku": "10006",
+            "product_name": "California Sake S\u00e9samo",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "55",
+        "fields": {
+            "product_sku": "10006",
+            "product_name": "California Sake S\u00e9samo",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "56",
+        "fields": {
+            "product_sku": "10006",
+            "product_name": "California Sake S\u00e9samo",
+            "ingredient_sku": "1107",
+            "ingredient_name": "Salm\u00f3n cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "57",
+        "fields": {
+            "product_sku": "10006",
+            "product_name": "California Sake S\u00e9samo",
+            "ingredient_sku": "1211",
+            "ingredient_name": "S\u00e9samo tostado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "58",
+        "fields": {
+            "product_sku": "10006",
+            "product_name": "California Sake S\u00e9samo",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "59",
+        "fields": {
+            "product_sku": "10007",
+            "product_name": "California Sake Masago",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "60",
+        "fields": {
+            "product_sku": "10007",
+            "product_name": "California Sake Masago",
+            "ingredient_sku": "1013",
+            "ingredient_name": "Masago",
+            "quantity": 0.05,
+            "measurement_unit": "Kg",
+            "production_lot": 1,
+            "quantity_for_lot": 0.05,
+            "units_quantity": 5
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "61",
+        "fields": {
+            "product_sku": "10007",
+            "product_name": "California Sake Masago",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "62",
+        "fields": {
+            "product_sku": "10007",
+            "product_name": "California Sake Masago",
+            "ingredient_sku": "1107",
+            "ingredient_name": "Salm\u00f3n cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "63",
+        "fields": {
+            "product_sku": "10007",
+            "product_name": "California Sake Masago",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "64",
+        "fields": {
+            "product_sku": "10008",
+            "product_name": "California Maguro S\u00e9samo",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "65",
+        "fields": {
+            "product_sku": "10008",
+            "product_name": "California Maguro S\u00e9samo",
+            "ingredient_sku": "1109",
+            "ingredient_name": "At\u00fan cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "66",
+        "fields": {
+            "product_sku": "10008",
+            "product_name": "California Maguro S\u00e9samo",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "67",
+        "fields": {
+            "product_sku": "10008",
+            "product_name": "California Maguro S\u00e9samo",
+            "ingredient_sku": "1211",
+            "ingredient_name": "S\u00e9samo tostado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "68",
+        "fields": {
+            "product_sku": "10008",
+            "product_name": "California Maguro S\u00e9samo",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "69",
+        "fields": {
+            "product_sku": "10009",
+            "product_name": "California Maguro Masago",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "70",
+        "fields": {
+            "product_sku": "10009",
+            "product_name": "California Maguro Masago",
+            "ingredient_sku": "1109",
+            "ingredient_name": "At\u00fan cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "71",
+        "fields": {
+            "product_sku": "10009",
+            "product_name": "California Maguro Masago",
+            "ingredient_sku": "1013",
+            "ingredient_name": "Masago",
+            "quantity": 0.05,
+            "measurement_unit": "Kg",
+            "production_lot": 1,
+            "quantity_for_lot": 0.05,
+            "units_quantity": 5
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "72",
+        "fields": {
+            "product_sku": "10009",
+            "product_name": "California Maguro Masago",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "73",
+        "fields": {
+            "product_sku": "10009",
+            "product_name": "California Maguro Masago",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "74",
+        "fields": {
+            "product_sku": "10010",
+            "product_name": "Ebi",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "75",
+        "fields": {
+            "product_sku": "10010",
+            "product_name": "Ebi",
+            "ingredient_sku": "1106",
+            "ingredient_name": "Camar\u00f3n cocido",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "76",
+        "fields": {
+            "product_sku": "10010",
+            "product_name": "Ebi",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "77",
+        "fields": {
+            "product_sku": "10010",
+            "product_name": "Ebi",
+            "ingredient_sku": "1110",
+            "ingredient_name": "Palta cortada para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "78",
+        "fields": {
+            "product_sku": "10010",
+            "product_name": "Ebi",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "79",
+        "fields": {
+            "product_sku": "10011",
+            "product_name": "Ebi Especial",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "80",
+        "fields": {
+            "product_sku": "10011",
+            "product_name": "Ebi Especial",
+            "ingredient_sku": "1106",
+            "ingredient_name": "Camar\u00f3n cocido",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "81",
+        "fields": {
+            "product_sku": "10011",
+            "product_name": "Ebi Especial",
+            "ingredient_sku": "1114",
+            "ingredient_name": "Ceboll\u00edn cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "82",
+        "fields": {
+            "product_sku": "10011",
+            "product_name": "Ebi Especial",
+            "ingredient_sku": "1110",
+            "ingredient_name": "Palta cortada para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "83",
+        "fields": {
+            "product_sku": "10011",
+            "product_name": "Ebi Especial",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "84",
+        "fields": {
+            "product_sku": "10011",
+            "product_name": "Ebi Especial",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "85",
+        "fields": {
+            "product_sku": "10012",
+            "product_name": "Turo",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "86",
+        "fields": {
+            "product_sku": "10012",
+            "product_name": "Turo",
+            "ingredient_sku": "1106",
+            "ingredient_name": "Camar\u00f3n cocido",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "87",
+        "fields": {
+            "product_sku": "10012",
+            "product_name": "Turo",
+            "ingredient_sku": "1110",
+            "ingredient_name": "Palta cortada para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "88",
+        "fields": {
+            "product_sku": "10012",
+            "product_name": "Turo",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "89",
+        "fields": {
+            "product_sku": "10012",
+            "product_name": "Turo",
+            "ingredient_sku": "1108",
+            "ingredient_name": "Salm\u00f3n ahumado cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "90",
+        "fields": {
+            "product_sku": "10012",
+            "product_name": "Turo",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "91",
+        "fields": {
+            "product_sku": "10013",
+            "product_name": "Coca",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "92",
+        "fields": {
+            "product_sku": "10013",
+            "product_name": "Coca",
+            "ingredient_sku": "1106",
+            "ingredient_name": "Camar\u00f3n cocido",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "93",
+        "fields": {
+            "product_sku": "10013",
+            "product_name": "Coca",
+            "ingredient_sku": "1110",
+            "ingredient_name": "Palta cortada para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "94",
+        "fields": {
+            "product_sku": "10013",
+            "product_name": "Coca",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "95",
+        "fields": {
+            "product_sku": "10013",
+            "product_name": "Coca",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "96",
+        "fields": {
+            "product_sku": "10014",
+            "product_name": "Akita",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "97",
+        "fields": {
+            "product_sku": "10014",
+            "product_name": "Akita",
+            "ingredient_sku": "1105",
+            "ingredient_name": "Kanikama para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "98",
+        "fields": {
+            "product_sku": "10014",
+            "product_name": "Akita",
+            "ingredient_sku": "1110",
+            "ingredient_name": "Palta cortada para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "99",
+        "fields": {
+            "product_sku": "10014",
+            "product_name": "Akita",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "100",
+        "fields": {
+            "product_sku": "10014",
+            "product_name": "Akita",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "101",
+        "fields": {
+            "product_sku": "10015",
+            "product_name": "Delicia",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "102",
+        "fields": {
+            "product_sku": "10015",
+            "product_name": "Delicia",
+            "ingredient_sku": "1109",
+            "ingredient_name": "At\u00fan cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "103",
+        "fields": {
+            "product_sku": "10015",
+            "product_name": "Delicia",
+            "ingredient_sku": "1115",
+            "ingredient_name": "Ciboulette picado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "104",
+        "fields": {
+            "product_sku": "10015",
+            "product_name": "Delicia",
+            "ingredient_sku": "1110",
+            "ingredient_name": "Palta cortada para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "105",
+        "fields": {
+            "product_sku": "10015",
+            "product_name": "Delicia",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "106",
+        "fields": {
+            "product_sku": "10015",
+            "product_name": "Delicia",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "107",
+        "fields": {
+            "product_sku": "10016",
+            "product_name": "Beto",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "108",
+        "fields": {
+            "product_sku": "10016",
+            "product_name": "Beto",
+            "ingredient_sku": "1106",
+            "ingredient_name": "Camar\u00f3n cocido",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "109",
+        "fields": {
+            "product_sku": "10016",
+            "product_name": "Beto",
+            "ingredient_sku": "1110",
+            "ingredient_name": "Palta cortada para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "110",
+        "fields": {
+            "product_sku": "10016",
+            "product_name": "Beto",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "111",
+        "fields": {
+            "product_sku": "10016",
+            "product_name": "Beto",
+            "ingredient_sku": "1107",
+            "ingredient_name": "Salm\u00f3n cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "112",
+        "fields": {
+            "product_sku": "10016",
+            "product_name": "Beto",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "113",
+        "fields": {
+            "product_sku": "10017",
+            "product_name": "Avocado",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "114",
+        "fields": {
+            "product_sku": "10017",
+            "product_name": "Avocado",
+            "ingredient_sku": "1110",
+            "ingredient_name": "Palta cortada para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "115",
+        "fields": {
+            "product_sku": "10017",
+            "product_name": "Avocado",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "116",
+        "fields": {
+            "product_sku": "10017",
+            "product_name": "Avocado",
+            "ingredient_sku": "1107",
+            "ingredient_name": "Salm\u00f3n cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "117",
+        "fields": {
+            "product_sku": "10017",
+            "product_name": "Avocado",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "118",
+        "fields": {
+            "product_sku": "10018",
+            "product_name": "Maki Salm\u00f3n",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "119",
+        "fields": {
+            "product_sku": "10018",
+            "product_name": "Maki Salm\u00f3n",
+            "ingredient_sku": "1105",
+            "ingredient_name": "Kanikama para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "120",
+        "fields": {
+            "product_sku": "10018",
+            "product_name": "Maki Salm\u00f3n",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "121",
+        "fields": {
+            "product_sku": "10018",
+            "product_name": "Maki Salm\u00f3n",
+            "ingredient_sku": "1407",
+            "ingredient_name": "Salm\u00f3n cortado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "122",
+        "fields": {
+            "product_sku": "10018",
+            "product_name": "Maki Salm\u00f3n",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "123",
+        "fields": {
+            "product_sku": "10019",
+            "product_name": "Ebi Salm\u00f3n",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "124",
+        "fields": {
+            "product_sku": "10019",
+            "product_name": "Ebi Salm\u00f3n",
+            "ingredient_sku": "1106",
+            "ingredient_name": "Camar\u00f3n cocido",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "125",
+        "fields": {
+            "product_sku": "10019",
+            "product_name": "Ebi Salm\u00f3n",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "126",
+        "fields": {
+            "product_sku": "10019",
+            "product_name": "Ebi Salm\u00f3n",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "127",
+        "fields": {
+            "product_sku": "10019",
+            "product_name": "Ebi Salm\u00f3n",
+            "ingredient_sku": "1407",
+            "ingredient_name": "Salm\u00f3n cortado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "128",
+        "fields": {
+            "product_sku": "10020",
+            "product_name": "Ebi Salm\u00f3n Especial",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "129",
+        "fields": {
+            "product_sku": "10020",
+            "product_name": "Ebi Salm\u00f3n Especial",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "130",
+        "fields": {
+            "product_sku": "10020",
+            "product_name": "Ebi Salm\u00f3n Especial",
+            "ingredient_sku": "1106",
+            "ingredient_name": "Camar\u00f3n cocido",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "131",
+        "fields": {
+            "product_sku": "10020",
+            "product_name": "Ebi Salm\u00f3n Especial",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "132",
+        "fields": {
+            "product_sku": "10020",
+            "product_name": "Ebi Salm\u00f3n Especial",
+            "ingredient_sku": "1114",
+            "ingredient_name": "Ceboll\u00edn cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "133",
+        "fields": {
+            "product_sku": "10020",
+            "product_name": "Ebi Salm\u00f3n Especial",
+            "ingredient_sku": "1407",
+            "ingredient_name": "Salm\u00f3n cortado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "134",
+        "fields": {
+            "product_sku": "10021",
+            "product_name": "Maguro Salm\u00f3n",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "135",
+        "fields": {
+            "product_sku": "10021",
+            "product_name": "Maguro Salm\u00f3n",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "136",
+        "fields": {
+            "product_sku": "10021",
+            "product_name": "Maguro Salm\u00f3n",
+            "ingredient_sku": "1109",
+            "ingredient_name": "At\u00fan cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "137",
+        "fields": {
+            "product_sku": "10021",
+            "product_name": "Maguro Salm\u00f3n",
+            "ingredient_sku": "1114",
+            "ingredient_name": "Ceboll\u00edn cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "138",
+        "fields": {
+            "product_sku": "10021",
+            "product_name": "Maguro Salm\u00f3n",
+            "ingredient_sku": "1407",
+            "ingredient_name": "Salm\u00f3n cortado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "139",
+        "fields": {
+            "product_sku": "10022",
+            "product_name": "Sake Ciboulette",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "140",
+        "fields": {
+            "product_sku": "10022",
+            "product_name": "Sake Ciboulette",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "141",
+        "fields": {
+            "product_sku": "10022",
+            "product_name": "Sake Ciboulette",
+            "ingredient_sku": "1107",
+            "ingredient_name": "Salm\u00f3n cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "142",
+        "fields": {
+            "product_sku": "10022",
+            "product_name": "Sake Ciboulette",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "143",
+        "fields": {
+            "product_sku": "10022",
+            "product_name": "Sake Ciboulette",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "144",
+        "fields": {
+            "product_sku": "10022",
+            "product_name": "Sake Ciboulette",
+            "ingredient_sku": "1215",
+            "ingredient_name": "Ciboulette picado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "145",
+        "fields": {
+            "product_sku": "10023",
+            "product_name": "Maguro Ciboulette",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "146",
+        "fields": {
+            "product_sku": "10023",
+            "product_name": "Maguro Ciboulette",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "147",
+        "fields": {
+            "product_sku": "10023",
+            "product_name": "Maguro Ciboulette",
+            "ingredient_sku": "1109",
+            "ingredient_name": "At\u00fan cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "148",
+        "fields": {
+            "product_sku": "10023",
+            "product_name": "Maguro Ciboulette",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "149",
+        "fields": {
+            "product_sku": "10023",
+            "product_name": "Maguro Ciboulette",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "150",
+        "fields": {
+            "product_sku": "10023",
+            "product_name": "Maguro Ciboulette",
+            "ingredient_sku": "1215",
+            "ingredient_name": "Ciboulette picado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "151",
+        "fields": {
+            "product_sku": "10024",
+            "product_name": "Vegan S\u00e9samo",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "152",
+        "fields": {
+            "product_sku": "10024",
+            "product_name": "Vegan S\u00e9samo",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "153",
+        "fields": {
+            "product_sku": "10024",
+            "product_name": "Vegan S\u00e9samo",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "154",
+        "fields": {
+            "product_sku": "10024",
+            "product_name": "Vegan S\u00e9samo",
+            "ingredient_sku": "1114",
+            "ingredient_name": "Ceboll\u00edn cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "155",
+        "fields": {
+            "product_sku": "10024",
+            "product_name": "Vegan S\u00e9samo",
+            "ingredient_sku": "1115",
+            "ingredient_name": "Ciboulette picado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "156",
+        "fields": {
+            "product_sku": "10024",
+            "product_name": "Vegan S\u00e9samo",
+            "ingredient_sku": "1211",
+            "ingredient_name": "S\u00e9samo tostado para envoltura",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "157",
+        "fields": {
+            "product_sku": "10025",
+            "product_name": "Vegan Masago",
+            "ingredient_sku": "1201",
+            "ingredient_name": "Arroz cocido para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "158",
+        "fields": {
+            "product_sku": "10025",
+            "product_name": "Vegan Masago",
+            "ingredient_sku": "1116",
+            "ingredient_name": "Nori entero cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "159",
+        "fields": {
+            "product_sku": "10025",
+            "product_name": "Vegan Masago",
+            "ingredient_sku": "1210",
+            "ingredient_name": "Palta cortada para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "160",
+        "fields": {
+            "product_sku": "10025",
+            "product_name": "Vegan Masago",
+            "ingredient_sku": "1114",
+            "ingredient_name": "Ceboll\u00edn cortado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "161",
+        "fields": {
+            "product_sku": "10025",
+            "product_name": "Vegan Masago",
+            "ingredient_sku": "1115",
+            "ingredient_name": "Ciboulette picado para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "162",
+        "fields": {
+            "product_sku": "10025",
+            "product_name": "Vegan Masago",
+            "ingredient_sku": "1013",
+            "ingredient_name": "Masago",
+            "quantity": 0.05,
+            "measurement_unit": "Kg",
+            "production_lot": 1,
+            "quantity_for_lot": 0.05,
+            "units_quantity": 5
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "163",
+        "fields": {
+            "product_sku": "20001",
+            "product_name": "Nigiri Avocado",
+            "ingredient_sku": "1301",
+            "ingredient_name": "Arroz cocido para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "164",
+        "fields": {
+            "product_sku": "20001",
+            "product_name": "Nigiri Avocado",
+            "ingredient_sku": "1207",
+            "ingredient_name": "Salm\u00f3n cortado para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "165",
+        "fields": {
+            "product_sku": "20001",
+            "product_name": "Nigiri Avocado",
+            "ingredient_sku": "1310",
+            "ingredient_name": "Palta cortada para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "166",
+        "fields": {
+            "product_sku": "20001",
+            "product_name": "Nigiri Avocado",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "167",
+        "fields": {
+            "product_sku": "20001",
+            "product_name": "Nigiri Avocado",
+            "ingredient_sku": "1216",
+            "ingredient_name": "Nori entero cortado para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "168",
+        "fields": {
+            "product_sku": "20002",
+            "product_name": "Nigiri Ebi",
+            "ingredient_sku": "1301",
+            "ingredient_name": "Arroz cocido para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "169",
+        "fields": {
+            "product_sku": "20002",
+            "product_name": "Nigiri Ebi",
+            "ingredient_sku": "1216",
+            "ingredient_name": "Nori entero cortado para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "170",
+        "fields": {
+            "product_sku": "20002",
+            "product_name": "Nigiri Ebi",
+            "ingredient_sku": "1106",
+            "ingredient_name": "Camar\u00f3n cocido",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "171",
+        "fields": {
+            "product_sku": "20003",
+            "product_name": "Nigiri Sake",
+            "ingredient_sku": "1301",
+            "ingredient_name": "Arroz cocido para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "172",
+        "fields": {
+            "product_sku": "20003",
+            "product_name": "Nigiri Sake",
+            "ingredient_sku": "1216",
+            "ingredient_name": "Nori entero cortado para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "173",
+        "fields": {
+            "product_sku": "20003",
+            "product_name": "Nigiri Sake",
+            "ingredient_sku": "1207",
+            "ingredient_name": "Salm\u00f3n cortado para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "174",
+        "fields": {
+            "product_sku": "20004",
+            "product_name": "Nigiri Maguro",
+            "ingredient_sku": "1301",
+            "ingredient_name": "Arroz cocido para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "175",
+        "fields": {
+            "product_sku": "20004",
+            "product_name": "Nigiri Maguro",
+            "ingredient_sku": "1216",
+            "ingredient_name": "Nori entero cortado para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "176",
+        "fields": {
+            "product_sku": "20004",
+            "product_name": "Nigiri Maguro",
+            "ingredient_sku": "1209",
+            "ingredient_name": "At\u00fan cortado para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "177",
+        "fields": {
+            "product_sku": "20005",
+            "product_name": "Nigiri Maguro Especial",
+            "ingredient_sku": "1301",
+            "ingredient_name": "Arroz cocido para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "178",
+        "fields": {
+            "product_sku": "20005",
+            "product_name": "Nigiri Maguro Especial",
+            "ingredient_sku": "1216",
+            "ingredient_name": "Nori entero cortado para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "179",
+        "fields": {
+            "product_sku": "20005",
+            "product_name": "Nigiri Maguro Especial",
+            "ingredient_sku": "1209",
+            "ingredient_name": "At\u00fan cortado para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "180",
+        "fields": {
+            "product_sku": "20005",
+            "product_name": "Nigiri Maguro Especial",
+            "ingredient_sku": "1310",
+            "ingredient_name": "Palta cortada para nigiri",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "181",
+        "fields": {
+            "product_sku": "20005",
+            "product_name": "Nigiri Maguro Especial",
+            "ingredient_sku": "1112",
+            "ingredient_name": "Queso crema para roll",
+            "quantity": 1.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 1.0,
+            "units_quantity": 1
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "182",
+        "fields": {
+            "product_sku": "30001",
+            "product_name": "Sashimi Salm\u00f3n 9 cortes",
+            "ingredient_sku": "1307",
+            "ingredient_name": "Salm\u00f3n cortado para sashimi",
+            "quantity": 3.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 3.0,
+            "units_quantity": 3
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "183",
+        "fields": {
+            "product_sku": "30002",
+            "product_name": "Sashimi Salm\u00f3n 12 cortes",
+            "ingredient_sku": "1307",
+            "ingredient_name": "Salm\u00f3n cortado para sashimi",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "184",
+        "fields": {
+            "product_sku": "30003",
+            "product_name": "Sashimi Salm\u00f3n 15 cortes",
+            "ingredient_sku": "1307",
+            "ingredient_name": "Salm\u00f3n cortado para sashimi",
+            "quantity": 5.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 5.0,
+            "units_quantity": 5
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "185",
+        "fields": {
+            "product_sku": "30004",
+            "product_name": "Sashimi At\u00fan 9 cortes",
+            "ingredient_sku": "1309",
+            "ingredient_name": "At\u00fan cortado para sashimi",
+            "quantity": 3.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 3.0,
+            "units_quantity": 3
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "186",
+        "fields": {
+            "product_sku": "30005",
+            "product_name": "Sashimi At\u00fan 12 cortes",
+            "ingredient_sku": "1309",
+            "ingredient_name": "At\u00fan cortado para sashimi",
+            "quantity": 4.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 4.0,
+            "units_quantity": 4
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "187",
+        "fields": {
+            "product_sku": "30006",
+            "product_name": "Sashimi At\u00fan 15 cortes",
+            "ingredient_sku": "1309",
+            "ingredient_name": "At\u00fan cortado para sashimi",
+            "quantity": 5.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 5.0,
+            "units_quantity": 5
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "188",
+        "fields": {
+            "product_sku": "30007",
+            "product_name": "Sashimi Mix 12 cortes",
+            "ingredient_sku": "1309",
+            "ingredient_name": "At\u00fan cortado para sashimi",
+            "quantity": 2.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 2.0,
+            "units_quantity": 2
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "189",
+        "fields": {
+            "product_sku": "30007",
+            "product_name": "Sashimi Mix 12 cortes",
+            "ingredient_sku": "1307",
+            "ingredient_name": "Salm\u00f3n cortado para sashimi",
+            "quantity": 2.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 2.0,
+            "units_quantity": 2
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "190",
+        "fields": {
+            "product_sku": "30008",
+            "product_name": "Sashimi Mix 18 cortes",
+            "ingredient_sku": "1309",
+            "ingredient_name": "At\u00fan cortado para sashimi",
+            "quantity": 3.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 3.0,
+            "units_quantity": 3
+        }
+    },
+    {
+        "model": "app.ingredient",
+        "pk": "191",
+        "fields": {
+            "product_sku": "30008",
+            "product_name": "Sashimi Mix 18 cortes",
+            "ingredient_sku": "1307",
+            "ingredient_name": "Salm\u00f3n cortado para sashimi",
+            "quantity": 3.0,
+            "measurement_unit": "Unid",
+            "production_lot": 1,
+            "quantity_for_lot": 3.0,
+            "units_quantity": 3
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "1",
+        "fields": {
+            "sku": "1001",
+            "group": 1
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "2",
+        "fields": {
+            "sku": "1008",
+            "group": 1
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "3",
+        "fields": {
+            "sku": "1009",
+            "group": 1
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "4",
+        "fields": {
+            "sku": "1015",
+            "group": 1
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "5",
+        "fields": {
+            "sku": "1016",
+            "group": 1
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "6",
+        "fields": {
+            "sku": "1001",
+            "group": 2
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "7",
+        "fields": {
+            "sku": "1003",
+            "group": 2
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "8",
+        "fields": {
+            "sku": "1006",
+            "group": 2
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "9",
+        "fields": {
+            "sku": "1016",
+            "group": 2
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "10",
+        "fields": {
+            "sku": "1011",
+            "group": 2
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "11",
+        "fields": {
+            "sku": "1001",
+            "group": 3
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "12",
+        "fields": {
+            "sku": "1004",
+            "group": 3
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "13",
+        "fields": {
+            "sku": "1010",
+            "group": 3
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "14",
+        "fields": {
+            "sku": "1016",
+            "group": 3
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "15",
+        "fields": {
+            "sku": "1014",
+            "group": 3
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "16",
+        "fields": {
+            "sku": "1014",
+            "group": 4
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "17",
+        "fields": {
+            "sku": "1001",
+            "group": 4
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "18",
+        "fields": {
+            "sku": "1004",
+            "group": 4
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "19",
+        "fields": {
+            "sku": "1005",
+            "group": 4
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "20",
+        "fields": {
+            "sku": "1016",
+            "group": 4
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "21",
+        "fields": {
+            "sku": "1001",
+            "group": 5
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "22",
+        "fields": {
+            "sku": "1005",
+            "group": 5
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "23",
+        "fields": {
+            "sku": "1006",
+            "group": 5
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "24",
+        "fields": {
+            "sku": "1008",
+            "group": 5
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "25",
+        "fields": {
+            "sku": "1016",
+            "group": 5
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "26",
+        "fields": {
+            "sku": "1001",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "27",
+        "fields": {
+            "sku": "1002",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "28",
+        "fields": {
+            "sku": "1003",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "29",
+        "fields": {
+            "sku": "1007",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "30",
+        "fields": {
+            "sku": "1016",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "31",
+        "fields": {
+            "sku": "1001",
+            "group": 7
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "32",
+        "fields": {
+            "sku": "1003",
+            "group": 7
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "33",
+        "fields": {
+            "sku": "1006",
+            "group": 7
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "34",
+        "fields": {
+            "sku": "1008",
+            "group": 7
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "35",
+        "fields": {
+            "sku": "1016",
+            "group": 7
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "36",
+        "fields": {
+            "sku": "1001",
+            "group": 8
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "37",
+        "fields": {
+            "sku": "1002",
+            "group": 8
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "38",
+        "fields": {
+            "sku": "1005",
+            "group": 8
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "39",
+        "fields": {
+            "sku": "1009",
+            "group": 8
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "40",
+        "fields": {
+            "sku": "1016",
+            "group": 8
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "41",
+        "fields": {
+            "sku": "1001",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "42",
+        "fields": {
+            "sku": "1009",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "43",
+        "fields": {
+            "sku": "1010",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "44",
+        "fields": {
+            "sku": "1014",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "45",
+        "fields": {
+            "sku": "1016",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "46",
+        "fields": {
+            "sku": "1001",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "47",
+        "fields": {
+            "sku": "1004",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "48",
+        "fields": {
+            "sku": "1011",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "49",
+        "fields": {
+            "sku": "1013",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "50",
+        "fields": {
+            "sku": "1016",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "51",
+        "fields": {
+            "sku": "1001",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "52",
+        "fields": {
+            "sku": "1007",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "53",
+        "fields": {
+            "sku": "1011",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "54",
+        "fields": {
+            "sku": "1012",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "55",
+        "fields": {
+            "sku": "1016",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "56",
+        "fields": {
+            "sku": "1001",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "57",
+        "fields": {
+            "sku": "1013",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "58",
+        "fields": {
+            "sku": "1015",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "59",
+        "fields": {
+            "sku": "1016",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "60",
+        "fields": {
+            "sku": "1012",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "61",
+        "fields": {
+            "sku": "1001",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "62",
+        "fields": {
+            "sku": "1007",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "63",
+        "fields": {
+            "sku": "1010",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "64",
+        "fields": {
+            "sku": "1012",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "65",
+        "fields": {
+            "sku": "1016",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "66",
+        "fields": {
+            "sku": "1013",
+            "group": 14
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "67",
+        "fields": {
+            "sku": "1001",
+            "group": 14
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "68",
+        "fields": {
+            "sku": "1002",
+            "group": 14
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "69",
+        "fields": {
+            "sku": "1015",
+            "group": 14
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "70",
+        "fields": {
+            "sku": "1016",
+            "group": 14
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "1",
+        "fields": {
+            "sku": "1001",
+            "stock": 32
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "2",
+        "fields": {
+            "sku": "1003",
+            "stock": 12
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "3",
+        "fields": {
+            "sku": "1004",
+            "stock": 8
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "4",
+        "fields": {
+            "sku": "1002",
+            "stock": 16
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "5",
+        "fields": {
+            "sku": "1005",
+            "stock": 6
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "6",
+        "fields": {
+            "sku": "1006",
+            "stock": 5
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "7",
+        "fields": {
+            "sku": "1007",
+            "stock": 26
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "8",
+        "fields": {
+            "sku": "1008",
+            "stock": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "9",
+        "fields": {
+            "sku": "1009",
+            "stock": 23
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "10",
+        "fields": {
+            "sku": "1010",
+            "stock": 33
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "11",
+        "fields": {
+            "sku": "1011",
+            "stock": 8
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "12",
+        "fields": {
+            "sku": "1012",
+            "stock": 7
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "13",
+        "fields": {
+            "sku": "1014",
+            "stock": 13
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "14",
+        "fields": {
+            "sku": "1015",
+            "stock": 20
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "15",
+        "fields": {
+            "sku": "1016",
+            "stock": 298
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "16",
+        "fields": {
+            "sku": "1013",
+            "stock": 300
+        }
+    }
+]

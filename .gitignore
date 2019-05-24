@@ -1,11 +1,20 @@
 # Created by .ignore support plugin (hsz.mobi)
 
+# celery env
+celerybeat-schedule
+celerybeat.pid
+
 # DS_Store
 .DS_Store
-*/.DS_Store
+**/.DS_Store
 
 # .idea from PyCharm
 .idea/*
 
 # pycache
-*/__pycache__/*
+__pycache__/*
+**/__pycache__/*
+
+# .vscode from VSCode
+.vscode/*
+**/.vscode/*
