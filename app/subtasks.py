@@ -90,17 +90,19 @@ def post_to_all(sku, quantity, groups_stock):
                     continue
     return quantity
 
+
 def post_to_all_test(sku, quantity):
     """post_to_all para testear APIs desde shell"""
     almacenes = obtener_almacenes()
+    id_almacen_recepcion = ''
     for almacen in almacenes:
-        if almacen['despacho']:
-            id_almacen_despacho = almacen["_id"]
+        if almacen['recepcion']:
+            id_almacen_recepcion = almacen["_id"]
     for n_group in range(1,15):
         if n_group == 13:
             continue
         try:
-            response = post_order(n_group, sku, quantity, id_almacen_despacho)
+            response = post_order(n_group, sku, quantity, id_almacen_recepcion)
         except:
             print("fail", n_group)
             continue
