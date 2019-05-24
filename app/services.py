@@ -2,6 +2,7 @@ from datetime import datetime
 import requests
 import json
 import hashlib
+from app.models import IdOc
 import xml.etree.ElementTree as ET
 import pysftp
 import hmac
@@ -10,8 +11,16 @@ from base64 import encodestring
 context = "DEVELOPMENT"  # or DEVELOPMENT
 # url API profe
 if context == "PRODUCTION":
+    ids_oc = {}
+    query = IdOc.objects.all()
+    for elem in query:
+        ids_oc[elem.group] = elem.production
     url_base = "https://integracion-2019-prod.herokuapp.com/bodega"
 else:
+    ids_oc = {}
+    query = IdOc.objects.all()
+    for elem in query:
+        ids_oc[elem.group] = elem.develop
     url_base = "https://integracion-2019-dev.herokuapp.com/bodega"
     url_oc = "https://integracion-2019-dev.herokuapp.com/oc"
 
