@@ -15,7 +15,8 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ('sku', 'name', 'description', 'sale_price', 'number_ingredients_needed',
                   'number_products', 'expected_duration_time', 'equivalence_units',
                   'measurement_unit', 'production_lot', 'expected_production_time',
-                  'producer_groups', 'dispatch_space', 'reception_space', 'minimum_stock')
+                  'producer_groups', 'production', 'dispatch_space',
+                  'reception_space', 'minimum_stock')
 
 
 class IngredientSerializer(serializers.ModelSerializer):
@@ -35,4 +36,4 @@ class AssigmentSerializer(serializers.ModelSerializer):
 class RawMaterialSerializer(serializers.ModelSerializer):
     class Meta:
         model = RawMaterial
-        fields = ('id', 'sku', 'stock')
+        fields = ('id', 'sku', 'stock', 'material_type')

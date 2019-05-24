@@ -70,25 +70,24 @@ def post_to_all(sku, quantity, groups_stock):
         if almacen['despacho']:
             id_almacen_despacho = almacen["_id"]
     for n_group in range(1,15):
-        if n_group == 13:
-            continue
-        # pido lo que quiero, o lo que tengan, si tienen pero menos
-        group_post_quantity = min(groups_stock[n_group - 1][sku], quantity)
-        if group_post_quantity > 0:  # si tienen
-            try:
-                response = post_order(n_group, sku, group_post_quantity, id_almacen_despacho)
-            except:
-                # print("fail", n_group)
-                continue
-            try:
-                if response["aceptado"]:
-                    # veo cuánto me falta
-                    accepted_amount = response["cantidad"]
-                    quantity = max(0, quantity - accepted_amount)
-            except:
-                # print("KeyError", n_group)
-                continue
-            # print("OK", n_group)
+        if n_group != 13:
+
+            # Pido el mínimo entre lo que quiero y lo que el grupo tenga
+            group_post_quantity = min(groups_stock[n_group - 1][sku], quantity)
+            if group_post_quantity > 0:  # si tienen
+                try:
+                    response = post_order(n_group, sku, group_post_quantity, id_almacen_despacho)
+                except:
+                    continue
+                try:
+                    if response["aceptado"]:
+                        # Veo cuánto me falta
+                        accepted_amount = response["cantidad"]
+                        quantity = max(0, quantity - accepted_amount)
+                        if quantity == 0:
+                            break
+                except:
+                    continue
     return quantity
 
 def post_to_all_test(sku, quantity):
@@ -113,12 +112,36 @@ def post_to_all_test(sku, quantity):
             continue
     return quantity
 
-def try_manufacture(products, sku, diference, lote_minimo):
-    """Intenta producir el producto correspondiente a sku,
-     si no, pide materias primas necesarias"""
 
-    # Calculo la cantidad de unidades que me faltan en bodega
-    # diference = stock_minimo - products[sku]
+def review_inventory(totals, groups_stock):
+    # Primero, vemos que skus podemos fabricar
+    query = Assigment.objects.filter(group__exact=13)
+    skus_fabricables = []
+    for dato in query:
+        skus_fabricables.append(dato.sku.sku)
+
+    productos = RawMaterial.objects.all()
+
+    for materia in productos:
+        desired_stock = min_raws_factor * materia.stock
+        if totals[materia.sku.sku] < desired_stock:
+            # Calculo cuanto me falta para obtener lo que quiero
+            remaining = desired_stock - totals[materia.sku.sku]  # lo que me falta para tener lo que quiero
+
+            # Intento pedir a los grupos y actualizo la cantidad faltante
+            remaining = post_to_all(materia.sku.sku, remaining, groups_stock)
+
+            # Trato de fabricar si no me dieron suficiente
+            if remaining > 0 and materia.sku.sku in skus_fabricables:
+                product_lot = Product.objects.filter(sku=materia.sku.sku).values("production_lot")[0]["production_lot"]
+                if materia.material_type == 1:
+                    manufacture_raws(materia.sku.sku, remaining, product_lot)
+                else:
+                    try_manufacture(totals, materia.sku, remaining, product_lot)
+
+
+def try_manufacture(products, sku, diference, lote_minimo):
+    """Intenta producir el producto correspondiente a sku"""
 
     # Calculo la cantidad de lotes que necesito
     lots = (diference // lote_minimo) + 1
@@ -133,12 +156,10 @@ def try_manufacture(products, sku, diference, lote_minimo):
         for ingredient in ingredients.keys():
             if products[ingredient] < ingredients[ingredient]:
                 producir = False
+
         if producir:
-            # print("manufacture")
             manufacture(ingredients, sku, lote_minimo)
-            # print("manufacture done")
         else:
-            # print("no ingredients")
             break
 
 
@@ -177,6 +198,7 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
                 return
     return
 
+
 def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen_destino):
     lista_productos = obtener_productos_almacen(id_almacen_despacho, sku)
     for i in range(cantidad_productos):
@@ -185,6 +207,7 @@ def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen
 
 
 def review_raw_materials(totals, groups_stock):
+    """ESTA FUNCION ESTA OBSOLETA"""
     query = Assigment.objects.filter(group__exact=13)
     skus_fabricables = []
     for dato in query:
@@ -202,9 +225,9 @@ def review_raw_materials(totals, groups_stock):
                 product_lot = Product.objects.filter(sku=materia.sku.sku).values("production_lot")[0]["production_lot"]
                 manufacture_raws(materia.sku.sku, remaining, product_lot)
 
+
 def manufacture_raws(sku, diference, production_lot):
     lots = (diference // production_lot) + 1
     amount = lots * production_lot
-    response = fabricar_sin_pago(sku, amount)
-    # print(response)
-    # print("manufactured", sku, response["cantidad"])
+    fabricar_sin_pago(sku, amount)
+
