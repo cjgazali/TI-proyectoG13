@@ -29,12 +29,14 @@ def empty_receptions():
 
 def get_current_stock():
     """Entrega diccionario con default 0 con { sku: total en bodega }."""
+    # No considera productos de almacen de despacho ni cocina
     totals = defaultdict(int)  # sku: total
     get_almacenes = obtener_almacenes()
     for almacen in get_almacenes:
-        stock_response = obtener_skus_disponibles(almacen["_id"])
-        for product in stock_response:
-            totals[product["_id"]] += product["total"]
+        if not (almacen["despacho"] or almacen['cocina']):
+            stock_response = obtener_skus_disponibles(almacen["_id"])
+            for product in stock_response:
+                totals[product["_id"]] += product["total"]
     return totals
 
 
@@ -232,4 +234,3 @@ def manufacture_raws(sku, diference, production_lot):
     lots = (diference // production_lot) + 1
     amount = lots * production_lot
     fabricar_sin_pago(sku, amount)
-

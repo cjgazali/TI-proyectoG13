@@ -8,7 +8,7 @@ from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_pr
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from django.http import Http404
-from app.subtasks import move_product_dispatch, move_product_client
+from app.subtasks import move_product_dispatch, move_product_client, get_current_stock
 
 @api_view(['GET'])  # only allows GET, else error code 405
 def stock_list(request):
@@ -20,6 +20,23 @@ def stock_list(request):
     aux_dict = {}
     for p in Product.objects.raw('SELECT sku, name FROM app_product'):
         aux_dict[p.sku] = p.name
+
+    totals = get_current_stock()
+    respuesta_final = []
+    stock_minimos = []
+
+    productos = RawMaterial.objects.all()
+    for materia in productos:
+        stock_minimos[materia.sku.sku] = materia.stock
+
+    for elem in totals:
+        disponible_venta = max(totals[elem] - stock_minimos[elem], 0)
+        if disponible_venta != 0:
+            respuesta_final.append({"sku": elem, "nombre": aux_dict[elem],
+                                    "total": disponible_venta})
+
+
+
 
     almacenes = [] #Para almacenar los id de los almacenes
     skus = [] #Para llevar cuenta de qué skus ya he considerado
