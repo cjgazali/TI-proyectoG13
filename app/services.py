@@ -120,7 +120,6 @@ def despachar_producto(id_producto, id_oc, direccion="BLABLA", precio=1):
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     body = {'productoId': id_producto, 'oc': id_oc, 'direccion': direccion, 'precio': precio}
     result = requests.delete(url, data=json.dumps(body), headers=headers)
-    print(result)
     response = json.loads(result.text)
     return response
 
