@@ -202,6 +202,27 @@ def recepcionar_oc(id_orden):
     return response
 
 
+# Usar FTP para entregar OCs encontradas en servidor
+def sftp_ocs():
+    """Establece conección sftp, obtiene información, cierra conexión y entrega información obtenida"""
+    host_name = "fierro.ing.puc.cl"
+    user_name = "grupo13_dev"
+    password = "c7vq41weKJGcvas"
+    cnopts = pysftp.CnOpts()
+    cnopts.hostkeys = None
+    ocs = []
+    with pysftp.Connection(host=host_name, username=user_name, password=password, port=22, cnopts=cnopts) as sftp:
+        sftp.cwd('/pedidos')
+        directory_structure = sftp.listdir_attr()
+        for attr in directory_structure:
+            with sftp.open(attr.filename) as archivo:
+                tree = ET.parse(archivo)
+                root = tree.getroot()
+                for elem in root:
+                    if elem.tag == 'id':
+                        ocs.append(elem.text)
+    return ocs
+
 # Ver servidor
 def prueba_servidor():
     host_name = "fierro.ing.puc.cl"

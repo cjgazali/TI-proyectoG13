@@ -101,6 +101,10 @@ CELERY_BEAT_SCHEDULE = {
     'main': {
         'task': 'app.tasks.main',
         'schedule': crontab(minute='*/10')  # execute every x min
+    },
+    'ftp_ocs': {
+        'task': 'app.tasks.ftp_ocs',
+        'schedule': crontab(minute='*/3')  # execute every x min
     }
 }
 # Password validation
