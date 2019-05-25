@@ -1,5 +1,3 @@
-from datetime import datetime
-from collections import defaultdict
 import requests
 import json
 import hashlib

@@ -10,6 +10,7 @@ from app.serializers import OrderSerializer
 from django.http import Http404
 from app.subtasks import move_product_dispatch, move_product_client, get_current_stock
 
+
 @api_view(['GET'])  # only allows GET, else error code 405
 def stock_list(request):
     """
@@ -23,44 +24,16 @@ def stock_list(request):
 
     totals = get_current_stock()
     respuesta_final = []
-    stock_minimos = []
-
+    stock_minimos = {}
     productos = RawMaterial.objects.all()
     for materia in productos:
         stock_minimos[materia.sku.sku] = materia.stock
 
-    for elem in totals:
+    for elem in stock_minimos:
         disponible_venta = max(totals[elem] - stock_minimos[elem], 0)
         if disponible_venta != 0:
             respuesta_final.append({"sku": elem, "nombre": aux_dict[elem],
                                     "total": disponible_venta})
-
-
-
-
-    almacenes = [] #Para almacenar los id de los almacenes
-    skus = [] #Para llevar cuenta de qué skus ya he considerado
-    respuesta_stock = [] #Stock de todos los almacenes
-    respuesta_final = []
-    prueba = obtener_almacenes()
-    for almacen in prueba:
-        almacenes.append(almacen["_id"])
-
-    for id_almacen in almacenes:
-        respuesta_stock.append(obtener_skus_disponibles(id_almacen))
-
-    for resultado in respuesta_stock:
-        for producto in resultado:
-
-            if producto["_id"] not in skus:
-                skus.append(producto["_id"])
-                respuesta_final.append({"sku": producto["_id"], "nombre": aux_dict[producto["_id"]],
-                                        "total": producto["total"]})
-            else:
-                for elemento in respuesta_final:
-                    if producto["_id"] in elemento.values():
-                        elemento["total"] = elemento["total"] + int(producto["total"])
-
     return Response(respuesta_final)
 
 
