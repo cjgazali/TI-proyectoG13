@@ -104,7 +104,7 @@ CELERY_BEAT_SCHEDULE = {
     },
     'ftp_ocs': {
         'task': 'app.tasks.ftp_ocs',
-        'schedule': crontab(minute='*/3')  # execute every x min
+        'schedule': crontab(minute='*/10')  # execute every x min
     }
 }
 # Password validation
