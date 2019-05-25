@@ -202,60 +202,27 @@ def recepcionar_oc(id_orden):
     return response
 
 
-# Ver servidor
-def prueba_servidor():
+# Usar FTP para entregar OCs encontradas en servidor
+def sftp_ocs():
+    """Establece conección sftp, obtiene información, cierra conexión y entrega información obtenida"""
     host_name = "fierro.ing.puc.cl"
     user_name = "grupo13_dev"
     password = "c7vq41weKJGcvas"
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
+    ocs = []
     with pysftp.Connection(host=host_name, username=user_name, password=password, port=22, cnopts=cnopts) as sftp:
-        print("Connection succesfully stablished ... ")
         sftp.cwd('/pedidos')
         directory_structure = sftp.listdir_attr()
-        cont = 0
         for attr in directory_structure:
-            cont += 1
-            if cont < 3:
-                with sftp.open(attr.filename) as archivo:
-                    tree = ET.parse(archivo)
-                    root = tree.getroot()
-                    for elem in root:
-                        if elem.tag == 'id':
-                            print('id a consultar: {}'.format(elem.text))
-                            response = consultar_oc(elem.text)
-                            fecha_entrega = response[0]['fechaEntrega']
-                            print(fecha_entrega)
-                            # Desarrollar algoritmo
-            print(attr.filename, type(attr.filename))
+            with sftp.open(attr.filename) as archivo:
+                tree = ET.parse(archivo)
+                root = tree.getroot()
+                for elem in root:
+                    if elem.tag == 'id':
+                        ocs.append(elem.text)
+    return ocs
 
 
 if __name__ == '__main__':
-    #a = obtener_almacenes()
-    #for elem in a:
-    #    print(elem)
-    #for elem in a:
-    #    f = obtener_productos_almacen(elem['_id'], '1001')
-    #    for elem2 in f:
-    #        print(elem2)
-    print(despachar_producto('5ce838757f76a200046f4d83', '5ce8878e87a0f1000481559e'))
-    #l = mover_entre_almacenes('5cc6250c93360b0004f0431b', '5cbd3ce444f67600049431fc')
-    #print(l)
-    # Este método es el que no está testeado aún, le pregunté al profe en una issue que onda
-    #f = mover_entre_bodegas('5cc22ede compra96aa013f0004f0867e', '5cbd3ce444f67600049431d1')
-    #print(f)
-    #f = obtener_productos_almacen('5cbd3ce444f67600049431ff', '1001')
-    #print(f)
-    #fecha_minima = "1970-01-01"
-    #fecha1 = datetime.strptime(fecha_minima, '%Y-%m-%d')
-    #tomorrow = "2019-05-28"
-    #fecha2 = datetime.strptime(tomorrow, '%Y-%m-%d')
-    #diff = fecha2 - fecha1
-    #print(type(diff), type(diff * 1000), diff)
-    #print(crear_oc('5cbd31b7c445af0004739beb', '5cbd31b7c445af0004739bef', 1001, diff.total_seconds() * 1000,
-    #               1, 1, 'b2b', "http://ejemplo.com/notificacion/{_id}"))
-    #por_borrar = '5ce213be9305c300043eda19'
-    #print(rechazar_oc('5ce33bc7bed9c00004d897fa'))
-    #prueba_servidor()
-    #print(obtener_productos_almacen('5cbd3ce444f67600049431fc', '1001'))
-    #print(fabricar_sin_pago("1001", 10))
+    pass
