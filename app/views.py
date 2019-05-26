@@ -128,3 +128,10 @@ def create_order(request):
         print("ok")
         return Response(respuesta, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def order_status(request, id):
+    if 'status' not in request.data:
+        return Response({ "error": "400 (Bad Request): Falta parámetro obligatorio." }, status=status.HTTP_400_BAD_REQUEST)
+    respuesta = {"status":request.data["status"]}
+    return Response(respuesta, status=status.HTTP_204_NO_CONTENT)
