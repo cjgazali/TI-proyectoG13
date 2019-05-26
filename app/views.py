@@ -2,12 +2,10 @@
 # from rest_framework import status  # generate status codes
 from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
-from rest_framework.parsers import JSONParser
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas
-from app.models import Order, Product, RawMaterial
+from app.models import Product, RawMaterial
 from app.serializers import OrderSerializer
-from django.http import Http404
 from app.subtasks import move_product_dispatch, move_product_client, get_current_stock
 
 
