@@ -4,7 +4,7 @@ from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
 from rest_framework.parsers import JSONParser
 from rest_framework import status
-from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas
+from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from django.http import Http404
@@ -47,8 +47,10 @@ def create_order(request):
     if 'sku' not in request.data or 'cantidad' not in request.data or 'almacenId' not in request.data:
         return Response({ "error": "400 (Bad Request): Falta parámetro obligatorio." }, status=status.HTTP_400_BAD_REQUEST)
 
-    data = {'amount': int(request.data['cantidad']), 'sku':request.data['sku'], 'storeId':request.data['almacenId'], 'client_group':int(request.META['HTTP_GROUP']), 'order_id':request.data['oc']}
-    
+    order = consultar_oc(str(request.data['oc']))
+
+    data = {'amount': order['cantidad']), 'sku':order['sku'], 'storeId':request.data['almacenId'], 'client_group':int(request.META['HTTP_GROUP']), 'order_id':request.data['oc']}
+
     query = Product.objects.all().values()  # esto se debe poder mejorar...
     sku_list=[]
     for p in query:
