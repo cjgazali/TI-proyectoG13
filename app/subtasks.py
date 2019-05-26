@@ -241,16 +241,6 @@ def check_time_availability(date, sku):
     """revisa si es que hay tiempo suficiente para
     fabricar el producto solicitado"""
 
-    # delta_now = datetime.utcnow() - timedelta(hours=4) - datetime(1970, 1, 1)  # delta desde Javascript Date
-    # delta_now_ms = delta_now.total_seconds() * 1000  # en milisegundos
-    # # tiempo de producción, de minutos (10, 20 o 30 para sushis) a milisegundos:
-    # production_time = 1000 * 60 * Product.objects.filter(sku=sku).values()[0]['expected_production_time']
-    # # tiempo de margen:
-    # extra = 15 * 60 * 1000
-    #
-    # delta_date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%fZ") - datetime(1970, 1, 1)  # delta desde Javascript Date
-    # delta_date_ms = delta_date.total_seconds() * 1000  # en milisegundos
-
     now = datetime.utcnow() - timedelta(hours=4)
     production_mins = Product.objects.filter(sku=sku).values()[0]['expected_production_time']
     production_delta = timedelta(minutes=production_mins)
