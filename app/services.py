@@ -1,4 +1,3 @@
-from datetime import datetime
 import requests
 import json
 import hashlib
@@ -226,3 +225,4 @@ def sftp_ocs():
 
 if __name__ == '__main__':
     pass
+
