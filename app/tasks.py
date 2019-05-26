@@ -1,5 +1,5 @@
 from celery import shared_task
-from app.subtasks import get_current_stock, get_groups_stock, review_inventory
+from app.subtasks import get_current_stock, get_groups_stock, review_inventory, check_time_availability
 from app.services import sftp_ocs, consultar_oc
 
 
@@ -37,6 +37,9 @@ def ftp_ocs():
         oc = consultar_oc(oc_id)[0]
         # print(oc)
         # Validar plazo
+        ok_time = check_time_availability(oc["fechaEntrega"], oc["sku"])
+        if not ok_time:
+            continue
         # Validar ingredientes
         ## Mandar a fabricar sushi
     # print("ocs considered")
