@@ -4,12 +4,11 @@ from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
 from rest_framework.parsers import JSONParser
 from rest_framework import status
-from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, fake_post_notification
+from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from django.http import Http404
 from app.subtasks import move_product_dispatch, move_product_client
-from django.urls import reverse
 
 @api_view(['GET'])  # only allows GET, else error code 405
 def stock_list(request):
@@ -146,5 +145,3 @@ def order_status(request, id):
         return Response({ "error": "400 (Bad Request): Falta parámetro obligatorio." }, status=status.HTTP_400_BAD_REQUEST)
     respuesta = {"status":request.data["status"]}
     return Response(respuesta, status=status.HTTP_204_NO_CONTENT)
-    # lo puse temporalmente en modo 201 created en vez de 204 no Content
-    # para poder probar bien el servicio de posteo de notificaciones
