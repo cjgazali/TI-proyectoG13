@@ -48,7 +48,7 @@ def create_order(request):
         return Response({ "error": "400 (Bad Request): Falta parámetro obligatorio." }, status=status.HTTP_400_BAD_REQUEST)
 
     data = {'amount': int(request.data['cantidad']), 'sku':request.data['sku'], 'storeId':request.data['almacenId'], 'client_group':int(request.META['HTTP_GROUP']), 'order_id':request.data['oc']}
-
+    
     query = Product.objects.all().values()  # esto se debe poder mejorar...
     sku_list=[]
     for p in query:

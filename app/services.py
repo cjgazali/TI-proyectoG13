@@ -139,10 +139,10 @@ def get_group_stock(n_group):
     return response
 
 
-def post_order(n_group, sku, quantity, id_almacen_despacho, id_orden):
+def post_order(n_group, sku, quantity, id_almacen_despacho):
     aceptado = False
     headers = {'Content-Type': 'application/json', "group": "13"}
-    body = {'sku': str(sku), 'cantidad': str(quantity), "almacenId": id_almacen_despacho, "oc": id_orden}
+    body = {'sku': str(sku), 'cantidad': str(quantity), "almacenId": id_almacen_despacho}
     result = requests.post(orders_url.format(n_group), data=json.dumps(body), headers=headers)
     response = json.loads(result.text)
     return response
