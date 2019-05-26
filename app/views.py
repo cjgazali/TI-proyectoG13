@@ -141,24 +141,10 @@ def create_order(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-def create_fake_order(request): #para prueba local, simula /orders
-    #La orden tiene que tener la clave "id"
-    order_id = int(request.data["id"])
-    url_base = "http://localhost:8000"
-    url = reverse('order_status', kwargs={'id': order_id})
-    # url corresponde al url de notificaciones, donde hay que hacer el post de la notificacion
-    respuesta = {"id": order_id, "urlNotificacion": url_base+str(url)}
-    fake_post_notification("accept", order_id)
-    # cuando nos hacen un posteo a probando (simulacion de que nos hagan una orden)
-    # inmediatamente se llama a fake_post_notification, que postea la notifiacion correspondiente
-    # (siempre aceptando)
-    return Response(respuesta)
-
-@api_view(['POST'])
 def order_status(request, id):
     if 'status' not in request.data:
         return Response({ "error": "400 (Bad Request): Falta parámetro obligatorio." }, status=status.HTTP_400_BAD_REQUEST)
     respuesta = {"status":request.data["status"]}
-    return Response(respuesta, status=status.HTTP_201_CREATED)
+    return Response(respuesta, status=status.HTTP_204_NO_CONTENT)
     # lo puse temporalmente en modo 201 created en vez de 204 no Content
     # para poder probar bien el servicio de posteo de notificaciones

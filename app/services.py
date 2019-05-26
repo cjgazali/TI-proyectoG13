@@ -214,14 +214,6 @@ def post_notification(status, n_group, order_id):
     response = json.loads(result.text)
     return response
 
-def fake_post_notification(status, order_id): #para prueba local
-    headers = {'Content-Type': 'application/json'}
-    body = {'status':status}
-    result = requests.post("http://localhost:8000"+"/orders/{}/notification".format(str(order_id)), data=json.dumps(body), headers=headers)
-    response = json.loads(result.text)
-    print("La respuesta de mi notificación de la orden {} fue {}".format(order_id,response))
-    #return response
-
 if __name__ == '__main__':
     #a = obtener_almacenes()
     #for elem in a:
