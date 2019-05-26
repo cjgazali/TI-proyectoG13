@@ -5,7 +5,6 @@ import xml.etree.ElementTree as ET
 import pysftp
 import hmac
 from base64 import encodestring
-from datetime import datetime, timedelta
 
 context = "DEVELOPMENT"  # or DEVELOPMENT
 # url API profe
