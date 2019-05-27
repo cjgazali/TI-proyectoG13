@@ -2,12 +2,10 @@
 # from rest_framework import status  # generate status codes
 from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
-from rest_framework.parsers import JSONParser
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
-from django.http import Http404
 from app.subtasks import move_product_dispatch, move_product_client, get_current_stock
 
 
@@ -130,3 +128,10 @@ def create_order(request):
         print("ok")
         return Response(respuesta, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def order_status(request, id):
+    if 'status' not in request.data:
+        return Response({ "error": "400 (Bad Request): Falta parámetro obligatorio." }, status=status.HTTP_400_BAD_REQUEST)
+    respuesta = {"status":request.data["status"]}
+    return Response(respuesta, status=status.HTTP_204_NO_CONTENT)
