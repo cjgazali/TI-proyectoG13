@@ -3,8 +3,8 @@
 from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
 from rest_framework import status
-from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas
-from app.models import Product, RawMaterial
+from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
+from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from app.subtasks import move_product_dispatch, move_product_client, get_current_stock
 
@@ -45,7 +45,9 @@ def create_order(request):
     if 'sku' not in request.data or 'cantidad' not in request.data or 'almacenId' not in request.data:
         return Response({ "error": "400 (Bad Request): Falta parámetro obligatorio." }, status=status.HTTP_400_BAD_REQUEST)
 
-    data = {'amount': int(request.data['cantidad']), 'sku':request.data['sku'], 'storeId':request.data['almacenId'], 'client_group':int(request.META['HTTP_GROUP'])}
+    order = consultar_oc(str(request.data['oc']))
+
+    data = {'amount': order[0]['cantidad']), 'sku':order[0]['sku'], 'storeId':request.data['almacenId'], 'client_group':int(request.META['HTTP_GROUP']), 'order_id':request.data['oc']}
 
     query = Product.objects.all().values()  # esto se debe poder mejorar...
     sku_list=[]
