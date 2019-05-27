@@ -222,6 +222,7 @@ def sftp_ocs():
                         ocs.append(elem.text)
     return ocs
 
+
 # Postear notificacion luego de recibir orden
 def post_notification(status, n_group, order_id):
     headers = {'Content-Type': 'application/json'}
