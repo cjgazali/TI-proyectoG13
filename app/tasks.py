@@ -17,13 +17,13 @@ def main():
     # print("empty_receptions")
 
     totals = get_current_stock()
-    # print("totals")
+    # print("main totals")
 
     groups_stock = get_groups_stock()
-    # print("groups_stock")
+    # print("main groups_stock")
 
     review_inventory(totals, groups_stock)
-    # print("review_inventory")
+    # print("main review_inventory")
 
     # print("bye main")
 
@@ -33,15 +33,15 @@ def ftp_ocs():
     # print("hello ftp_ocs")
 
     totals = get_current_stock()
-    # print("totals")
+    # print("ftp_ocs totals")
 
     ocs_ids = sftp_ocs()
-    # print("ocs_ids")
+    # print("ftp_ocs ocs_ids")
 
     for oc_id in ocs_ids:
         oc = consultar_oc(oc_id)[0]
-        # print(oc)
+        print("ftp_ocs", oc)
         review_order(oc_id, totals, oc["fechaEntrega"], oc["sku"], oc["cantidad"])
-    # print("ocs reviewed")
+    # print("ftp_ocs ocs reviewed")
 
     # print("bye ftp_ocs")

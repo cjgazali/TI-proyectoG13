@@ -231,7 +231,7 @@ def check_time_availability(date, sku):
     """revisa si es que hay tiempo suficiente para
     fabricar el producto solicitado"""
 
-    now = datetime.utcnow() - timedelta(hours=4)
+    now = datetime.utcnow()  # - timedelta(hours=4) servidor del profe también tiene desfase de 4 hrs
     production_mins = Product.objects.filter(sku=sku).values()[0]['expected_production_time']
     production_delta = timedelta(minutes=production_mins)
     extra = timedelta(minutes=15)  # margen arbitrario
@@ -265,6 +265,7 @@ def review_order(oc_id, products, date, sku, amount):
     # Validar plazo
     ok_time = check_time_availability(date, sku)
     if not ok_time:
+        # print("oc rejected: not ok_time")
         # reject
         rechazar_oc(oc_id)
         return
@@ -274,11 +275,13 @@ def review_order(oc_id, products, date, sku, amount):
     # Validar ingredientes
     will_produce_order = check_will_produce_order(products, lots, ingredients)
     if will_produce_order:
+        # print("oc accepted")
         # accept
         recepcionar_oc(oc_id)
         # produce
         produce_order(sku, product_lot, lots, ingredients)
     else:
+        # print("rejected: not will_produce_order")
         # reject
         rechazar_oc(oc_id)
 # END defs for review_order
