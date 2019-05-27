@@ -61,7 +61,6 @@ def create_order(request):
     #si el largo del sku > 4 entonces es producto tipo 3 y se rechaza
     if len(data['sku']) > 4:
         print('rechazado por que es producto tipo 3 (len >4)')
-        #rechazar oc por que el producto es tipo 3
         rechazar_oc(oc_id)
 
     else:
@@ -87,13 +86,14 @@ def create_order(request):
                         ids_origen.append(almacen["_id"])#no estoy seguro que hacer con la cocina
 
                 # Mover entre bodegas
+                #REVISAR NUEVO CRITERIO DE MOVER DE A UNO
                 move_product_dispatch(ids_origen, id_almacen_despacho, data["amount"], data["sku"]) #(IMPORTAR move_product_dispatch DE subtask)
                 #subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos #(DONDE ESTA LA FUNCION? SUPONGO QUE MUEVE DE DESPACHO NUESTRA A RECEPCION DEL OTRO GRUPO)
                 move_product_client(data["sku"], data["amount"], id_almacen_despacho, data["storeId"])
                 accepted_and_dispatched = True
 
             else:
-                print("hay productos per NO tiempo")
+                print("hay productos pero NO tiempo")
                 #rechazar oc por falta de tiempo
                 rechazar_oc(oc_id)
 
