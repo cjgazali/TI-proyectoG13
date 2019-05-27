@@ -50,6 +50,7 @@ def create_order(request):
     oc_id = request.data['oc']
     order = consultar_oc(str(oc_id))
     fecha_entrega = order[0]['fechaEntrega']
+    precio = order[0]['precioUnitario']
 
     data = {'amount': order[0]['cantidad'], 'sku':order[0]['sku'], 'storeId':request.data['almacenId'], 'client_group':int(request.META['HTTP_GROUP'])}
     accepted_and_dispatched = False #por default
@@ -85,11 +86,20 @@ def create_order(request):
                     else:
                         ids_origen.append(almacen["_id"])#no estoy seguro que hacer con la cocina
 
-                # Mover entre bodegas
-                #REVISAR NUEVO CRITERIO DE MOVER DE A UNO
-                move_product_dispatch(ids_origen, id_almacen_despacho, data["amount"], data["sku"]) #(IMPORTAR move_product_dispatch DE subtask)
-                #subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos #(DONDE ESTA LA FUNCION? SUPONGO QUE MUEVE DE DESPACHO NUESTRA A RECEPCION DEL OTRO GRUPO)
-                move_product_client(data["sku"], data["amount"], id_almacen_despacho, data["storeId"])
+                #Nuevo criteorio de mover y despachar productos uno por uno (para evitar problemas con la capcidad del almacen de despacho)
+                cantidad_despachada = 0 #aunque podriamos usar el valor de la OC
+                print(data['amount'], " > ", cantidad_despachada )
+                while data["amount"] > cantidad_despachada:
+                    #TRATAR DE HACERLO DIRECTO DE LAS FUNCOINES DE SERVICES PARA QUE SEA MAS EFICIENTE
+
+                    # # Mover entre bodegas
+                    # move_product_dispatch(ids_origen, id_almacen_despacho, 1, data["sku"])#mover de a 1 es muy poco, hacerlo de a mas dependiendo capacidad de almacen despacho
+                    # #subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos
+                    # print(data["sku"], 1, id_almacen_despacho, data["storeId"], oc_id, precio)
+                    # move_product_client(data["sku"], 1, id_almacen_despacho, data["storeId"], oc_id, precio)#mover de a 1 es muy poco, hacerlo de a mas dependiendo capacidad de almacen despacho
+
+                    cantidad_despachada += 1
+                print("Productos despachados: ", cantidad_despachada)
                 accepted_and_dispatched = True
 
             else:

@@ -110,7 +110,7 @@ def mover_entre_almacenes(id_producto, id_almacen_destino):
 # Mueve un producto no vencido desde un almacén de despacho de un grupo a un almacén de recepcion de otro grupo.
 # En caso que almacén de recepción se encuentre lleno, los productos quedan en almacén pulmón.  Recibe id_producto
 # a mover (string), el id  del almacén de destino (string) y opcionalmente la orden de compra con precio
-def mover_entre_bodegas(id_producto, id_almacen_destino, oc="BLABLA", precio=10):
+def mover_entre_bodegas(id_producto, id_almacen_destino, oc, precio):
     frase_a_hashear = 'POST{}{}'.format(id_producto, id_almacen_destino)
     frase_hasheada = calcular_hash(frase_a_hashear)
     url = url_base + '/moveStockBodega'
@@ -232,4 +232,3 @@ def post_notification(status, n_group, order_id):
 
 if __name__ == '__main__':
     pass
-
