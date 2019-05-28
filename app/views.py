@@ -7,7 +7,7 @@ from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_pr
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
-from app.subtasks import get_current_stock, check_group_oc_time
+from app.subtasks import get_current_stock, check_group_oc_time, get_almacenes_origenes_destino
 
 
 @api_view(['GET'])  # only allows GET, else error code 405
@@ -67,63 +67,51 @@ def create_order(request):
         rechazar_oc(oc_id)
     else:
         totals = get_current_stock()
-        minimum_stock = RawMaterial.objects.filter(sku='1101').values()[0]['stock']  # double check
-        # 
+        raw_material = RawMaterial.objects.filter(sku=data['sku']).values()
+        if not raw_material:  # Tested
+            # raise Http404
+            return Response({"error": "404 (Not Found): sku no existe."}, status=status.HTTP_404_NOT_FOUND)
+
+        minimum_stock = raw_material[0]['stock']
         if totals[data['sku']] - data['amount'] < minimum_stock:
             # print("rechazo por que no hay productos en bodega - disponible: ", totals[data['sku']])
             rechazar_oc(oc_id)
         else:
             # print("hay productos pero no se si tiempo")
             if check_group_oc_time(fecha_entrega):
-                accepted_and_dispatched = True
                 # print("hay productos y tiempo")
                 # aceptar oc, hay productos y alcanza el tiempo
                 recepcionar_oc(oc_id)
 
+                ids_origen, id_almacen_despacho = get_almacenes_origenes_destino()
 
-                almacenes = obtener_almacenes()
-                ids_origen=[]
-                for almacen in almacenes:
-                    if almacen['despacho']:
-                        id_almacen_despacho = almacen["_id"]
-                    else:
-                        ids_origen.append(almacen["_id"])#no estoy seguro que hacer con la cocina
-
-                #Nuevo criteorio de mover y despachar productos uno por uno (para evitar problemas con la capcidad del almacen de despacho)
-                cantidad_despachada = 0 #aunque podriamos usar el valor de la OC
-                print(data['amount'], " > ", cantidad_despachada )
+                # Nuevo criteorio de mover y despachar productos uno por uno
+                # (para evitar problemas con la capcidad del almacen de despacho)
+                cantidad_despachada = 0  # aunque podriamos usar el valor de la OC
+                # print(data['amount'], " > ", cantidad_despachada)
                 while data["amount"] != cantidad_despachada:
-                    for almacen in almacenes:
-                        if not(almacen["cocina"] or almacen["despacho"]):
-                            productos = obtener_productos_almacen(almacen["_id"], data['sku'])
-                            for elem in productos:
-                                a = mover_entre_almacenes(elem['_id'], id_almacen_despacho)
-                                print(a)
-                                b = mover_entre_bodegas(elem['_id'], data["storeId"], oc_id, 1)
-                                print(b)
-                                cantidad_despachada += 1
-                                if cantidad_despachada == data['amount']:
-                                    # Me salgo del primer for
-                                    break
+                    for almacen in ids_origen:
+                        productos = obtener_productos_almacen(almacen, data['sku'])
+                        for elem in productos:
+                            mover_entre_almacenes(elem['_id'], id_almacen_despacho)
+                            response = mover_entre_bodegas(elem['_id'], data["storeId"], oc_id, 1)
+                            # print(b)
+                            # idea: check if response OK before count
+                            cantidad_despachada += 1
+                            if cantidad_despachada == data['amount']:
+                                # Me salgo del primer for
+                                break
                         if cantidad_despachada == data['amount']:
                             # me salgo del segundo for y con eso no se cumplirá la condición del while
                             break
 
-                    #TRATAR DE HACERLO DIRECTO DE LAS FUNCOINES DE SERVICES PARA QUE SEA MAS EFICIENTE
-
-                    # # Mover entre bodegas
-                    # move_product_dispatch(ids_origen, id_almacen_despacho, 1, data["sku"])#mover de a 1 es muy poco, hacerlo de a mas dependiendo capacidad de almacen despacho
-                    # #subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos
-                    # print(data["sku"], 1, id_almacen_despacho, data["storeId"], oc_id, precio)
-                    # move_product_client(data["sku"], 1, id_almacen_despacho, data["storeId"], oc_id, precio)#mover de a 1 es muy poco, hacerlo de a mas dependiendo capacidad de almacen despacho
-
-                print("Productos despachados: ", cantidad_despachada)
+                # print("Productos despachados: ", cantidad_despachada)
                 # Quizás aquí podrías ver que el estado de la oc sea completa, aunque no estoy seguro si se arregla inmediatamente
                 accepted_and_dispatched = True
 
             else:
-                print("hay productos pero NO tiempo")
-                #rechazar oc por falta de tiempo
+                # print("hay productos pero NO tiempo")
+                # rechazar oc por falta de tiempo
                 rechazar_oc(oc_id)
 
 
@@ -145,6 +133,7 @@ def create_order(request):
         serializer.save()
         return Response(respuesta, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['POST'])
 def order_status(request, id):
