@@ -68,7 +68,7 @@ def create_order(request):
     else:
         totals = get_current_stock()
         raw_material = RawMaterial.objects.filter(sku=data['sku']).values()
-        if not raw_material:  # not tested
+        if not raw_material:  # Tested
             # raise Http404
             return Response({"error": "404 (Not Found): sku no existe."}, status=status.HTTP_404_NOT_FOUND)
 
