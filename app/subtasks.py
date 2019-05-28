@@ -317,7 +317,7 @@ def review_order(oc_id, products, date, sku, amount, state):
             if new.is_valid():
                 new.save()
     else:
-        print("review_order: oc rejected: not will_produce_order")
+        print("review_order: not will_produce_order")
         pass
 
 
@@ -372,14 +372,15 @@ def find_and_dispatch_sushi():
     id_almacen_despacho = ""
     for almacen in almacenes:
         if not almacen["despacho"]:
-            skus = obtener_skus_disponibles(almacen["_id"])
+            sku_stock_list = obtener_skus_disponibles(almacen["_id"])
             # print("got skus", skus)
-            for sku in skus:
+            for sku_stock in sku_stock_list:
+                sku = sku_stock["_id"]
                 if len(sku) > 4:
                     sushis_here = obtener_productos_almacen(almacen["_id"], sku)
                     # print("got sushis here", sushis_here)
                     if sku in sushi_products:
-                        sushi_products[sku].append(sushis_here)
+                        sushi_products[sku] += sushis_here
                     else:
                         sushi_products[sku] = sushis_here
         else:
