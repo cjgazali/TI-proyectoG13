@@ -6,7 +6,7 @@ import pysftp
 import hmac
 from base64 import encodestring
 
-context = "DEVELOPMENT"  # or DEVELOPMENT
+context = "PRODUCTION"  # or DEVELOPMENT
 # url API profe
 if context == "PRODUCTION":
     ids_oc = {1: '5cc66e378820160004a4c3bc', 2: '5cc66e378820160004a4c3bd', 3: '5cc66e378820160004a4c3be',
