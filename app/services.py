@@ -154,10 +154,14 @@ def post_order(n_group, sku, quantity, id_almacen_recepcion, id_oc):
 
 # Consulta una orden de compra
 def consultar_oc(id_orden):
-    url = url_oc + '/obtener/{}'.format((id_orden))
+    url = url_oc + '/obtener/{}'.format(id_orden)
     headers = {'Content-Type': 'application/json'}
     body = {'id': id_orden}
     result = requests.get(url, data=json.dumps(body), headers=headers)
+    # print(result.status_code)
+    if result.status_code != 200:
+        # para uniformar casos (ver views l.53)
+        return []
     response = json.loads(result.text)
     return response
 

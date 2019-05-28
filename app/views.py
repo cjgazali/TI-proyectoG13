@@ -50,6 +50,9 @@ def create_order(request):
 
     oc_id = request.data['oc']
     order = consultar_oc(str(oc_id))
+    if not order:
+        return Response({"error": "400 (Bad Request): ID de oc no corresponde"},
+                        status=status.HTTP_400_BAD_REQUEST)
     fecha_entrega = order[0]['fechaEntrega']
     # precio = order[0]['precioUnitario']
 
