@@ -62,3 +62,17 @@ class IdOc(models.Model):
     group = models.IntegerField()
     develop = models.TextField()
     production = models.TextField()
+
+
+class SushiOrder(models.Model):
+    oc = models.TextField()
+    sku = models.ForeignKey(Product, on_delete=models.CASCADE)
+    delivery_date = models.BigIntegerField()
+    dispatched = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ('delivery_date',)
+
+
+class Mark(models.Model):
+    name = models.TextField()
