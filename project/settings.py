@@ -100,7 +100,7 @@ CELERY_BEAT_SCHEDULE = {
     },
     'ftp_ocs': {
         'task': 'app.tasks.ftp_ocs',
-        'schedule': crontab(minute='5,15,25,35,45,55')
+        'schedule': crontab(minute='7,17,27,37,47,57')
     },
     'dispatch_sushi': {
         'task': 'app.tasks.dispatch_sushi',
