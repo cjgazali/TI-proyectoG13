@@ -15,6 +15,7 @@ if context == "PRODUCTION":
               10: '5cc66e378820160004a4c3c5', 11: '5cc66e378820160004a4c3c6', 12: '5cc66e378820160004a4c3c7',
               13: '5cc66e378820160004a4c3c8', 14: '5cc66e378820160004a4c3c9'}
     url_base = "https://integracion-2019-prod.herokuapp.com/bodega"
+    url_oc = "https://integracion-2019-prod.herokuapp.com/oc"
 else:
     ids_oc = {1: '5cbd31b7c445af0004739be3', 2: '5cbd31b7c445af0004739be4', 3: '5cbd31b7c445af0004739be5',
               4: '5cbd31b7c445af0004739be6', 5: '5cbd31b7c445af0004739be7', 6: '5cbd31b7c445af0004739be8',
