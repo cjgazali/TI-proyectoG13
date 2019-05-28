@@ -158,7 +158,7 @@ def consultar_oc(id_orden):
     headers = {'Content-Type': 'application/json'}
     body = {'id': id_orden}
     result = requests.get(url, data=json.dumps(body), headers=headers)
-    print(result.status_code)
+    # print(result.status_code)
     if result.status_code != 200:
         # para uniformar casos (ver views l.53)
         return []
