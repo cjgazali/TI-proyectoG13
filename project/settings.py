@@ -94,21 +94,9 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 CELERY_BEAT_SCHEDULE = {
-    # 'main': {
-    #     'task': 'app.tasks.main',
-    #     'schedule': crontab(minute='*/10')  # execute every x min
-    # },
-    # 'ftp_ocs': {
-    #     'task': 'app.tasks.ftp_ocs',
-    #     'schedule': crontab(minute='*/9')  # execute every x min
-    # },
-    # 'dispatch_sushi': {
-    #     'task': 'app.tasks.dispatch_sushi',
-    #     'schedule': crontab(minute='*/7')  # execute every x min
-    # }
     'main': {
         'task': 'app.tasks.main',
-        'schedule': crontab(minute='0,10,20,30,40,50')
+        'schedule': crontab(minute='*/10')
     },
     'ftp_ocs': {
         'task': 'app.tasks.ftp_ocs',
