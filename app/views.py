@@ -4,7 +4,8 @@ from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
 from rest_framework.parsers import JSONParser
 from rest_framework import status
-from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc, ids_oc, rechazar_oc, recepcionar_oc
+from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas
+from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from django.http import Http404
@@ -89,7 +90,23 @@ def create_order(request):
                 #Nuevo criteorio de mover y despachar productos uno por uno (para evitar problemas con la capcidad del almacen de despacho)
                 cantidad_despachada = 0 #aunque podriamos usar el valor de la OC
                 print(data['amount'], " > ", cantidad_despachada )
-                while data["amount"] > cantidad_despachada:
+                while data["amount"] != cantidad_despachada:
+                    for almacen in almacenes:
+                        if not(almacen["cocina"] or almacen["despacho"]):
+                            productos = obtener_productos_almacen(almacen["_id"], data['sku'])
+                            for elem in productos:
+                                a = mover_entre_almacenes(elem['_id'], id_almacen_despacho)
+                                print(a)
+                                b = mover_entre_bodegas(elem['_id'], data["storeId"], oc_id, 1)
+                                print(b)
+                                cantidad_despachada += 1
+                                if cantidad_despachada == data['amount']:
+                                    # Me salgo del primer for
+                                    break
+                        if cantidad_despachada == data['amount']:
+                            # me salgo del segundo for y con eso no se cumplirá la condición del while
+                            break
+
                     #TRATAR DE HACERLO DIRECTO DE LAS FUNCOINES DE SERVICES PARA QUE SEA MAS EFICIENTE
 
                     # # Mover entre bodegas
@@ -98,8 +115,8 @@ def create_order(request):
                     # print(data["sku"], 1, id_almacen_despacho, data["storeId"], oc_id, precio)
                     # move_product_client(data["sku"], 1, id_almacen_despacho, data["storeId"], oc_id, precio)#mover de a 1 es muy poco, hacerlo de a mas dependiendo capacidad de almacen despacho
 
-                    cantidad_despachada += 1
                 print("Productos despachados: ", cantidad_despachada)
+                # Quizás aquí podrías ver que el estado de la oc sea completa, aunque no estoy seguro si se arregla inmediatamente
                 accepted_and_dispatched = True
 
             else:
