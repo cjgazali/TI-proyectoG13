@@ -341,7 +341,7 @@ def check_group_oc_time(date):
     """Revisa si hay tiempo para despachar inmediatamente"""
 
     now = datetime.utcnow()
-    extra = timedelta(minutes=5)  # margen arbitrario
+    extra = timedelta(minutes=10)  # margen arbitrario
     date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%fZ")
 
     if now + extra < date:
