@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from app.models import Order, Product, Ingredient, Assigment, RawMaterial, IdOc
+from app.models import Order, Product, Ingredient, Assigment, RawMaterial, IdOc, SushiOrder, Mark
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -43,3 +43,15 @@ class IdOcSerializer(serializers.ModelSerializer):
     class Meta:
         model = IdOc
         fields = ('id', 'group', 'develop', 'production')
+
+
+class SushiOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SushiOrder
+        fields = ('id', 'oc', 'sku', 'delivery_date', 'dispatched')
+
+
+class MarkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mark
+        fields = ('id', 'name')
