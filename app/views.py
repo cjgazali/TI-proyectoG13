@@ -91,7 +91,7 @@ def create_order(request):
                 # print(data['amount'], " > ", cantidad_despachada)
                 while data["amount"] != cantidad_despachada:
                     for almacen in ids_origen:
-                        productos = obtener_productos_almacen(almacen["_id"], data['sku'])
+                        productos = obtener_productos_almacen(almacen, data['sku'])
                         for elem in productos:
                             mover_entre_almacenes(elem['_id'], id_almacen_despacho)
                             response = mover_entre_bodegas(elem['_id'], data["storeId"], oc_id, 1)
