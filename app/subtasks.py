@@ -1,5 +1,7 @@
 from collections import defaultdict
-from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock, fabricar_sin_pago, post_order, mover_entre_bodegas, min_raws_factor
+from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes
+from app.services import obtener_productos_almacen, get_group_stock, fabricar_sin_pago
+from app.services import post_order, mover_entre_bodegas, min_raws_factor, crear_oc, ids_oc
 from app.services import recepcionar_oc, rechazar_oc
 from app.models import Ingredient, Product, RawMaterial, Assigment
 from datetime import datetime, timedelta
@@ -73,14 +75,21 @@ def post_to_all(sku, quantity, groups_stock):
     for almacen in almacenes:
         if almacen['recepcion']:
             id_almacen_recepcion = almacen["_id"]
+
     for n_group in range(1,15):
         if n_group != 13:
-
             # Pido el mínimo entre lo que quiero y lo que el grupo tenga
             group_post_quantity = min(groups_stock[n_group - 1][sku], quantity)
             if group_post_quantity > 0:  # si tienen
                 try:
-                    response = post_order(n_group, sku, group_post_quantity, id_almacen_recepcion)
+                    now = datetime.utcnow() - timedelta(hours=4)
+                    now += timedelta(hours=24)
+                    fecha = now.timestamp() * 1000
+                    # Revisar esta url
+                    url = 'http://tuerca13.ing.puc.cl/orders/{_id}/notification'
+                    result = crear_oc(ids_oc[13], ids_oc[n_group], sku, fecha, quantity, 1, 'b2b', url)
+                    id_oc = result['_id']
+                    response = post_order(n_group, sku, group_post_quantity, id_almacen_recepcion, id_oc)
                 except:
                     continue
                 try:
@@ -102,7 +111,7 @@ def post_to_all_test(sku, quantity):
     for almacen in almacenes:
         if almacen['recepcion']:
             id_almacen_recepcion = almacen["_id"]
-    for n_group in range(1,15):
+    for n_group in range(1, 15):
         if n_group == 13:
             continue
         try:
