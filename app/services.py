@@ -16,6 +16,8 @@ if context == "PRODUCTION":
               13: '5cc66e378820160004a4c3c8', 14: '5cc66e378820160004a4c3c9'}
     url_base = "https://integracion-2019-prod.herokuapp.com/bodega"
     url_oc = "https://integracion-2019-prod.herokuapp.com/oc"
+    sftp_user_name = "grupo13"
+    sftp_password = "UM5Hh7PbLZxJ8t241"
 else:
     ids_oc = {1: '5cbd31b7c445af0004739be3', 2: '5cbd31b7c445af0004739be4', 3: '5cbd31b7c445af0004739be5',
               4: '5cbd31b7c445af0004739be6', 5: '5cbd31b7c445af0004739be7', 6: '5cbd31b7c445af0004739be8',
@@ -24,6 +26,8 @@ else:
               13: '5cbd31b7c445af0004739bef', 14: '5cbd31b7c445af0004739bf0'}
     url_base = "https://integracion-2019-dev.herokuapp.com/bodega"
     url_oc = "https://integracion-2019-dev.herokuapp.com/oc"
+    sftp_user_name = "grupo13_dev"
+    sftp_password = "c7vq41weKJGcvas"
 
 # url API grupos
 server_url = "http://tuerca{}.ing.puc.cl"
@@ -205,12 +209,11 @@ def recepcionar_oc(id_orden):
 def sftp_ocs(file_list):
     """Establece conección sftp, obtiene información, cierra conexión y entrega información obtenida"""
     host_name = "fierro.ing.puc.cl"
-    user_name = "grupo13_dev"
-    password = "c7vq41weKJGcvas"
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
     ocs = []
-    with pysftp.Connection(host=host_name, username=user_name, password=password, port=22, cnopts=cnopts) as sftp:
+    with pysftp.Connection(host=host_name, username=sftp_user_name, password=sftp_password,
+                           port=22, cnopts=cnopts) as sftp:
         sftp.cwd('/pedidos')
         directory_structure = sftp.listdir_attr()
         for attr in directory_structure:
