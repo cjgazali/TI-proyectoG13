@@ -50,6 +50,7 @@ def create_order(request):
     data = {'amount': order[0]['cantidad'], 'sku': order[0]['sku'], 'storeId': request.data['almacenId'],
             'client_group': int(request.META['HTTP_GROUP']), 'order_id': request.data['oc']}
 
+
     query = Product.objects.all().values()  # esto se debe poder mejorar...
     sku_list=[]
     for p in query:

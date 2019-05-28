@@ -2,6 +2,7 @@ from celery import shared_task
 from app.subtasks import get_current_stock, get_groups_stock, review_inventory
 from app.subtasks import lots_for_q, get_ingredients, check_time_availability, check_will_produce_order
 from app.subtasks import review_order
+from app.models import Mark
 from app.services import sftp_ocs, consultar_oc
 
 
@@ -35,13 +36,14 @@ def ftp_ocs():
     totals = get_current_stock()
     # print("ftp_ocs totals")
 
-    ocs_ids = sftp_ocs()
+    lista = list(Mark.objects.values_list('name', flat=True))
+    ocs_ids = sftp_ocs(lista)
     # print("ftp_ocs ocs_ids")
 
     for oc_id in ocs_ids:
-        oc = consultar_oc(oc_id)[0]
+        oc = consultar_oc(oc_id[0])[0]
         print("ftp_ocs", oc)
-        review_order(oc_id, totals, oc["fechaEntrega"], oc["sku"], oc["cantidad"])
+        review_order(oc_id, totals, oc["fechaEntrega"], oc["sku"], oc["cantidad"], oc["estado"])
     # print("ftp_ocs ocs reviewed")
 
     # print("bye ftp_ocs")

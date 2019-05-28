@@ -4,6 +4,7 @@ from app.services import obtener_productos_almacen, get_group_stock, fabricar_si
 from app.services import post_order, mover_entre_bodegas, min_raws_factor, crear_oc, ids_oc
 from app.services import recepcionar_oc, rechazar_oc
 from app.models import Ingredient, Product, RawMaterial, Assigment
+from app.serializers import MarkSerializer
 from datetime import datetime, timedelta
 
 
@@ -269,31 +270,41 @@ def produce_order(sku, min_lot, lots, ingredients):
         produce(sku, min_lot, ingredients, ids_origen, id_destino)
 
 
-def review_order(oc_id, products, date, sku, amount):
+def review_order(oc_id, products, date, sku, amount, state):
     """Acepta o rechaza orden de sushi, y manda producir si acepta."""
     # Validar plazo
     ok_time = check_time_availability(date, sku)
     if not ok_time:
         # print("oc rejected: not ok_time")
         # reject
-        rechazar_oc(oc_id)
+        rechazar_oc(oc_id[0])
+        data = {'name': oc_id[1]}
+        new = MarkSerializer(data=data)
+        if new.is_valid():
+            new.save()
         return
+
     product_lot = Product.objects.filter(sku=sku).values("production_lot")[0]["production_lot"]
     lots = lots_for_q(amount, product_lot)
     ingredients = get_ingredients(sku)
     # Validar ingredientes
     will_produce_order = check_will_produce_order(products, lots, ingredients)
     if will_produce_order:
-        # print("oc accepted")
-        # accept
-        recepcionar_oc(oc_id)
-        # produce
-        produce_order(sku, product_lot, lots, ingredients)
-    else:
-        # print("rejected: not will_produce_order")
-        # reject
-        rechazar_oc(oc_id)
-# END defs for review_order
+        if state == "creada":
+            # print("oc accepted")
+            # accept
+            recepcionar_oc(oc_id[0])
+            # produce
+            produce_order(sku, product_lot, lots, ingredients)
+            data = {'name': oc_id[1]}
+            new = MarkSerializer(data=data)
+            if new.is_valid():
+                new.save()
+        else:
+            data = {'name': oc_id[1]}
+            new = MarkSerializer(data=data)
+            if new.is_valid():
+                new.save()
 
 
 def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
