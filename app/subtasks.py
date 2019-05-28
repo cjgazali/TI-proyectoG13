@@ -4,7 +4,7 @@ from app.services import obtener_productos_almacen, get_group_stock, fabricar_si
 from app.services import post_order, mover_entre_bodegas, min_raws_factor, crear_oc, ids_oc
 from app.services import recepcionar_oc, rechazar_oc
 from app.models import Ingredient, Product, RawMaterial, Assigment
-from app.serializers import MarkSerializer
+from app.serializers import MarkSerializer, SushiOrderSerializer
 from datetime import datetime, timedelta
 
 
@@ -300,6 +300,17 @@ def review_order(oc_id, products, date, sku, amount, state):
             new = MarkSerializer(data=data)
             if new.is_valid():
                 new.save()
+
+            # Agregamos registros a SushiOrder
+            for i in range(amount):
+                aux = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%fZ")
+                epoch = datetime.utcfromtimestamp(0)
+                delta = aux - epoch
+                seconds = int(delta.total_seconds())
+                data2 = {'oc': oc_id[0], 'sku': sku, 'delivery_date': seconds, 'dispatched': False}
+                new2 = SushiOrderSerializer(data=data2)
+                if new2.is_valid():
+                    new2.save()
         else:
             data = {'name': oc_id[1]}
             new = MarkSerializer(data=data)
