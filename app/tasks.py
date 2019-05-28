@@ -1,5 +1,8 @@
 from celery import shared_task
 from app.subtasks import get_current_stock, get_groups_stock, review_inventory
+from app.subtasks import lots_for_q, get_ingredients, check_time_availability, check_will_produce_order
+from app.subtasks import review_order
+from app.models import Mark
 from app.services import sftp_ocs, consultar_oc
 
 
@@ -15,13 +18,13 @@ def main():
     # print("empty_receptions")
 
     totals = get_current_stock()
-    # print("totals")
+    # print("main totals")
 
     groups_stock = get_groups_stock()
-    # print("groups_stock")
+    # print("main groups_stock")
 
     review_inventory(totals, groups_stock)
-    # print("review_inventory")
+    # print("main review_inventory")
 
     # print("bye main")
 
@@ -30,15 +33,17 @@ def main():
 def ftp_ocs():
     # print("hello ftp_ocs")
 
-    ocs_ids = sftp_ocs()
-    # print("ocs_ids")
+    totals = get_current_stock()
+    # print("ftp_ocs totals")
+
+    lista = list(Mark.objects.values_list('name', flat=True))
+    ocs_ids = sftp_ocs(lista)
+    # print("ftp_ocs ocs_ids")
 
     for oc_id in ocs_ids:
-        oc = consultar_oc(oc_id)[0]
-        # print(oc)
-        # Validar plazo
-        # Validar ingredientes
-        ## Mandar a fabricar sushi
-    # print("ocs considered")
+        oc = consultar_oc(oc_id[0])[0]
+        print("ftp_ocs", oc)
+        review_order(oc_id, totals, oc["fechaEntrega"], oc["sku"], oc["cantidad"], oc["estado"])
+    # print("ftp_ocs ocs reviewed")
 
     # print("bye ftp_ocs")

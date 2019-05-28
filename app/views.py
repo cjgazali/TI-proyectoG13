@@ -3,9 +3,9 @@
 from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
 from rest_framework import status
-from app.services import obtener_almacenes, obtener_productos_almacen, mover_entre_bodegas
+from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
-from app.models import Product, RawMaterial
+from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from app.subtasks import get_current_stock, check_group_oc_time
 
@@ -65,10 +65,10 @@ def create_order(request):
     if len(data['sku']) > 4:
         # print('rechazado por que es producto tipo 3 (len >4)')
         rechazar_oc(oc_id)
-
     else:
         totals = get_current_stock()
-        minimum_stock = RawMaterial.objects.filter(sku='1101').values()[0]['stock']
+        minimum_stock = RawMaterial.objects.filter(sku='1101').values()[0]['stock']  # double check
+        # 
         if totals[data['sku']] - data['amount'] < minimum_stock:
             # print("rechazo por que no hay productos en bodega - disponible: ", totals[data['sku']])
             rechazar_oc(oc_id)

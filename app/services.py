@@ -139,10 +139,9 @@ def get_group_stock(n_group):
     return response
 
 
-def post_order(n_group, sku, quantity, id_almacen_recepcion):
-    aceptado = False
+def post_order(n_group, sku, quantity, id_almacen_recepcion, id_oc):
     headers = {'Content-Type': 'application/json', "group": "13"}
-    body = {'sku': str(sku), 'cantidad': str(quantity), "almacenId": id_almacen_recepcion}
+    body = {'sku': str(sku), 'cantidad': str(quantity), "almacenId": id_almacen_recepcion, 'oc': id_oc}
     result = requests.post(orders_url.format(n_group), data=json.dumps(body), headers=headers)
     response = json.loads(result.text)
     return response
@@ -202,7 +201,7 @@ def recepcionar_oc(id_orden):
 
 
 # Usar FTP para entregar OCs encontradas en servidor
-def sftp_ocs():
+def sftp_ocs(file_list):
     """Establece conección sftp, obtiene información, cierra conexión y entrega información obtenida"""
     host_name = "fierro.ing.puc.cl"
     user_name = "grupo13_dev"
@@ -214,13 +213,15 @@ def sftp_ocs():
         sftp.cwd('/pedidos')
         directory_structure = sftp.listdir_attr()
         for attr in directory_structure:
-            with sftp.open(attr.filename) as archivo:
-                tree = ET.parse(archivo)
-                root = tree.getroot()
-                for elem in root:
-                    if elem.tag == 'id':
-                        ocs.append(elem.text)
+            if attr.filename not in file_list:
+                with sftp.open(attr.filename) as archivo:
+                    tree = ET.parse(archivo)
+                    root = tree.getroot()
+                    for elem in root:
+                        if elem.tag == 'id':
+                            ocs.append((elem.text, attr.filename))
     return ocs
+
 
 # Postear notificacion luego de recibir orden
 def post_notification(status, n_group, order_id):
@@ -229,6 +230,7 @@ def post_notification(status, n_group, order_id):
     result = requests.post(orders_url.format(n_group)+"/{}/notification".format(order_id), data=json.dumps(body), headers=headers)
     response = json.loads(result.text)
     return response
+
 
 if __name__ == '__main__':
     pass
