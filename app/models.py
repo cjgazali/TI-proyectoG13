@@ -28,6 +28,7 @@ class Product(models.Model):
     production_lot = models.IntegerField()
     expected_production_time = models.IntegerField()
     producer_groups = models.TextField()
+    production = models.TextField(default='fabrica')
     dispatch_space = models.IntegerField()
     reception_space = models.IntegerField()
     minimum_stock = models.IntegerField(default=0)
@@ -54,5 +55,24 @@ class Assigment(models.Model):
 class RawMaterial(models.Model):
     sku = models.ForeignKey(Product, on_delete=models.CASCADE)
     stock = models.IntegerField()
+    material_type = models.IntegerField(default=1)
 
 
+class IdOc(models.Model):
+    group = models.IntegerField()
+    develop = models.TextField()
+    production = models.TextField()
+
+
+class SushiOrder(models.Model):
+    oc = models.TextField()
+    sku = models.ForeignKey(Product, on_delete=models.CASCADE)
+    delivery_date = models.BigIntegerField()
+    dispatched = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ('delivery_date',)
+
+
+class Mark(models.Model):
+    name = models.TextField()

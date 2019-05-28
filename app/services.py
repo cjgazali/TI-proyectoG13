@@ -1,20 +1,33 @@
-from datetime import datetime
 import requests
 import json
 import hashlib
 import xml.etree.ElementTree as ET
 import pysftp
-import dateutil.parser
 import hmac
 from base64 import encodestring
 
-context = "DEVELOPMENT"  # or DEVELOPMENT
+context = "PRODUCTION"  # or DEVELOPMENT
 # url API profe
 if context == "PRODUCTION":
+    ids_oc = {1: '5cc66e378820160004a4c3bc', 2: '5cc66e378820160004a4c3bd', 3: '5cc66e378820160004a4c3be',
+              4: '5cc66e378820160004a4c3bf', 5:	'5cc66e378820160004a4c3c0', 6: '5cc66e378820160004a4c3c1',
+              7: '5cc66e378820160004a4c3c2', 8:	'5cc66e378820160004a4c3c3', 9: '5cc66e378820160004a4c3c4',
+              10: '5cc66e378820160004a4c3c5', 11: '5cc66e378820160004a4c3c6', 12: '5cc66e378820160004a4c3c7',
+              13: '5cc66e378820160004a4c3c8', 14: '5cc66e378820160004a4c3c9'}
     url_base = "https://integracion-2019-prod.herokuapp.com/bodega"
+    url_oc = "https://integracion-2019-prod.herokuapp.com/oc"
+    sftp_user_name = "grupo13"
+    sftp_password = "UM5Hh7PbLZxJ8t241"
 else:
+    ids_oc = {1: '5cbd31b7c445af0004739be3', 2: '5cbd31b7c445af0004739be4', 3: '5cbd31b7c445af0004739be5',
+              4: '5cbd31b7c445af0004739be6', 5: '5cbd31b7c445af0004739be7', 6: '5cbd31b7c445af0004739be8',
+              7: '5cbd31b7c445af0004739be9', 8: '5cbd31b7c445af0004739bea', 9: '5cbd31b7c445af0004739beb',
+              10: '5cbd31b7c445af0004739bec', 11: '5cbd31b7c445af0004739bed', 12: '5cbd31b7c445af0004739bee',
+              13: '5cbd31b7c445af0004739bef', 14: '5cbd31b7c445af0004739bf0'}
     url_base = "https://integracion-2019-dev.herokuapp.com/bodega"
     url_oc = "https://integracion-2019-dev.herokuapp.com/oc"
+    sftp_user_name = "grupo13_dev"
+    sftp_password = "c7vq41weKJGcvas"
 
 # url API grupos
 server_url = "http://tuerca{}.ing.puc.cl"
@@ -23,6 +36,7 @@ orders_url = server_url + "/orders"
 
 min_stock_factor = 2
 min_raws_factor = 2
+
 
 # Código replicado de https://sites.google.com/site/studyingpython/home/basis/hmac-sha1
 # Esta función recibe texto a hashear (ejemplo API profe: GET534960ccc88ee69029cd3fb2)
@@ -100,14 +114,26 @@ def mover_entre_almacenes(id_producto, id_almacen_destino):
 
 # Mueve un producto no vencido desde un almacén de despacho de un grupo a un almacén de recepcion de otro grupo.
 # En caso que almacén de recepción se encuentre lleno, los productos quedan en almacén pulmón.  Recibe id_producto
-# a mover (string) y el id  del almacén de destino (string)
-def mover_entre_bodegas(id_producto, id_almacen_destino):
+# a mover (string), el id  del almacén de destino (string) y opcionalmente la orden de compra con precio
+def mover_entre_bodegas(id_producto, id_almacen_destino, oc, precio):
     frase_a_hashear = 'POST{}{}'.format(id_producto, id_almacen_destino)
     frase_hasheada = calcular_hash(frase_a_hashear)
     url = url_base + '/moveStockBodega'
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
-    body = {'productoId': id_producto, 'almacenId': id_almacen_destino, 'oc': 'BLABLA', "precio": 10}
+    body = {'productoId': id_producto, 'almacenId': id_almacen_destino, 'oc': oc, "precio": precio}
     result = requests.post(url, data=json.dumps(body), headers=headers)
+    response = json.loads(result.text)
+    return response
+
+
+# Despacha un producto asociado a una orden de compra
+def despachar_producto(id_producto, id_oc, direccion="BLABLA", precio=1):
+    frase_a_hashear = 'DELETE{}{}{}{}'.format(id_producto, direccion, precio, id_oc)
+    frase_hasheada = calcular_hash(frase_a_hashear)
+    url = url_base + '/stock'
+    headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
+    body = {'productoId': id_producto, 'oc': id_oc, 'direccion': direccion, 'precio': precio}
+    result = requests.delete(url, data=json.dumps(body), headers=headers)
     response = json.loads(result.text)
     return response
 
@@ -118,10 +144,9 @@ def get_group_stock(n_group):
     return response
 
 
-def post_order(n_group, sku, quantity, id_almacen_despacho):
-    aceptado = False
-    headers = {"group":"13"}
-    body = {'sku': str(sku), 'cantidad': str(quantity), "almacenId": id_almacen_despacho}
+def post_order(n_group, sku, quantity, id_almacen_recepcion, id_oc):
+    headers = {'Content-Type': 'application/json', "group": "13"}
+    body = {'sku': str(sku), 'cantidad': str(quantity), "almacenId": id_almacen_recepcion, 'oc': id_oc}
     result = requests.post(orders_url.format(n_group), data=json.dumps(body), headers=headers)
     response = json.loads(result.text)
     return response
@@ -180,62 +205,36 @@ def recepcionar_oc(id_orden):
     return response
 
 
-# Ver servidor
-def prueba_servidor():
+# Usar FTP para entregar OCs encontradas en servidor
+def sftp_ocs(file_list):
+    """Establece conección sftp, obtiene información, cierra conexión y entrega información obtenida"""
     host_name = "fierro.ing.puc.cl"
-    user_name = "grupo13_dev"
-    password = "c7vq41weKJGcvas"
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
-    with pysftp.Connection(host=host_name, username=user_name, password=password, port=22, cnopts=cnopts) as sftp:
-        print("Connection succesfully stablished ... ")
+    ocs = []
+    with pysftp.Connection(host=host_name, username=sftp_user_name, password=sftp_password,
+                           port=22, cnopts=cnopts) as sftp:
         sftp.cwd('/pedidos')
         directory_structure = sftp.listdir_attr()
-        cont = 0
         for attr in directory_structure:
-            cont += 1
-            if cont < 3:
+            if attr.filename not in file_list:
                 with sftp.open(attr.filename) as archivo:
                     tree = ET.parse(archivo)
                     root = tree.getroot()
                     for elem in root:
                         if elem.tag == 'id':
-                            print('id a consultar: {}'.format(elem.text))
-                            response = consultar_oc(elem.text)
-                            fecha_entrega = response[0]['fechaEntrega']
-                            fecha_aux = dateutil.parser.parse(fecha_entrega)
-                            print(fecha_aux, type(fecha_aux))
-                            print(fecha_entrega)
-                            # Desarrollar algoritmo
-            print(attr.filename, type(attr.filename))
+                            ocs.append((elem.text, attr.filename))
+    return ocs
+
+
+# Postear notificacion luego de recibir orden
+def post_notification(status, n_group, order_id):
+    headers = {'Content-Type': 'application/json'}
+    body = {'status':status}
+    result = requests.post(orders_url.format(n_group)+"/{}/notification".format(order_id), data=json.dumps(body), headers=headers)
+    response = json.loads(result.text)
+    return response
 
 
 if __name__ == '__main__':
-    #a = obtener_almacenes()
-    #for elem in a:
-    #    print(elem)
-    #for elem in a:
-    #    f = obtener_productos_almacen(elem['_id'], '1001')
-    #    for elem2 in f:
-    #        print(elem2)
-
-    #l = mover_entre_almacenes('5cc6250c93360b0004f0431b', '5cbd3ce444f67600049431fc')
-    #print(l)
-    # Este método es el que no está testeado aún, le pregunté al profe en una issue que onda
-    #f = mover_entre_bodegas('5cc22ede compra96aa013f0004f0867e', '5cbd3ce444f67600049431d1')
-    #print(f)
-    #f = obtener_productos_almacen('5cbd3ce444f67600049431ff', '1001')
-    #print(f)
-    fecha_minima = "1970-01-01"
-    fecha1 = datetime.strptime(fecha_minima, '%Y-%m-%d')
-    tomorrow = "2019-05-22"
-    fecha2 = datetime.strptime(tomorrow, '%Y-%m-%d')
-    diff = fecha2 - fecha1
-    #print(type(diff), type(diff * 1000), diff)
-    print(crear_oc('5cbd31b7c445af0004739bef', '5cbd31b7c445af0004739beb', 1001, diff.total_seconds() * 1000,
-                   1, 1, 'b2b', "http://ejemplo.com/notificacion/{_id}"))
-    #por_borrar = '5ce213be9305c300043eda19'
-    #print(rechazar_oc('5ce33bc7bed9c00004d897fa'))
-    #prueba_servidor()
-    #print(obtener_productos_almacen('5cbd3ce444f67600049431fc', '1001'))
-    #print(fabricar_sin_pago("1001", 10))
+    pass

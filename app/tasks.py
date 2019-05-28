@@ -1,13 +1,9 @@
 from celery import shared_task
-from collections import defaultdict
-from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, fabricar_sin_pago, min_stock_factor
-from app.subtasks import get_current_stock, empty_receptions, get_groups_stock, try_manufacture, review_raw_materials, post_to_all
-from app.models import Product
+from app.subtasks import get_current_stock, get_groups_stock, review_inventory
+from app.subtasks import review_order, find_and_dispatch_sushi
+from app.models import Mark
+from app.services import sftp_ocs, consultar_oc
 
-
-# @shared_task
-# def hello():
-#     print("Hello there!")
 
 @shared_task
 def main():
@@ -17,30 +13,42 @@ def main():
     # print("empty_receptions")
 
     totals = get_current_stock()
-    # print(totals)
+    # print("main totals")
 
     groups_stock = get_groups_stock()
-    # print(groups_stock)
+    # print("main groups_stock")
 
-    review_raw_materials(totals, groups_stock)
-    # print("raws reviewed")
+    review_inventory(totals, groups_stock)
+    # print("main review_inventory")
 
-    # products with minimum stock:
-    products_set = Product.objects.filter(minimum_stock__gt=0)
+    # print("bye main")
 
-    for product in products_set:
-        # Masago es el único que el profe pide stock mínimo pero que es materia prima, se considera antes en
-        # Revisar materias primas
-        if product.sku == '1013':
-            continue
-        desired_stock = min_stock_factor * product.minimum_stock
-        if totals[product.sku] < desired_stock:
-            remaining = desired_stock - totals[product.sku]  # lo que me falta para tener lo que quiero
-            # print(product.name, remaining)
-            remaining = post_to_all(product.sku, remaining, groups_stock)  # descuenta lo que me acepten
-            # print(product.name, remaining)
-            if remaining > 0:  # trato de fabricar si no me dieron suficiente
-                try_manufacture(totals, product.sku, remaining, product.production_lot)
-                # print("try_manufacture done")
 
-    # print("hello main end")
+@shared_task
+def ftp_ocs():
+    # print("hello ftp_ocs")
+
+    totals = get_current_stock()
+    # print("ftp_ocs totals")
+
+    lista = list(Mark.objects.values_list('name', flat=True))
+    ocs_ids = sftp_ocs(lista)
+    # print("ftp_ocs ocs_ids")
+
+    for oc_id in ocs_ids:
+        oc = consultar_oc(oc_id[0])[0]
+        # print("ftp_ocs", oc)
+        review_order(oc_id, totals, oc["fechaEntrega"], oc["sku"], oc["cantidad"], oc["estado"])
+    # print("ftp_ocs ocs reviewed")
+
+    # print("bye ftp_ocs")
+
+
+@shared_task
+def dispatch_sushi():
+    # print("hello dispatch_sushi")
+
+    find_and_dispatch_sushi()
+    # print("dispatch_sushi sushi ocs considered")
+
+    # print("bye dispatch_sushi")

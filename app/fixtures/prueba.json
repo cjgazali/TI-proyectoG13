@@ -14,6 +14,7 @@
             "production_lot": 10,
             "expected_production_time": 240,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 10,
             "minimum_stock": 0
@@ -33,7 +34,8 @@
             "measurement_unit": "Lt",
             "production_lot": 10,
             "expected_production_time": 300,
-            "producer_groups": "6,8,14",
+            "producer_groups": "1,2,3,6,8,9",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 10,
             "minimum_stock": 0
@@ -53,7 +55,8 @@
             "measurement_unit": "Kg",
             "production_lot": 100,
             "expected_production_time": 320,
-            "producer_groups": "2,6,7",
+            "producer_groups": "6,7,8,11,12,13",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 100,
             "minimum_stock": 0
@@ -73,7 +76,8 @@
             "measurement_unit": "Kg",
             "production_lot": 100,
             "expected_production_time": 400,
-            "producer_groups": "3,4,10",
+            "producer_groups": "3,4,9,10,13,14",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 100,
             "minimum_stock": 0
@@ -93,7 +97,8 @@
             "measurement_unit": "Kg",
             "production_lot": 5,
             "expected_production_time": 260,
-            "producer_groups": "4,5,8",
+            "producer_groups": "1,4,5,6,8,12",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 5,
             "minimum_stock": 0
@@ -113,7 +118,8 @@
             "measurement_unit": "Unid",
             "production_lot": 1,
             "expected_production_time": 120,
-            "producer_groups": "2,5,7",
+            "producer_groups": "2,3,4,5,7,8",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 1,
             "minimum_stock": 0
@@ -133,7 +139,8 @@
             "measurement_unit": "Kg",
             "production_lot": 8,
             "expected_production_time": 300,
-            "producer_groups": "6,11,13",
+            "producer_groups": "5,6,7,10,11,13",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 8,
             "minimum_stock": 0
@@ -153,7 +160,8 @@
             "measurement_unit": "Kg",
             "production_lot": 10,
             "expected_production_time": 220,
-            "producer_groups": "1,5,7",
+            "producer_groups": "1,5,7,9,10,14",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 10,
             "minimum_stock": 0
@@ -173,7 +181,8 @@
             "measurement_unit": "Kg",
             "production_lot": 3,
             "expected_production_time": 400,
-            "producer_groups": "1,8,9",
+            "producer_groups": "1,4,8,9,12,14",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 3,
             "minimum_stock": 0
@@ -193,7 +202,8 @@
             "measurement_unit": "Unid",
             "production_lot": 5,
             "expected_production_time": 480,
-            "producer_groups": "3,9,13",
+            "producer_groups": "1,2,3,9,10,13",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 5,
             "minimum_stock": 0
@@ -213,7 +223,8 @@
             "measurement_unit": "Kg",
             "production_lot": 4,
             "expected_production_time": 120,
-            "producer_groups": "2,10,11",
+            "producer_groups": "2,5,7,10,11,12",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 4,
             "minimum_stock": 0
@@ -233,7 +244,8 @@
             "measurement_unit": "Kg",
             "production_lot": 7,
             "expected_production_time": 150,
-            "producer_groups": "11,12,13",
+            "producer_groups": "2,6,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 7,
             "minimum_stock": 0
@@ -253,7 +265,8 @@
             "measurement_unit": "Kg",
             "production_lot": 10,
             "expected_production_time": 320,
-            "producer_groups": "10,12,14",
+            "producer_groups": "7,9,10,11,13,14",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 10,
             "minimum_stock": 300
@@ -273,7 +286,8 @@
             "measurement_unit": "Unid",
             "production_lot": 5,
             "expected_production_time": 240,
-            "producer_groups": "3,4,9",
+            "producer_groups": "2,3,4,5,8,11",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 5,
             "minimum_stock": 0
@@ -293,7 +307,8 @@
             "measurement_unit": "Kg",
             "production_lot": 4,
             "expected_production_time": 400,
-            "producer_groups": "1,12,14",
+            "producer_groups": "1,3,4,6,12,14",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 4,
             "minimum_stock": 0
@@ -314,6 +329,7 @@
             "production_lot": 8,
             "expected_production_time": 600,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 0,
             "reception_space": 8,
             "minimum_stock": 0
@@ -334,6 +350,7 @@
             "production_lot": 10,
             "expected_production_time": 40,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 58,
             "reception_space": 10,
             "minimum_stock": 0
@@ -354,6 +371,7 @@
             "production_lot": 10,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 10,
             "minimum_stock": 50
@@ -374,6 +392,7 @@
             "production_lot": 100,
             "expected_production_time": 30,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 100,
             "minimum_stock": 400
@@ -394,6 +413,7 @@
             "production_lot": 11,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 11,
             "minimum_stock": 50
@@ -414,6 +434,7 @@
             "production_lot": 6,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 6,
             "minimum_stock": 10
@@ -434,6 +455,7 @@
             "production_lot": 12,
             "expected_production_time": 30,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 12,
             "minimum_stock": 50
@@ -454,6 +476,7 @@
             "production_lot": 6,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 6,
             "minimum_stock": 80
@@ -474,6 +497,7 @@
             "production_lot": 2,
             "expected_production_time": 30,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 2,
             "reception_space": 2,
             "minimum_stock": 0
@@ -494,6 +518,7 @@
             "production_lot": 20,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 20,
             "minimum_stock": 130
@@ -514,6 +539,7 @@
             "production_lot": 4,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 4,
             "minimum_stock": 50
@@ -534,6 +560,7 @@
             "production_lot": 8,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 2,
             "reception_space": 8,
             "minimum_stock": 30
@@ -554,6 +581,7 @@
             "production_lot": 10,
             "expected_production_time": 40,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 11,
             "reception_space": 10,
             "minimum_stock": 250
@@ -574,6 +602,7 @@
             "production_lot": 10,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 10,
             "minimum_stock": 250
@@ -594,6 +623,7 @@
             "production_lot": 12,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 12,
             "minimum_stock": 20
@@ -614,6 +644,7 @@
             "production_lot": 14,
             "expected_production_time": 30,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 14,
             "minimum_stock": 20
@@ -634,6 +665,7 @@
             "production_lot": 9,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 9,
             "minimum_stock": 150
@@ -654,6 +686,7 @@
             "production_lot": 10,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 10,
             "minimum_stock": 60
@@ -674,6 +707,7 @@
             "production_lot": 8,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 4,
             "reception_space": 8,
             "minimum_stock": 20
@@ -694,6 +728,7 @@
             "production_lot": 10,
             "expected_production_time": 30,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 2,
             "reception_space": 10,
             "minimum_stock": 50
@@ -714,6 +749,7 @@
             "production_lot": 5,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 5,
             "minimum_stock": 50
@@ -734,6 +770,7 @@
             "production_lot": 11,
             "expected_production_time": 30,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 11,
             "minimum_stock": 170
@@ -754,6 +791,7 @@
             "production_lot": 11,
             "expected_production_time": 50,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 11,
             "minimum_stock": 170
@@ -774,6 +812,7 @@
             "production_lot": 12,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 12,
             "minimum_stock": 20
@@ -794,6 +833,7 @@
             "production_lot": 14,
             "expected_production_time": 30,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "fabrica",
             "dispatch_space": 1,
             "reception_space": 14,
             "minimum_stock": 40
@@ -814,6 +854,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 5,
             "reception_space": 1,
             "minimum_stock": 0
@@ -834,6 +875,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 9,
             "reception_space": 1,
             "minimum_stock": 0
@@ -854,6 +896,7 @@
             "production_lot": 1,
             "expected_production_time": 30,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 10,
             "reception_space": 1,
             "minimum_stock": 0
@@ -874,6 +917,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 8,
             "reception_space": 1,
             "minimum_stock": 0
@@ -894,6 +938,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 12,
             "reception_space": 1,
             "minimum_stock": 0
@@ -914,6 +959,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 5,
             "reception_space": 1,
             "minimum_stock": 0
@@ -934,6 +980,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 9,
             "reception_space": 1,
             "minimum_stock": 0
@@ -954,6 +1001,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 5,
             "reception_space": 1,
             "minimum_stock": 0
@@ -974,6 +1022,7 @@
             "production_lot": 1,
             "expected_production_time": 30,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 9,
             "reception_space": 1,
             "minimum_stock": 0
@@ -994,6 +1043,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 8,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1014,6 +1064,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 9,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1034,6 +1085,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 9,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1054,6 +1106,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 8,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1074,6 +1127,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 5,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1094,6 +1148,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 6,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1114,6 +1169,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 9,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1134,6 +1190,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 5,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1154,6 +1211,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 5,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1174,6 +1232,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 8,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1194,6 +1253,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 9,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1214,6 +1274,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 5,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1234,6 +1295,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 6,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1254,6 +1316,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 6,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1274,6 +1337,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 6,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1294,6 +1358,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 10,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1314,6 +1379,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 5,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1334,6 +1400,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 6,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1354,6 +1421,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 3,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1374,6 +1442,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 3,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1394,6 +1463,7 @@
             "production_lot": 1,
             "expected_production_time": 20,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 5,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1414,6 +1484,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 3,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1434,6 +1505,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 4,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1454,6 +1526,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 5,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1474,6 +1547,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 3,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1494,6 +1568,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 4,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1514,6 +1589,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 5,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1534,6 +1610,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 4,
             "reception_space": 1,
             "minimum_stock": 0
@@ -1554,6 +1631,7 @@
             "production_lot": 1,
             "expected_production_time": 10,
             "producer_groups": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+            "production": "cocina",
             "dispatch_space": 6,
             "reception_space": 1,
             "minimum_stock": 0
@@ -4436,32 +4514,32 @@
         "model": "app.assigment",
         "pk": "2",
         "fields": {
-            "sku": "1008",
-            "group": 1
+            "sku": "1001",
+            "group": 2
         }
     },
     {
         "model": "app.assigment",
         "pk": "3",
         "fields": {
-            "sku": "1009",
-            "group": 1
+            "sku": "1001",
+            "group": 3
         }
     },
     {
         "model": "app.assigment",
         "pk": "4",
         "fields": {
-            "sku": "1015",
-            "group": 1
+            "sku": "1001",
+            "group": 4
         }
     },
     {
         "model": "app.assigment",
         "pk": "5",
         "fields": {
-            "sku": "1016",
-            "group": 1
+            "sku": "1001",
+            "group": 5
         }
     },
     {
@@ -4469,244 +4547,20 @@
         "pk": "6",
         "fields": {
             "sku": "1001",
-            "group": 2
+            "group": 6
         }
     },
     {
         "model": "app.assigment",
         "pk": "7",
         "fields": {
-            "sku": "1003",
-            "group": 2
+            "sku": "1001",
+            "group": 7
         }
     },
     {
         "model": "app.assigment",
         "pk": "8",
-        "fields": {
-            "sku": "1006",
-            "group": 2
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "9",
-        "fields": {
-            "sku": "1016",
-            "group": 2
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "10",
-        "fields": {
-            "sku": "1011",
-            "group": 2
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "11",
-        "fields": {
-            "sku": "1001",
-            "group": 3
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "12",
-        "fields": {
-            "sku": "1004",
-            "group": 3
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "13",
-        "fields": {
-            "sku": "1010",
-            "group": 3
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "14",
-        "fields": {
-            "sku": "1016",
-            "group": 3
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "15",
-        "fields": {
-            "sku": "1014",
-            "group": 3
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "16",
-        "fields": {
-            "sku": "1014",
-            "group": 4
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "17",
-        "fields": {
-            "sku": "1001",
-            "group": 4
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "18",
-        "fields": {
-            "sku": "1004",
-            "group": 4
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "19",
-        "fields": {
-            "sku": "1005",
-            "group": 4
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "20",
-        "fields": {
-            "sku": "1016",
-            "group": 4
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "21",
-        "fields": {
-            "sku": "1001",
-            "group": 5
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "22",
-        "fields": {
-            "sku": "1005",
-            "group": 5
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "23",
-        "fields": {
-            "sku": "1006",
-            "group": 5
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "24",
-        "fields": {
-            "sku": "1008",
-            "group": 5
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "25",
-        "fields": {
-            "sku": "1016",
-            "group": 5
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "26",
-        "fields": {
-            "sku": "1001",
-            "group": 6
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "27",
-        "fields": {
-            "sku": "1002",
-            "group": 6
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "28",
-        "fields": {
-            "sku": "1003",
-            "group": 6
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "29",
-        "fields": {
-            "sku": "1007",
-            "group": 6
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "30",
-        "fields": {
-            "sku": "1016",
-            "group": 6
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "31",
-        "fields": {
-            "sku": "1001",
-            "group": 7
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "32",
-        "fields": {
-            "sku": "1003",
-            "group": 7
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "33",
-        "fields": {
-            "sku": "1006",
-            "group": 7
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "34",
-        "fields": {
-            "sku": "1008",
-            "group": 7
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "35",
-        "fields": {
-            "sku": "1016",
-            "group": 7
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "36",
         "fields": {
             "sku": "1001",
             "group": 8
@@ -4714,9 +4568,233 @@
     },
     {
         "model": "app.assigment",
-        "pk": "37",
+        "pk": "9",
+        "fields": {
+            "sku": "1001",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "10",
+        "fields": {
+            "sku": "1001",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "11",
+        "fields": {
+            "sku": "1001",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "12",
+        "fields": {
+            "sku": "1001",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "13",
+        "fields": {
+            "sku": "1001",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "14",
+        "fields": {
+            "sku": "1001",
+            "group": 14
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "15",
         "fields": {
             "sku": "1002",
+            "group": 1
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "16",
+        "fields": {
+            "sku": "1002",
+            "group": 2
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "17",
+        "fields": {
+            "sku": "1002",
+            "group": 3
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "18",
+        "fields": {
+            "sku": "1002",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "19",
+        "fields": {
+            "sku": "1002",
+            "group": 8
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "20",
+        "fields": {
+            "sku": "1002",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "21",
+        "fields": {
+            "sku": "1003",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "22",
+        "fields": {
+            "sku": "1003",
+            "group": 7
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "23",
+        "fields": {
+            "sku": "1003",
+            "group": 8
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "24",
+        "fields": {
+            "sku": "1003",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "25",
+        "fields": {
+            "sku": "1003",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "26",
+        "fields": {
+            "sku": "1003",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "27",
+        "fields": {
+            "sku": "1004",
+            "group": 3
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "28",
+        "fields": {
+            "sku": "1004",
+            "group": 4
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "29",
+        "fields": {
+            "sku": "1004",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "30",
+        "fields": {
+            "sku": "1004",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "31",
+        "fields": {
+            "sku": "1004",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "32",
+        "fields": {
+            "sku": "1004",
+            "group": 14
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "33",
+        "fields": {
+            "sku": "1005",
+            "group": 1
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "34",
+        "fields": {
+            "sku": "1005",
+            "group": 4
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "35",
+        "fields": {
+            "sku": "1005",
+            "group": 5
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "36",
+        "fields": {
+            "sku": "1005",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "37",
+        "fields": {
+            "sku": "1005",
             "group": 8
         }
     },
@@ -4725,86 +4803,86 @@
         "pk": "38",
         "fields": {
             "sku": "1005",
-            "group": 8
+            "group": 12
         }
     },
     {
         "model": "app.assigment",
         "pk": "39",
         "fields": {
-            "sku": "1009",
-            "group": 8
+            "sku": "1006",
+            "group": 2
         }
     },
     {
         "model": "app.assigment",
         "pk": "40",
         "fields": {
-            "sku": "1016",
-            "group": 8
+            "sku": "1006",
+            "group": 3
         }
     },
     {
         "model": "app.assigment",
         "pk": "41",
         "fields": {
-            "sku": "1001",
-            "group": 9
+            "sku": "1006",
+            "group": 4
         }
     },
     {
         "model": "app.assigment",
         "pk": "42",
         "fields": {
-            "sku": "1009",
-            "group": 9
+            "sku": "1006",
+            "group": 5
         }
     },
     {
         "model": "app.assigment",
         "pk": "43",
         "fields": {
-            "sku": "1010",
-            "group": 9
+            "sku": "1006",
+            "group": 7
         }
     },
     {
         "model": "app.assigment",
         "pk": "44",
         "fields": {
-            "sku": "1014",
-            "group": 9
+            "sku": "1006",
+            "group": 8
         }
     },
     {
         "model": "app.assigment",
         "pk": "45",
         "fields": {
-            "sku": "1016",
-            "group": 9
+            "sku": "1007",
+            "group": 5
         }
     },
     {
         "model": "app.assigment",
         "pk": "46",
         "fields": {
-            "sku": "1001",
-            "group": 10
+            "sku": "1007",
+            "group": 6
         }
     },
     {
         "model": "app.assigment",
         "pk": "47",
         "fields": {
-            "sku": "1004",
-            "group": 10
+            "sku": "1007",
+            "group": 7
         }
     },
     {
         "model": "app.assigment",
         "pk": "48",
         "fields": {
-            "sku": "1011",
+            "sku": "1007",
             "group": 10
         }
     },
@@ -4812,112 +4890,112 @@
         "model": "app.assigment",
         "pk": "49",
         "fields": {
-            "sku": "1013",
-            "group": 10
+            "sku": "1007",
+            "group": 11
         }
     },
     {
         "model": "app.assigment",
         "pk": "50",
         "fields": {
-            "sku": "1016",
-            "group": 10
+            "sku": "1007",
+            "group": 13
         }
     },
     {
         "model": "app.assigment",
         "pk": "51",
         "fields": {
-            "sku": "1001",
-            "group": 11
+            "sku": "1008",
+            "group": 1
         }
     },
     {
         "model": "app.assigment",
         "pk": "52",
         "fields": {
-            "sku": "1007",
-            "group": 11
+            "sku": "1008",
+            "group": 5
         }
     },
     {
         "model": "app.assigment",
         "pk": "53",
         "fields": {
-            "sku": "1011",
-            "group": 11
+            "sku": "1008",
+            "group": 7
         }
     },
     {
         "model": "app.assigment",
         "pk": "54",
         "fields": {
-            "sku": "1012",
-            "group": 11
+            "sku": "1008",
+            "group": 9
         }
     },
     {
         "model": "app.assigment",
         "pk": "55",
         "fields": {
-            "sku": "1016",
-            "group": 11
+            "sku": "1008",
+            "group": 10
         }
     },
     {
         "model": "app.assigment",
         "pk": "56",
         "fields": {
-            "sku": "1001",
-            "group": 12
+            "sku": "1008",
+            "group": 14
         }
     },
     {
         "model": "app.assigment",
         "pk": "57",
         "fields": {
-            "sku": "1013",
-            "group": 12
+            "sku": "1009",
+            "group": 1
         }
     },
     {
         "model": "app.assigment",
         "pk": "58",
         "fields": {
-            "sku": "1015",
-            "group": 12
+            "sku": "1009",
+            "group": 4
         }
     },
     {
         "model": "app.assigment",
         "pk": "59",
         "fields": {
-            "sku": "1016",
-            "group": 12
+            "sku": "1009",
+            "group": 8
         }
     },
     {
         "model": "app.assigment",
         "pk": "60",
         "fields": {
-            "sku": "1012",
-            "group": 12
+            "sku": "1009",
+            "group": 9
         }
     },
     {
         "model": "app.assigment",
         "pk": "61",
         "fields": {
-            "sku": "1001",
-            "group": 13
+            "sku": "1009",
+            "group": 12
         }
     },
     {
         "model": "app.assigment",
         "pk": "62",
         "fields": {
-            "sku": "1007",
-            "group": 13
+            "sku": "1009",
+            "group": 14
         }
     },
     {
@@ -4925,12 +5003,132 @@
         "pk": "63",
         "fields": {
             "sku": "1010",
-            "group": 13
+            "group": 1
         }
     },
     {
         "model": "app.assigment",
         "pk": "64",
+        "fields": {
+            "sku": "1010",
+            "group": 2
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "65",
+        "fields": {
+            "sku": "1010",
+            "group": 3
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "66",
+        "fields": {
+            "sku": "1010",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "67",
+        "fields": {
+            "sku": "1010",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "68",
+        "fields": {
+            "sku": "1010",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "69",
+        "fields": {
+            "sku": "1011",
+            "group": 2
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "70",
+        "fields": {
+            "sku": "1011",
+            "group": 5
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "71",
+        "fields": {
+            "sku": "1011",
+            "group": 7
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "72",
+        "fields": {
+            "sku": "1011",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "73",
+        "fields": {
+            "sku": "1011",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "74",
+        "fields": {
+            "sku": "1011",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "75",
+        "fields": {
+            "sku": "1012",
+            "group": 2
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "76",
+        "fields": {
+            "sku": "1012",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "77",
+        "fields": {
+            "sku": "1012",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "78",
+        "fields": {
+            "sku": "1012",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "79",
         "fields": {
             "sku": "1012",
             "group": 13
@@ -4938,15 +5136,55 @@
     },
     {
         "model": "app.assigment",
-        "pk": "65",
+        "pk": "80",
         "fields": {
-            "sku": "1016",
+            "sku": "1012",
+            "group": 14
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "81",
+        "fields": {
+            "sku": "1013",
+            "group": 7
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "82",
+        "fields": {
+            "sku": "1013",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "83",
+        "fields": {
+            "sku": "1013",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "84",
+        "fields": {
+            "sku": "1013",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "85",
+        "fields": {
+            "sku": "1013",
             "group": 13
         }
     },
     {
         "model": "app.assigment",
-        "pk": "66",
+        "pk": "86",
         "fields": {
             "sku": "1013",
             "group": 14
@@ -4954,23 +5192,95 @@
     },
     {
         "model": "app.assigment",
-        "pk": "67",
+        "pk": "87",
         "fields": {
-            "sku": "1001",
-            "group": 14
+            "sku": "1014",
+            "group": 2
         }
     },
     {
         "model": "app.assigment",
-        "pk": "68",
+        "pk": "88",
         "fields": {
-            "sku": "1002",
-            "group": 14
+            "sku": "1014",
+            "group": 3
         }
     },
     {
         "model": "app.assigment",
-        "pk": "69",
+        "pk": "89",
+        "fields": {
+            "sku": "1014",
+            "group": 4
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "90",
+        "fields": {
+            "sku": "1014",
+            "group": 5
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "91",
+        "fields": {
+            "sku": "1014",
+            "group": 8
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "92",
+        "fields": {
+            "sku": "1014",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "93",
+        "fields": {
+            "sku": "1015",
+            "group": 1
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "94",
+        "fields": {
+            "sku": "1015",
+            "group": 3
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "95",
+        "fields": {
+            "sku": "1015",
+            "group": 4
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "96",
+        "fields": {
+            "sku": "1015",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "97",
+        "fields": {
+            "sku": "1015",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "98",
         "fields": {
             "sku": "1015",
             "group": 14
@@ -4978,7 +5288,111 @@
     },
     {
         "model": "app.assigment",
-        "pk": "70",
+        "pk": "99",
+        "fields": {
+            "sku": "1016",
+            "group": 1
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "100",
+        "fields": {
+            "sku": "1016",
+            "group": 2
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "101",
+        "fields": {
+            "sku": "1016",
+            "group": 3
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "102",
+        "fields": {
+            "sku": "1016",
+            "group": 4
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "103",
+        "fields": {
+            "sku": "1016",
+            "group": 5
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "104",
+        "fields": {
+            "sku": "1016",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "105",
+        "fields": {
+            "sku": "1016",
+            "group": 7
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "106",
+        "fields": {
+            "sku": "1016",
+            "group": 8
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "107",
+        "fields": {
+            "sku": "1016",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "108",
+        "fields": {
+            "sku": "1016",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "109",
+        "fields": {
+            "sku": "1016",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "110",
+        "fields": {
+            "sku": "1016",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "111",
+        "fields": {
+            "sku": "1016",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "112",
         "fields": {
             "sku": "1016",
             "group": 14
@@ -4989,31 +5403,35 @@
         "pk": "1",
         "fields": {
             "sku": "1001",
-            "stock": 32
+            "stock": 32,
+            "material_type": 1
         }
     },
     {
         "model": "app.rawmaterial",
         "pk": "2",
         "fields": {
-            "sku": "1003",
-            "stock": 12
+            "sku": "1002",
+            "stock": 16,
+            "material_type": 1
         }
     },
     {
         "model": "app.rawmaterial",
         "pk": "3",
         "fields": {
-            "sku": "1004",
-            "stock": 8
+            "sku": "1003",
+            "stock": 12,
+            "material_type": 1
         }
     },
     {
         "model": "app.rawmaterial",
         "pk": "4",
         "fields": {
-            "sku": "1002",
-            "stock": 16
+            "sku": "1004",
+            "stock": 8,
+            "material_type": 1
         }
     },
     {
@@ -5021,7 +5439,8 @@
         "pk": "5",
         "fields": {
             "sku": "1005",
-            "stock": 6
+            "stock": 5,
+            "material_type": 1
         }
     },
     {
@@ -5029,7 +5448,8 @@
         "pk": "6",
         "fields": {
             "sku": "1006",
-            "stock": 5
+            "stock": 4,
+            "material_type": 1
         }
     },
     {
@@ -5037,7 +5457,8 @@
         "pk": "7",
         "fields": {
             "sku": "1007",
-            "stock": 26
+            "stock": 26,
+            "material_type": 1
         }
     },
     {
@@ -5045,7 +5466,8 @@
         "pk": "8",
         "fields": {
             "sku": "1008",
-            "stock": 2
+            "stock": 2,
+            "material_type": 1
         }
     },
     {
@@ -5053,7 +5475,8 @@
         "pk": "9",
         "fields": {
             "sku": "1009",
-            "stock": 23
+            "stock": 23,
+            "material_type": 1
         }
     },
     {
@@ -5061,7 +5484,8 @@
         "pk": "10",
         "fields": {
             "sku": "1010",
-            "stock": 33
+            "stock": 33,
+            "material_type": 1
         }
     },
     {
@@ -5069,7 +5493,8 @@
         "pk": "11",
         "fields": {
             "sku": "1011",
-            "stock": 8
+            "stock": 8,
+            "material_type": 1
         }
     },
     {
@@ -5077,39 +5502,386 @@
         "pk": "12",
         "fields": {
             "sku": "1012",
-            "stock": 7
+            "stock": 7,
+            "material_type": 1
         }
     },
     {
         "model": "app.rawmaterial",
         "pk": "13",
         "fields": {
-            "sku": "1014",
-            "stock": 13
+            "sku": "1013",
+            "stock": 300,
+            "material_type": 1
         }
     },
     {
         "model": "app.rawmaterial",
         "pk": "14",
         "fields": {
-            "sku": "1015",
-            "stock": 20
+            "sku": "1014",
+            "stock": 13,
+            "material_type": 1
         }
     },
     {
         "model": "app.rawmaterial",
         "pk": "15",
         "fields": {
-            "sku": "1016",
-            "stock": 298
+            "sku": "1015",
+            "stock": 20,
+            "material_type": 1
         }
     },
     {
         "model": "app.rawmaterial",
         "pk": "16",
         "fields": {
-            "sku": "1013",
-            "stock": 300
+            "sku": "1016",
+            "stock": 298,
+            "material_type": 1
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "17",
+        "fields": {
+            "sku": "1101",
+            "stock": 35,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "18",
+        "fields": {
+            "sku": "1105",
+            "stock": 50,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "19",
+        "fields": {
+            "sku": "1106",
+            "stock": 400,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "20",
+        "fields": {
+            "sku": "1107",
+            "stock": 50,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "21",
+        "fields": {
+            "sku": "1108",
+            "stock": 10,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "22",
+        "fields": {
+            "sku": "1109",
+            "stock": 50,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "23",
+        "fields": {
+            "sku": "1110",
+            "stock": 80,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "24",
+        "fields": {
+            "sku": "1111",
+            "stock": 6,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "25",
+        "fields": {
+            "sku": "1112",
+            "stock": 130,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "26",
+        "fields": {
+            "sku": "1114",
+            "stock": 50,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "27",
+        "fields": {
+            "sku": "1115",
+            "stock": 30,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "28",
+        "fields": {
+            "sku": "1116",
+            "stock": 250,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "29",
+        "fields": {
+            "sku": "1201",
+            "stock": 250,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "30",
+        "fields": {
+            "sku": "1207",
+            "stock": 20,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "31",
+        "fields": {
+            "sku": "1209",
+            "stock": 20,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "32",
+        "fields": {
+            "sku": "1210",
+            "stock": 150,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "33",
+        "fields": {
+            "sku": "1211",
+            "stock": 60,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "34",
+        "fields": {
+            "sku": "1215",
+            "stock": 20,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "35",
+        "fields": {
+            "sku": "1216",
+            "stock": 50,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "36",
+        "fields": {
+            "sku": "1301",
+            "stock": 50,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "37",
+        "fields": {
+            "sku": "1307",
+            "stock": 170,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "38",
+        "fields": {
+            "sku": "1309",
+            "stock": 170,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "39",
+        "fields": {
+            "sku": "1310",
+            "stock": 20,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.rawmaterial",
+        "pk": "40",
+        "fields": {
+            "sku": "1407",
+            "stock": 40,
+            "material_type": 2
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "1",
+        "fields": {
+            "group": 1,
+            "develop": "5cbd31b7c445af0004739be3",
+            "production": "5cc66e378820160004a4c3bc"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "2",
+        "fields": {
+            "group": 2,
+            "develop": "5cbd31b7c445af0004739be4",
+            "production": "5cc66e378820160004a4c3bd"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "3",
+        "fields": {
+            "group": 3,
+            "develop": "5cbd31b7c445af0004739be5",
+            "production": "5cc66e378820160004a4c3be"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "4",
+        "fields": {
+            "group": 4,
+            "develop": "5cbd31b7c445af0004739be6",
+            "production": "5cc66e378820160004a4c3bf"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "5",
+        "fields": {
+            "group": 5,
+            "develop": "5cbd31b7c445af0004739be7",
+            "production": "5cc66e378820160004a4c3c0"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "6",
+        "fields": {
+            "group": 6,
+            "develop": "5cbd31b7c445af0004739be8",
+            "production": "5cc66e378820160004a4c3c1"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "7",
+        "fields": {
+            "group": 7,
+            "develop": "5cbd31b7c445af0004739be9",
+            "production": "5cc66e378820160004a4c3c2"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "8",
+        "fields": {
+            "group": 8,
+            "develop": "5cbd31b7c445af0004739bea",
+            "production": "5cc66e378820160004a4c3c3"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "9",
+        "fields": {
+            "group": 9,
+            "develop": "5cbd31b7c445af0004739beb",
+            "production": "5cc66e378820160004a4c3c4"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "10",
+        "fields": {
+            "group": 10,
+            "develop": "5cbd31b7c445af0004739bec",
+            "production": "5cc66e378820160004a4c3c5"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "11",
+        "fields": {
+            "group": 11,
+            "develop": "5cbd31b7c445af0004739bed",
+            "production": "5cc66e378820160004a4c3c6"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "12",
+        "fields": {
+            "group": 12,
+            "develop": "5cbd31b7c445af0004739bee",
+            "production": "5cc66e378820160004a4c3c7"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "13",
+        "fields": {
+            "group": 13,
+            "develop": "5cbd31b7c445af0004739bef",
+            "production": "5cc66e378820160004a4c3c8"
+        }
+    },
+    {
+        "model": "app.idoc",
+        "pk": "14",
+        "fields": {
+            "group": 14,
+            "develop": "5cbd31b7c445af0004739bf0",
+            "production": "5cc66e378820160004a4c3c9"
         }
     }
 ]

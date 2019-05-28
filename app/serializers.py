@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from app.models import Order, Product, Ingredient, Assigment, RawMaterial
+from app.models import Order, Product, Ingredient, Assigment, RawMaterial, IdOc, SushiOrder, Mark
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -15,7 +15,8 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ('sku', 'name', 'description', 'sale_price', 'number_ingredients_needed',
                   'number_products', 'expected_duration_time', 'equivalence_units',
                   'measurement_unit', 'production_lot', 'expected_production_time',
-                  'producer_groups', 'dispatch_space', 'reception_space', 'minimum_stock')
+                  'producer_groups', 'production', 'dispatch_space',
+                  'reception_space', 'minimum_stock')
 
 
 class IngredientSerializer(serializers.ModelSerializer):
@@ -35,4 +36,22 @@ class AssigmentSerializer(serializers.ModelSerializer):
 class RawMaterialSerializer(serializers.ModelSerializer):
     class Meta:
         model = RawMaterial
-        fields = ('id', 'sku', 'stock')
+        fields = ('id', 'sku', 'stock', 'material_type')
+
+
+class IdOcSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = IdOc
+        fields = ('id', 'group', 'develop', 'production')
+
+
+class SushiOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SushiOrder
+        fields = ('id', 'oc', 'sku', 'delivery_date', 'dispatched')
+
+
+class MarkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mark
+        fields = ('id', 'name')
