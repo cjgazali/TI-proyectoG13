@@ -201,7 +201,7 @@ def recepcionar_oc(id_orden):
 
 
 # Usar FTP para entregar OCs encontradas en servidor
-def sftp_ocs():
+def sftp_ocs(file_list):
     """Establece conección sftp, obtiene información, cierra conexión y entrega información obtenida"""
     host_name = "fierro.ing.puc.cl"
     user_name = "grupo13_dev"
@@ -213,12 +213,13 @@ def sftp_ocs():
         sftp.cwd('/pedidos')
         directory_structure = sftp.listdir_attr()
         for attr in directory_structure:
-            with sftp.open(attr.filename) as archivo:
-                tree = ET.parse(archivo)
-                root = tree.getroot()
-                for elem in root:
-                    if elem.tag == 'id':
-                        ocs.append(elem.text)
+            if attr.filename not in file_list:
+                with sftp.open(attr.filename) as archivo:
+                    tree = ET.parse(archivo)
+                    root = tree.getroot()
+                    for elem in root:
+                        if elem.tag == 'id':
+                            ocs.append((elem.text, attr.filename))
     return ocs
 
 
