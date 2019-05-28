@@ -4,9 +4,10 @@ from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
+from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
-from app.subtasks import move_product_dispatch, move_product_client, get_current_stock
+from app.subtasks import get_current_stock, check_group_oc_time
 
 
 @api_view(['GET'])  # only allows GET, else error code 405
@@ -42,72 +43,89 @@ def create_order(request):
     :return: json { sku, cantidad, almacenId, grupoProveedor,
                     aceptado, despachado }
     """
-    if 'sku' not in request.data or 'cantidad' not in request.data or 'almacenId' not in request.data:
-        return Response({ "error": "400 (Bad Request): Falta parámetro obligatorio." }, status=status.HTTP_400_BAD_REQUEST)
+    if 'sku' not in request.data or 'cantidad' not in request.data \
+            or 'almacenId' not in request.data or 'oc' not in request.data:
+        return Response({"error": "400 (Bad Request): Falta parámetro obligatorio."},
+                        status=status.HTTP_400_BAD_REQUEST)
 
-    order = consultar_oc(str(request.data['oc']))
+    oc_id = request.data['oc']
+    order = consultar_oc(str(oc_id))
+    fecha_entrega = order[0]['fechaEntrega']
+    # precio = order[0]['precioUnitario']
 
-    data = {'amount': order[0]['cantidad'], 'sku': order[0]['sku'], 'storeId': request.data['almacenId'],
-            'client_group': int(request.META['HTTP_GROUP']), 'order_id': request.data['oc']}
+    data = {'amount': order[0]['cantidad'], 'sku':order[0]['sku'], 'storeId':request.data['almacenId'], 'client_group':int(request.META['HTTP_GROUP'])}
+    accepted_and_dispatched = False  # por default
 
+    # revisa si el grupo proveedor efectivamente somos nosotros
+    if order[0]['proveedor'] != ids_oc[13]:
+        return Response({"error": "400 (Bad Request): ID Proveedor no corresponde"},
+                        status=status.HTTP_400_BAD_REQUEST)
 
-    query = Product.objects.all().values()  # esto se debe poder mejorar...
-    sku_list=[]
-    for p in query:
-        sku_list.append(p['sku'])
-
-    if data['sku'] not in sku_list:  # ...preguntar directamente si pertenece a conjunto sacado de BD
-        #raise Http404
-        return Response({ "error": "404 (Not Found): sku no existe."}, status=status.HTTP_404_NOT_FOUND)
-        #return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
-
-    print("ok")
-
-    get_almacenes = obtener_almacenes()
-    sku_stock = 0
-    for almacen in get_almacenes:
-        stock_response = obtener_productos_almacen(almacen["_id"], data["sku"])
-        sku_stock += len(stock_response)
-
-    print(sku_stock)
-
-    accepted_and_dispatched = False
-    # aceptar y despachar si tenemos excedente de ese sku...
-
-    # respecto materias primas
-    min_raw = RawMaterial.objects.filter(sku=data["sku"]).values()
-    if min_raw:
-        if sku_stock > min_raw[0]['stock'] + data["amount"]:
-            # mover a despacho
-            almacenes = obtener_almacenes()
-            ids_origen=[]
-            for almacen in almacenes:
-                if almacen['despacho']:
-                    id_almacen_despacho = almacen["_id"]
-                else:
-                    ids_origen.append(almacen["_id"])
-            # Mover entre bodegas
-            move_product_dispatch(ids_origen, id_almacen_despacho, data["amount"], data["sku"])
-            #subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos
-            move_product_client(data["sku"], data["amount"], id_almacen_despacho, data["storeId"])
-            accepted_and_dispatched = True
+    # si el largo del sku > 4 entonces es producto tipo 3 y se rechaza
+    if len(data['sku']) > 4:
+        # print('rechazado por que es producto tipo 3 (len >4)')
+        rechazar_oc(oc_id)
     else:
-        #respecto stock mínimo
-        minimum_stock = Product.objects.filter(sku=data["sku"]).values('minimum_stock')[0]['minimum_stock']  # double check
-        if sku_stock > minimum_stock + data["amount"]:
-            # mover a despacho
-            almacenes = obtener_almacenes()
-            ids_origen=[]
-            for almacen in almacenes:
-                if almacen['despacho']:
-                    id_almacen_despacho = almacen["_id"]
-                else:
-                    ids_origen.append(almacen["_id"])   #(QUE ES IDS_ORIGEN, NO ESTA DEFINIDO)
-            # Mover entre bodegas
-            move_product_dispatch(ids_origen, id_almacen_despacho, data["amount"], data["sku"]) #(IMPORTAR move_product_dispatch DE subtask)
-            #subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos #(DONDE ESTA LA FUNCION? SUPONGO QUE MUEVE DE DESPACHO NUESTRA A RECEPCION DEL OTRO GRUPO)
-            move_product_client(data["sku"], data["amount"], id_almacen_despacho, data["storeId"])
-            accepted_and_dispatched = True #(YO SOLO DEJARIA ACCEPTED EN TRUE, NO DISPATCHED)
+        totals = get_current_stock()
+        minimum_stock = RawMaterial.objects.filter(sku='1101').values()[0]['stock']  # double check
+        # 
+        if totals[data['sku']] - data['amount'] < minimum_stock:
+            # print("rechazo por que no hay productos en bodega - disponible: ", totals[data['sku']])
+            rechazar_oc(oc_id)
+        else:
+            # print("hay productos pero no se si tiempo")
+            if check_group_oc_time(fecha_entrega):
+                accepted_and_dispatched = True
+                # print("hay productos y tiempo")
+                # aceptar oc, hay productos y alcanza el tiempo
+                recepcionar_oc(oc_id)
+
+
+                almacenes = obtener_almacenes()
+                ids_origen=[]
+                for almacen in almacenes:
+                    if almacen['despacho']:
+                        id_almacen_despacho = almacen["_id"]
+                    else:
+                        ids_origen.append(almacen["_id"])#no estoy seguro que hacer con la cocina
+
+                #Nuevo criteorio de mover y despachar productos uno por uno (para evitar problemas con la capcidad del almacen de despacho)
+                cantidad_despachada = 0 #aunque podriamos usar el valor de la OC
+                print(data['amount'], " > ", cantidad_despachada )
+                while data["amount"] != cantidad_despachada:
+                    for almacen in almacenes:
+                        if not(almacen["cocina"] or almacen["despacho"]):
+                            productos = obtener_productos_almacen(almacen["_id"], data['sku'])
+                            for elem in productos:
+                                a = mover_entre_almacenes(elem['_id'], id_almacen_despacho)
+                                print(a)
+                                b = mover_entre_bodegas(elem['_id'], data["storeId"], oc_id, 1)
+                                print(b)
+                                cantidad_despachada += 1
+                                if cantidad_despachada == data['amount']:
+                                    # Me salgo del primer for
+                                    break
+                        if cantidad_despachada == data['amount']:
+                            # me salgo del segundo for y con eso no se cumplirá la condición del while
+                            break
+
+                    #TRATAR DE HACERLO DIRECTO DE LAS FUNCOINES DE SERVICES PARA QUE SEA MAS EFICIENTE
+
+                    # # Mover entre bodegas
+                    # move_product_dispatch(ids_origen, id_almacen_despacho, 1, data["sku"])#mover de a 1 es muy poco, hacerlo de a mas dependiendo capacidad de almacen despacho
+                    # #subtask move_product_client que usa mover_entre_bodegas para data["amount"] productos
+                    # print(data["sku"], 1, id_almacen_despacho, data["storeId"], oc_id, precio)
+                    # move_product_client(data["sku"], 1, id_almacen_despacho, data["storeId"], oc_id, precio)#mover de a 1 es muy poco, hacerlo de a mas dependiendo capacidad de almacen despacho
+
+                print("Productos despachados: ", cantidad_despachada)
+                # Quizás aquí podrías ver que el estado de la oc sea completa, aunque no estoy seguro si se arregla inmediatamente
+                accepted_and_dispatched = True
+
+            else:
+                print("hay productos pero NO tiempo")
+                #rechazar oc por falta de tiempo
+                rechazar_oc(oc_id)
+
 
     respuesta = {
 		"sku" : data["sku"],
@@ -122,12 +140,9 @@ def create_order(request):
     data['accepted'] = accepted_and_dispatched
     data['dispatched'] = accepted_and_dispatched
 
-    print("ok")
-
     serializer = OrderSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
-        print("ok")
         return Response(respuesta, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

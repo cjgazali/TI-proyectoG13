@@ -322,10 +322,12 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
     return
 
 
-def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen_destino):
+def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen_destino, oc, precio):
     lista_productos = obtener_productos_almacen(id_almacen_despacho, sku)
+    print(lista_productos)
     for i in range(cantidad_productos):
-        mover_entre_bodegas(lista_productos[i]['_id'], id_almacen_destino)
+        print(lista_productos[i]['_id'], id_almacen_destino, oc, precio)
+        mover_entre_bodegas(lista_productos[i]['_id'], id_almacen_destino, oc, precio)
     return
 
 
@@ -333,3 +335,16 @@ def manufacture_raws(sku, diference, production_lot):
     lots = (diference // production_lot) + 1
     amount = lots * production_lot
     fabricar_sin_pago(sku, amount)
+
+    
+def check_group_oc_time(date):
+    """Revisa si hay tiempo para despachar inmediatamente"""
+
+    now = datetime.utcnow()
+    extra = timedelta(minutes=5)  # margen arbitrario
+    date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%fZ")
+
+    if now + extra < date:
+        return True
+    else:
+        return False
