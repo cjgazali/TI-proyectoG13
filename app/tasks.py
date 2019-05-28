@@ -1,14 +1,9 @@
 from celery import shared_task
 from app.subtasks import get_current_stock, get_groups_stock, review_inventory
-from app.subtasks import lots_for_q, get_ingredients, check_time_availability, check_will_produce_order
-from app.subtasks import review_order
+from app.subtasks import review_order, find_and_dispatch_sushi
 from app.models import Mark
 from app.services import sftp_ocs, consultar_oc
 
-
-# @shared_task
-# def hello():
-#     print("Hello there!")
 
 @shared_task
 def main():
@@ -42,8 +37,18 @@ def ftp_ocs():
 
     for oc_id in ocs_ids:
         oc = consultar_oc(oc_id[0])[0]
-        print("ftp_ocs", oc)
+        # print("ftp_ocs", oc)
         review_order(oc_id, totals, oc["fechaEntrega"], oc["sku"], oc["cantidad"], oc["estado"])
     # print("ftp_ocs ocs reviewed")
 
     # print("bye ftp_ocs")
+
+
+@shared_task
+def dispatch_sushi():
+    # print("hello dispatch_sushi")
+
+    find_and_dispatch_sushi()
+    # print("dispatch_sushi sushi ocs considered")
+
+    # print("bye dispatch_sushi")
