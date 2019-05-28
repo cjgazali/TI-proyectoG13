@@ -2,8 +2,8 @@ from collections import defaultdict
 from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes
 from app.services import obtener_productos_almacen, get_group_stock, fabricar_sin_pago
 from app.services import post_order, mover_entre_bodegas, min_raws_factor, crear_oc, ids_oc
-from app.services import recepcionar_oc, rechazar_oc
-from app.models import Ingredient, Product, RawMaterial, Assigment
+from app.services import recepcionar_oc, rechazar_oc, despachar_producto
+from app.models import Ingredient, Product, RawMaterial, Assigment, SushiOrder
 from app.serializers import MarkSerializer, SushiOrderSerializer
 from datetime import datetime, timedelta
 
@@ -165,7 +165,7 @@ def lots_for_q(amount, min_lot):
 
 
 def get_ingredients(sku):
-    """Obtiene ingredientes para un producto."""
+    """Obtiene ingredientes para un producto con su cantidad para lote."""
     ingredients = {}
     query = Ingredient.objects.filter(product_sku__exact=sku)
     for elem in query:
@@ -275,7 +275,7 @@ def review_order(oc_id, products, date, sku, amount, state):
     # Validar plazo
     ok_time = check_time_availability(date, sku)
     if not ok_time:
-        # print("oc rejected: not ok_time")
+        print("review_order: oc rejected: not ok_time")
         # reject
         rechazar_oc(oc_id[0])
         data = {'name': oc_id[1]}
@@ -291,7 +291,7 @@ def review_order(oc_id, products, date, sku, amount, state):
     will_produce_order = check_will_produce_order(products, lots, ingredients)
     if will_produce_order:
         if state == "creada":
-            # print("oc accepted")
+            print("review_order: oc accepted")
             # accept
             recepcionar_oc(oc_id[0])
             # produce
@@ -316,6 +316,9 @@ def review_order(oc_id, products, date, sku, amount, state):
             new = MarkSerializer(data=data)
             if new.is_valid():
                 new.save()
+    else:
+        print("review_order: oc rejected: not will_produce_order")
+        pass
 
 
 def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
@@ -334,10 +337,11 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
 
 
 def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen_destino, oc, precio):
+    """VEO QUE AHORA NO SE ESTÁ USANDO ESTA FUNCIÓN"""
     lista_productos = obtener_productos_almacen(id_almacen_despacho, sku)
-    print(lista_productos)
+    # print(lista_productos)
     for i in range(cantidad_productos):
-        print(lista_productos[i]['_id'], id_almacen_destino, oc, precio)
+        # print(lista_productos[i]['_id'], id_almacen_destino, oc, precio)
         mover_entre_bodegas(lista_productos[i]['_id'], id_almacen_destino, oc, precio)
     return
 
@@ -359,3 +363,49 @@ def check_group_oc_time(date):
         return True
     else:
         return False
+
+
+def find_and_dispatch_sushi():
+    almacenes = obtener_almacenes()
+
+    sushi_products = {}
+    id_almacen_despacho = ""
+    for almacen in almacenes:
+        if not almacen["despacho"]:
+            skus = obtener_skus_disponibles(almacen["_id"])
+            # print("got skus", skus)
+            for sku in skus:
+                if len(sku) > 4:
+                    sushis_here = obtener_productos_almacen(almacen["_id"], sku)
+                    # print("got sushis here", sushis_here)
+                    if sku in sushi_products:
+                        sushi_products[sku].append(sushis_here)
+                    else:
+                        sushi_products[sku] = sushis_here
+        else:
+            id_almacen_despacho = almacen["_id"]
+
+    # print("got all sushi products by sku", sushi_products)
+
+    for sku in sushi_products:
+        # se considera modelo ordenado por delivery_date creciente
+        pendings = SushiOrder.objects.filter(sku__exact=sku, dispatched=False)
+        if not pendings:
+            continue
+        pendings_counter = 0
+        for product in sushi_products[sku]:
+            pending = pendings[pendings_counter]
+
+            mover_entre_almacenes(product["_id"], id_almacen_despacho)
+            response = despachar_producto(product["_id"], pending.oc)
+            try:
+                if response["despachado"]:
+                    print("find_and_dispatch_sushi: sushi despachado")
+                    pending.dispatched = True
+                    pending.save()
+                    pendings_counter += 1
+            except KeyError:
+                pass
+            if pendings_counter == len(pendings):
+                print("find_and_dispatch_sushi: oc sushi terminada")
+                break
