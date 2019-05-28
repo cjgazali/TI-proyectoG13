@@ -2,14 +2,12 @@
 # from rest_framework import status  # generate status codes
 from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
-from rest_framework.parsers import JSONParser
 from rest_framework import status
-from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas
+from app.services import obtener_almacenes, obtener_productos_almacen, mover_entre_bodegas
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
-from app.models import Order, Product, RawMaterial
+from app.models import Product, RawMaterial
 from app.serializers import OrderSerializer
-from django.http import Http404
-from app.subtasks import move_product_dispatch, move_product_client, get_current_stock, check_time_availability
+from app.subtasks import get_current_stock, check_group_oc_time
 
 
 @api_view(['GET'])  # only allows GET, else error code 405
@@ -45,40 +43,44 @@ def create_order(request):
     :return: json { sku, cantidad, almacenId, grupoProveedor,
                     aceptado, despachado }
     """
-    if 'sku' not in request.data or 'cantidad' not in request.data or 'almacenId' not in request.data or 'oc' not in request.data:
-        return Response({ "error": "400 (Bad Request): Falta parámetro obligatorio." }, status=status.HTTP_400_BAD_REQUEST)
+    if 'sku' not in request.data or 'cantidad' not in request.data \
+            or 'almacenId' not in request.data or 'oc' not in request.data:
+        return Response({"error": "400 (Bad Request): Falta parámetro obligatorio."},
+                        status=status.HTTP_400_BAD_REQUEST)
 
     oc_id = request.data['oc']
     order = consultar_oc(str(oc_id))
     fecha_entrega = order[0]['fechaEntrega']
-    precio = order[0]['precioUnitario']
+    # precio = order[0]['precioUnitario']
 
     data = {'amount': order[0]['cantidad'], 'sku':order[0]['sku'], 'storeId':request.data['almacenId'], 'client_group':int(request.META['HTTP_GROUP'])}
-    accepted_and_dispatched = False #por default
+    accepted_and_dispatched = False  # por default
 
-    #revisa si el grupo proveedor efectivamente somos nosotros
+    # revisa si el grupo proveedor efectivamente somos nosotros
     if order[0]['proveedor'] != ids_oc[13]:
-        return Response({ "error": "400 (Bad Request): ID Proveedor no corresponde" }, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"error": "400 (Bad Request): ID Proveedor no corresponde"},
+                        status=status.HTTP_400_BAD_REQUEST)
 
-    #si el largo del sku > 4 entonces es producto tipo 3 y se rechaza
+    # si el largo del sku > 4 entonces es producto tipo 3 y se rechaza
     if len(data['sku']) > 4:
-        print('rechazado por que es producto tipo 3 (len >4)')
+        # print('rechazado por que es producto tipo 3 (len >4)')
         rechazar_oc(oc_id)
 
     else:
         totals = get_current_stock()
         minimum_stock = RawMaterial.objects.filter(sku='1101').values()[0]['stock']
         if totals[data['sku']] - data['amount'] < minimum_stock:
-            print("rechazo por que no hay productos en bodega - disponible: ", totals[data['sku']])
-            #rechazo por falta de lista_productos
+            # print("rechazo por que no hay productos en bodega - disponible: ", totals[data['sku']])
             rechazar_oc(oc_id)
         else:
-            print("hay productos pero no se si tiempo")
-            if check_time_availability(fecha_entrega, data['sku']):
+            # print("hay productos pero no se si tiempo")
+            if check_group_oc_time(fecha_entrega):
                 accepted_and_dispatched = True
-                print("hay productos y tiempo")
-                #aceptar oc, hay productos y alcanza el tiempo
+                # print("hay productos y tiempo")
+                # aceptar oc, hay productos y alcanza el tiempo
                 recepcionar_oc(oc_id)
+
+
                 almacenes = obtener_almacenes()
                 ids_origen=[]
                 for almacen in almacenes:

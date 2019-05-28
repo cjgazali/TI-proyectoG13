@@ -253,3 +253,16 @@ def check_time_availability(date, sku):
         return True
     else:
         return False
+
+
+def check_group_oc_time(date):
+    """Revisa si hay tiempo para despachar inmediatamente"""
+
+    now = datetime.utcnow()
+    extra = timedelta(minutes=5)  # margen arbitrario
+    date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%fZ")
+
+    if now + extra < date:
+        return True
+    else:
+        return False
