@@ -45,6 +45,17 @@ def get_current_stock():
     return totals
 
 
+def get_complete_current_stock():
+    """Para debugear, muestra todo lo que se tiene en cualquier parte."""
+    totals = defaultdict(int)  # sku: total
+    get_almacenes = obtener_almacenes()
+    for almacen in get_almacenes:
+        stock_response = obtener_skus_disponibles(almacen["_id"])
+        for product in stock_response:
+            totals[product["_id"]] += product["total"]
+    return totals
+
+
 def get_groups_stock():
     """Entrega lista de diccionarios con default 0,
     con { sku: total en bodega de otro grupo }"""
