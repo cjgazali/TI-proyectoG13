@@ -66,7 +66,10 @@ def create_order(request):
 
     # si el largo del sku > 4 entonces es producto tipo 3 y se rechaza
     if len(data['sku']) > 4:
-        # print('rechazado por que es producto tipo 3 (len >4)')
+        # print('rechazado porque es producto tipo 3 (len >4)')
+        rechazar_oc(oc_id)
+    elif data["amount"] > 30:
+        # print('rechazado porque pide más de 30')
         rechazar_oc(oc_id)
     else:
         totals = get_current_stock()
