@@ -150,8 +150,9 @@ def review_inventory(totals, groups_stock):
             # Trato de fabricar si no me dieron suficiente
             if remaining > 0:
                 product_lot = Product.objects.filter(sku=materia.sku.sku).values("production_lot")[0]["production_lot"]
-                if materia.material_type == 1 and materia.sku.sku in skus_fabricables:
-                    manufacture_raws(materia.sku.sku, remaining, product_lot)
+                if materia.material_type == 1:
+                    if materia.sku.sku in skus_fabricables:
+                        manufacture_raws(materia.sku.sku, remaining, product_lot)
                 else:
                     try_manufacture(totals, materia.sku, remaining, product_lot)
 
