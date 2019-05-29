@@ -32,7 +32,7 @@ def stock_list(request):
         disponible_venta = max(totals[elem] - stock_minimos[elem], 0)
         if disponible_venta != 0:
             respuesta_final.append({"sku": elem, "nombre": aux_dict[elem],
-                                    "total": disponible_venta})
+                                    "total": min(30, disponible_venta)})
     return Response(respuesta_final)
 
 
