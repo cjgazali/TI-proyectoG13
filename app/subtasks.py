@@ -154,13 +154,13 @@ def review_inventory(totals, groups_stock):
                     if materia.sku.sku in skus_fabricables:
                         manufacture_raws(materia.sku.sku, remaining, product_lot)
                 else:
-                    try_manufacture(totals, materia.sku, remaining, product_lot)
+                    try_manufacture(totals, materia.sku.sku, remaining, product_lot)
 
 
 def lots_for_q(amount, min_lot):
     """Calcula lotes para una cantidad con lote mínimo de algún producto"""
     if amount % min_lot == 0:
-        return amount / min_lot
+        return int(amount / min_lot)
     else:
         return (amount // min_lot) + 1
 
@@ -212,7 +212,7 @@ def best_attempt_production(products, sku, min_lot, lots, ingredients):
     """Manda a fabricar lotes de producto, si hay ingredientes suficientes para cada lote.
     Sirve para abastecerse de productos tipo 2."""
     ids_origen, id_destino = get_almacenes_origenes_destino()
-    for i in range(0, lots):
+    for i in range(0, int(lots)):
         producir = True
         for ingredient in ingredients.keys():
             if products[ingredient] < ingredients[ingredient]:
