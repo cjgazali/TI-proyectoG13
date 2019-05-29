@@ -50,6 +50,9 @@ def create_order(request):
 
     oc_id = request.data['oc']
     order = consultar_oc(str(oc_id))
+    if not order:
+        return Response({"error": "400 (Bad Request): ID de oc no corresponde"},
+                        status=status.HTTP_400_BAD_REQUEST)
     fecha_entrega = order[0]['fechaEntrega']
     # precio = order[0]['precioUnitario']
 
@@ -89,21 +92,21 @@ def create_order(request):
                 # (para evitar problemas con la capcidad del almacen de despacho)
                 cantidad_despachada = 0  # aunque podriamos usar el valor de la OC
                 # print(data['amount'], " > ", cantidad_despachada)
-                while data["amount"] != cantidad_despachada:
-                    for almacen in ids_origen:
-                        productos = obtener_productos_almacen(almacen, data['sku'])
-                        for elem in productos:
-                            mover_entre_almacenes(elem['_id'], id_almacen_despacho)
-                            response = mover_entre_bodegas(elem['_id'], data["storeId"], oc_id, 1)
-                            # print(b)
-                            # idea: check if response OK before count
-                            cantidad_despachada += 1
-                            if cantidad_despachada == data['amount']:
-                                # Me salgo del primer for
-                                break
+                # while data["amount"] != cantidad_despachada:
+                for almacen in ids_origen:
+                    productos = obtener_productos_almacen(almacen, data['sku'])
+                    for elem in productos:
+                        mover_entre_almacenes(elem['_id'], id_almacen_despacho)
+                        response = mover_entre_bodegas(elem['_id'], data["storeId"], oc_id, 1)
+                        # print(b)
+                        # idea: check if response OK before count
+                        cantidad_despachada += 1
                         if cantidad_despachada == data['amount']:
-                            # me salgo del segundo for y con eso no se cumplirá la condición del while
+                            # Me salgo del primer for
                             break
+                    if cantidad_despachada == data['amount']:
+                        # me salgo del segundo for
+                        break
 
                 # print("Productos despachados: ", cantidad_despachada)
                 # Quizás aquí podrías ver que el estado de la oc sea completa, aunque no estoy seguro si se arregla inmediatamente
