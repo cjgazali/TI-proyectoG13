@@ -400,10 +400,16 @@ def find_and_dispatch_sushi():
     # print("got all sushi products by sku", sushi_products)
 
     for sku in sushi_products:
-        # se considera modelo ordenado por delivery_date creciente
-        pendings = SushiOrder.objects.filter(sku__exact=sku, dispatched=False)
+
+        now = datetime.utcnow()
+        epoch = datetime.utcfromtimestamp(0)
+        delta_now = now - epoch
+        seconds_now = int(delta_now.total_seconds())
+        # se considera modelo ordenado por delivery_date creciente, descarta obsoletas
+        pendings = SushiOrder.objects.filter(sku__exact=sku, dispatched=False, delivery_date__gt=seconds_now)
         if not pendings:
             continue
+
         pendings_counter = 0
         for product in sushi_products[sku]:
             pending = pendings[pendings_counter]
