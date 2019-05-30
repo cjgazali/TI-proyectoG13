@@ -338,15 +338,13 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
     """Esta función mueve una cantidad del producto con sku desde una lista
     de almacenes a almacen de destino"""
     contador = 0
-    while contador != cantidad and len(lista_almacenes) != 0:
-        id_actual = lista_almacenes.pop()
-        lista_ingredientes = obtener_productos_almacen(id_actual, sku)
+    for almacen in lista_almacenes:
+        lista_ingredientes = obtener_productos_almacen(almacen, sku)
         for elemento in lista_ingredientes:
             mover_entre_almacenes(elemento['_id'], almacen_destino)
             contador += 1
             if contador == cantidad:
                 return
-    return
 
 
 def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen_destino, oc, precio):
