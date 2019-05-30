@@ -24,7 +24,7 @@ def stock_list(request):
     totals = get_current_stock()
     respuesta_final = []
     stock_minimos = {}
-    productos = RawMaterial.objects.all()
+    productos = RawMaterial.objects.filter(material_type=1)
     for materia in productos:
         stock_minimos[materia.sku.sku] = materia.stock
 
@@ -70,6 +70,9 @@ def create_order(request):
         rechazar_oc(oc_id)
     elif data["amount"] > 30:
         # print('rechazado porque pide más de 30')
+        rechazar_oc(oc_id)
+    elif data["sku"] not in ['1001', '1002', '1003', '1004', '1005', '1006', '1007', '1008',
+                             '1009', '1010', '1011', '1012', '1013', '1014', '1015', '1016']:
         rechazar_oc(oc_id)
     else:
         totals = get_current_stock()
