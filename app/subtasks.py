@@ -45,13 +45,25 @@ def get_current_stock():
     return totals
 
 
+def get_complete_current_stock():
+    """Para debugear, muestra todo lo que se tiene en cualquier parte."""
+    totals = defaultdict(int)  # sku: total
+    get_almacenes = obtener_almacenes()
+    for almacen in get_almacenes:
+        stock_response = obtener_skus_disponibles(almacen["_id"])
+        for product in stock_response:
+            totals[product["_id"]] += product["total"]
+    return totals
+
+
 def get_groups_stock():
     """Entrega lista de diccionarios con default 0,
     con { sku: total en bodega de otro grupo }"""
     dicts = []
     for n_group in range(1, 15):
         totals = defaultdict(int)  # sku: total
-        if n_group == 13:  # diccionario vacío para nosotros
+        if n_group == 13 or n_group == 10:  # diccionario vacío para nosotros
+            # y para grupo 10 xq de momento son mal negocio
             dicts.append(totals)
             continue
         try:
@@ -78,7 +90,7 @@ def post_to_all(sku, quantity, groups_stock):
             id_almacen_recepcion = almacen["_id"]
 
     for n_group in range(1,15):
-        if n_group != 13:
+        if n_group != 13 and n_group != 10:  # saltamos grupo 10 xq de momento es mal negocio
             # Pido el mínimo entre lo que quiero y lo que el grupo tenga
             group_post_quantity = min(groups_stock[n_group - 1][sku], quantity)
             if group_post_quantity > 0:  # si tienen
