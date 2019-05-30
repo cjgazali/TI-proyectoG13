@@ -1664,7 +1664,7 @@
             "measurement_unit": "Kg",
             "production_lot": 10,
             "quantity_for_lot": 3.0,
-            "units_quantity": 30
+            "units_quantity": 3
         }
     },
     {
@@ -1679,7 +1679,7 @@
             "measurement_unit": "Kg",
             "production_lot": 10,
             "quantity_for_lot": 1.6,
-            "units_quantity": 16
+            "units_quantity": 2
         }
     },
     {
