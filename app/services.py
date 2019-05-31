@@ -6,7 +6,7 @@ import pysftp
 import hmac
 from base64 import encodestring
 
-context = "DEVELOPMENT"  # or DEVELOPMENT
+context = "PRODUCTION"  # or DEVELOPMENT
 # url API profe
 if context == "PRODUCTION":
     ids_oc = {1: '5cc66e378820160004a4c3bc', 2: '5cc66e378820160004a4c3bd', 3: '5cc66e378820160004a4c3be',
@@ -15,6 +15,7 @@ if context == "PRODUCTION":
               10: '5cc66e378820160004a4c3c5', 11: '5cc66e378820160004a4c3c6', 12: '5cc66e378820160004a4c3c7',
               13: '5cc66e378820160004a4c3c8', 14: '5cc66e378820160004a4c3c9'}
     url_base = "https://integracion-2019-prod.herokuapp.com/bodega"
+    url_oc = "https://integracion-2019-dev.herokuapp.com/oc"
 else:
     ids_oc = {1: '5cbd31b7c445af0004739be3', 2: '5cbd31b7c445af0004739be4', 3: '5cbd31b7c445af0004739be5',
               4: '5cbd31b7c445af0004739be6', 5: '5cbd31b7c445af0004739be7', 6: '5cbd31b7c445af0004739be8',
@@ -118,6 +119,7 @@ def mover_entre_bodegas(id_producto, id_almacen_destino, oc="BLABLA", precio=10)
     body = {'productoId': id_producto, 'almacenId': id_almacen_destino, 'oc': oc, "precio": precio}
     result = requests.post(url, data=json.dumps(body), headers=headers)
     response = json.loads(result.text)
+    print("se movio")
     return response
 
 
@@ -221,6 +223,22 @@ def sftp_ocs():
                     if elem.tag == 'id':
                         ocs.append(elem.text)
     return ocs
+
+def buscar():
+    productos = obtener_productos_almacen("5cbd3ce444f67600049431fd", 1016)
+    for producto in productos:
+        if producto['_id'] == "5ce83d2892698c0004bfc7ef":
+            print("Está aquí")
+            return
+    print("Esto no debería haber pasado.")
+
+def mover_c(ingrediente, cantidad_ingrediente, origen, destino):
+    productos = obtener_productos_almacen(origen, ingrediente)
+    for i in range(0, cantidad_ingrediente):
+        print("Moviendo")
+        id_producto = productos[i]['_id']
+        mover_entre_almacenes(id_producto, destino)
+    #fabricar_sin_pago(producto, cantidad)
 
 
 if __name__ == '__main__':
