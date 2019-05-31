@@ -3,9 +3,9 @@
 from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
 from rest_framework import status
-from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
+from app.services import obtener_productos_almacen, mover_entre_bodegas
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
-from app.models import Order, Product, RawMaterial
+from app.models import Product, RawMaterial
 from app.serializers import OrderSerializer
 from app.subtasks import get_current_stock, check_group_oc_time, get_almacenes_origenes_destino
 
@@ -89,24 +89,20 @@ def create_order(request):
             # print("hay productos pero no se si tiempo")
             if check_group_oc_time(fecha_entrega):
                 # print("hay productos y tiempo")
-                # aceptar oc, hay productos y alcanza el tiempo
-                recepcionar_oc(oc_id)
 
                 ids_origen, id_almacen_despacho = get_almacenes_origenes_destino()
 
-                # Nuevo criteorio de mover y despachar productos uno por uno
+                # Nuevo método de mover y despachar productos uno por uno
                 # (para evitar problemas con la capcidad del almacen de despacho)
-                cantidad_despachada = 0  # aunque podriamos usar el valor de la OC
-                # print(data['amount'], " > ", cantidad_despachada)
-                # while data["amount"] != cantidad_despachada:
+                cantidad_despachada = 0
                 for almacen in ids_origen:
                     productos = obtener_productos_almacen(almacen, data['sku'])
                     for elem in productos:
                         mover_entre_almacenes(elem['_id'], id_almacen_despacho)
                         response = mover_entre_bodegas(elem['_id'], data["storeId"], oc_id, 1)
-                        # print(b)
                         # idea: check if response OK before count
-                        cantidad_despachada += 1
+                        if response:
+                            cantidad_despachada += 1
                         if cantidad_despachada == data['amount']:
                             # Me salgo del primer for
                             break
@@ -115,23 +111,25 @@ def create_order(request):
                         break
 
                 # print("Productos despachados: ", cantidad_despachada)
-                # Quizás aquí podrías ver que el estado de la oc sea completa, aunque no estoy seguro si se arregla inmediatamente
-                accepted_and_dispatched = True
+
+                if cantidad_despachada == data['amount']:
+                    # aceptar oc, hay productos, alcanza el tiempo y ya despachó
+                    recepcionar_oc(oc_id)
+                    accepted_and_dispatched = True  # respondemos que aceptamos solo si despachamos bien
 
             else:
                 # print("hay productos pero NO tiempo")
                 # rechazar oc por falta de tiempo
                 rechazar_oc(oc_id)
 
-
     respuesta = {
-		"sku" : data["sku"],
-		"cantidad" : data["amount"],
-		"almacenId" : data["storeId"],
-		"grupoProveedor" : 13,
-		"aceptado" : accepted_and_dispatched,
-		"despachado" : accepted_and_dispatched
-	}
+        "sku": data["sku"],
+        "cantidad": data["amount"],
+        "almacenId": data["storeId"],
+        "grupoProveedor": 13,
+        "aceptado": accepted_and_dispatched,
+        "despachado": accepted_and_dispatched
+    }
 
     # falta accepted y dispatched en data
     data['accepted'] = accepted_and_dispatched

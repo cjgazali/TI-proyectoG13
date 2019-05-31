@@ -1,7 +1,7 @@
 from collections import defaultdict
 from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes
 from app.services import obtener_productos_almacen, get_group_stock, fabricar_sin_pago
-from app.services import post_order, mover_entre_bodegas, min_raws_factor, crear_oc, ids_oc
+from app.services import post_order, min_raws_factor, crear_oc, ids_oc
 from app.services import recepcionar_oc, rechazar_oc, despachar_producto
 from app.models import Ingredient, Product, RawMaterial, Assigment, SushiOrder
 from app.serializers import MarkSerializer, SushiOrderSerializer
@@ -345,16 +345,6 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
             contador += 1
             if contador == cantidad:
                 return
-
-
-def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen_destino, oc, precio):
-    """VEO QUE AHORA NO SE ESTÁ USANDO ESTA FUNCIÓN"""
-    lista_productos = obtener_productos_almacen(id_almacen_despacho, sku)
-    # print(lista_productos)
-    for i in range(cantidad_productos):
-        # print(lista_productos[i]['_id'], id_almacen_destino, oc, precio)
-        mover_entre_bodegas(lista_productos[i]['_id'], id_almacen_destino, oc, precio)
-    return
 
 
 def manufacture_raws(sku, diference, production_lot):
