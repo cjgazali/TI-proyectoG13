@@ -141,10 +141,10 @@ def get_group_stock(n_group):
     return response
 
 
-def post_order(n_group, sku, quantity, id_almacen_despacho):
+def post_order(n_group, sku, quantity, id_almacen_recepcion):
     aceptado = False
     headers = {'Content-Type': 'application/json', "group": "13"}
-    body = {'sku': str(sku), 'cantidad': str(quantity), "almacenId": id_almacen_despacho}
+    body = {'sku': str(sku), 'cantidad': str(quantity), "almacenId": id_almacen_recepcion}
     result = requests.post(orders_url.format(n_group), data=json.dumps(body), headers=headers)
     response = json.loads(result.text)
     return response
@@ -224,6 +224,7 @@ def sftp_ocs():
                         ocs.append(elem.text)
     return ocs
 
+<<<<<<< HEAD
 def buscar():
     productos = obtener_productos_almacen("5cbd3ce444f67600049431fd", 1016)
     for producto in productos:
@@ -240,6 +241,15 @@ def mover_c(ingrediente, cantidad_ingrediente, origen, destino):
         mover_entre_almacenes(id_producto, destino)
     #fabricar_sin_pago(producto, cantidad)
 
+=======
+# Postear notificacion luego de recibir orden
+def post_notification(status, n_group, order_id):
+    headers = {'Content-Type': 'application/json'}
+    body = {'status':status}
+    result = requests.post(orders_url.format(n_group)+"/{}/notification".format(order_id), data=json.dumps(body), headers=headers)
+    response = json.loads(result.text)
+    return response
+>>>>>>> 48db5c57552eda4c533615ad5c0277edfb681c9f
 
 if __name__ == '__main__':
     pass

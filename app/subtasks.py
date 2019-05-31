@@ -1,6 +1,7 @@
 from collections import defaultdict
 from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen, get_group_stock, fabricar_sin_pago, post_order, mover_entre_bodegas, min_raws_factor
 from app.models import Ingredient, Product, RawMaterial, Assigment
+from datetime import datetime, timedelta
 
 
 def empty_receptions():
@@ -69,8 +70,8 @@ def get_groups_stock():
 def post_to_all(sku, quantity, groups_stock):
     almacenes = obtener_almacenes()
     for almacen in almacenes:
-        if almacen['despacho']:
-            id_almacen_despacho = almacen["_id"]
+        if almacen['recepcion']:
+            id_almacen_recepcion = almacen["_id"]
     for n_group in range(1,15):
         if n_group != 13:
 
@@ -78,7 +79,7 @@ def post_to_all(sku, quantity, groups_stock):
             group_post_quantity = min(groups_stock[n_group - 1][sku], quantity)
             if group_post_quantity > 0:  # si tienen
                 try:
-                    response = post_order(n_group, sku, group_post_quantity, id_almacen_despacho)
+                    response = post_order(n_group, sku, group_post_quantity, id_almacen_recepcion)
                 except:
                     continue
                 try:
@@ -234,3 +235,19 @@ def manufacture_raws(sku, diference, production_lot):
     lots = (diference // production_lot) + 1
     amount = lots * production_lot
     fabricar_sin_pago(sku, amount)
+
+
+def check_time_availability(date, sku):
+    """revisa si es que hay tiempo suficiente para
+    fabricar el producto solicitado"""
+
+    now = datetime.utcnow() - timedelta(hours=4)
+    production_mins = Product.objects.filter(sku=sku).values()[0]['expected_production_time']
+    production_delta = timedelta(minutes=production_mins)
+    extra = timedelta(minutes=15)  # margen arbitrario
+    date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%fZ")
+
+    if now + production_delta + extra < date:
+        return True
+    else:
+        return False
