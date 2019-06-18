@@ -1,11 +1,8 @@
 from collections import defaultdict
-from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes
-from app.services import obtener_productos_almacen, get_group_stock, fabricar_sin_pago
-from app.services import post_order, mover_entre_bodegas, min_raws_factor, crear_oc, ids_oc
-from app.services import recepcionar_oc, rechazar_oc, despachar_producto
-from app.models import Ingredient, Product, RawMaterial, Assigment, SushiOrder
-from app.serializers import MarkSerializer, SushiOrderSerializer
-from datetime import datetime, timedelta
+from app.services import obtener_almacenes, obtener_skus_disponibles
+from app.services import post_order
+
+"""funciones que no se usan pero sirven para probar cosas"""
 
 
 def get_complete_current_stock():

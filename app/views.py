@@ -7,10 +7,13 @@ from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_pr
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
-from app.subtasks import get_current_stock, check_group_oc_time, get_almacenes_origenes_destino
+from app.subtasks import get_current_stock
+from app.subtasks_defs import get_almacenes_origenes_destino
+from app.subviews import check_group_oc_time
 
 
 accept_amount = 10
+
 
 @api_view(['GET'])  # only allows GET, else error code 405
 def stock_list(request):
