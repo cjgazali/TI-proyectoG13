@@ -45,17 +45,6 @@ def get_current_stock():
     return totals
 
 
-def get_complete_current_stock():
-    """Para debugear, muestra todo lo que se tiene en cualquier parte."""
-    totals = defaultdict(int)  # sku: total
-    get_almacenes = obtener_almacenes()
-    for almacen in get_almacenes:
-        stock_response = obtener_skus_disponibles(almacen["_id"])
-        for product in stock_response:
-            totals[product["_id"]] += product["total"]
-    return totals
-
-
 def get_groups_stock():
     """Entrega lista de diccionarios con default 0,
     con { sku: total en bodega de otro grupo }"""
@@ -117,28 +106,10 @@ def post_to_all(sku, quantity, groups_stock):
     return quantity
 
 
-def post_to_all_test(sku, quantity):
-    """post_to_all para testear APIs desde shell"""
-    almacenes = obtener_almacenes()
-    id_almacen_recepcion = ''
-    for almacen in almacenes:
-        if almacen['recepcion']:
-            id_almacen_recepcion = almacen["_id"]
-    for n_group in range(1, 15):
-        if n_group == 13:
-            continue
-        try:
-            response = post_order(n_group, sku, quantity, id_almacen_recepcion)
-        except:
-            print("fail", n_group)
-            continue
-        try:
-            if response["aceptado"]:
-                print("OK", n_group, response["cantidad"])
-        except:
-            print("KeyError", n_group)
-            continue
-    return quantity
+def manufacture_raws(sku, diference, production_lot):
+    lots = (diference // production_lot) + 1
+    amount = lots * production_lot
+    fabricar_sin_pago(sku, amount)
 
 
 def review_inventory(totals, groups_stock):
@@ -211,6 +182,19 @@ def get_almacenes_origenes_destino(to_kitchen=False):
 
 
 # START defs for try_manufacture
+def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
+    """Esta función mueve una cantidad del producto con sku desde una lista
+    de almacenes a almacen de destino"""
+    contador = 0
+    for almacen in lista_almacenes:
+        lista_ingredientes = obtener_productos_almacen(almacen, sku)
+        for elemento in lista_ingredientes:
+            mover_entre_almacenes(elemento['_id'], almacen_destino)
+            contador += 1
+            if contador == cantidad:
+                return
+
+
 def produce(sku, lot_quantity, ingredients, ids_origen, id_destino):
     """Prepara ingredientes y manda producir un lote de un producto."""
     # Debemos mover los ingredientes a almacén correspondiente
@@ -332,35 +316,7 @@ def review_order(oc_id, products, date, sku, amount, state):
     else:
         print("review_order: not will_produce_order")
         pass
-
-
-def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
-    """Esta función mueve una cantidad del producto con sku desde una lista
-    de almacenes a almacen de destino"""
-    contador = 0
-    for almacen in lista_almacenes:
-        lista_ingredientes = obtener_productos_almacen(almacen, sku)
-        for elemento in lista_ingredientes:
-            mover_entre_almacenes(elemento['_id'], almacen_destino)
-            contador += 1
-            if contador == cantidad:
-                return
-
-
-def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen_destino, oc, precio):
-    """VEO QUE AHORA NO SE ESTÁ USANDO ESTA FUNCIÓN"""
-    lista_productos = obtener_productos_almacen(id_almacen_despacho, sku)
-    # print(lista_productos)
-    for i in range(cantidad_productos):
-        # print(lista_productos[i]['_id'], id_almacen_destino, oc, precio)
-        mover_entre_bodegas(lista_productos[i]['_id'], id_almacen_destino, oc, precio)
-    return
-
-
-def manufacture_raws(sku, diference, production_lot):
-    lots = (diference // production_lot) + 1
-    amount = lots * production_lot
-    fabricar_sin_pago(sku, amount)
+# END defs for review_order
 
     
 def check_group_oc_time(date):
