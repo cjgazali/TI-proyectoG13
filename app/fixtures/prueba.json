@@ -1664,7 +1664,7 @@
             "measurement_unit": "Kg",
             "production_lot": 10,
             "quantity_for_lot": 3.0,
-            "units_quantity": 30
+            "units_quantity": 3
         }
     },
     {
@@ -1679,7 +1679,7 @@
             "measurement_unit": "Kg",
             "production_lot": 10,
             "quantity_for_lot": 1.6,
-            "units_quantity": 16
+            "units_quantity": 2
         }
     },
     {
@@ -5403,7 +5403,7 @@
         "pk": "1",
         "fields": {
             "sku": "1001",
-            "stock": 32,
+            "stock": 64,
             "material_type": 1
         }
     },
@@ -5412,7 +5412,7 @@
         "pk": "2",
         "fields": {
             "sku": "1002",
-            "stock": 16,
+            "stock": 200,
             "material_type": 1
         }
     },
@@ -5421,7 +5421,7 @@
         "pk": "3",
         "fields": {
             "sku": "1003",
-            "stock": 12,
+            "stock": 24,
             "material_type": 1
         }
     },
@@ -5430,7 +5430,7 @@
         "pk": "4",
         "fields": {
             "sku": "1004",
-            "stock": 8,
+            "stock": 16,
             "material_type": 1
         }
     },
@@ -5439,7 +5439,7 @@
         "pk": "5",
         "fields": {
             "sku": "1005",
-            "stock": 5,
+            "stock": 10,
             "material_type": 1
         }
     },
@@ -5448,7 +5448,7 @@
         "pk": "6",
         "fields": {
             "sku": "1006",
-            "stock": 4,
+            "stock": 8,
             "material_type": 1
         }
     },
@@ -5457,7 +5457,7 @@
         "pk": "7",
         "fields": {
             "sku": "1007",
-            "stock": 26,
+            "stock": 52,
             "material_type": 1
         }
     },
@@ -5466,7 +5466,7 @@
         "pk": "8",
         "fields": {
             "sku": "1008",
-            "stock": 2,
+            "stock": 4,
             "material_type": 1
         }
     },
@@ -5475,7 +5475,7 @@
         "pk": "9",
         "fields": {
             "sku": "1009",
-            "stock": 23,
+            "stock": 46,
             "material_type": 1
         }
     },
@@ -5484,7 +5484,7 @@
         "pk": "10",
         "fields": {
             "sku": "1010",
-            "stock": 33,
+            "stock": 66,
             "material_type": 1
         }
     },
@@ -5493,7 +5493,7 @@
         "pk": "11",
         "fields": {
             "sku": "1011",
-            "stock": 8,
+            "stock": 16,
             "material_type": 1
         }
     },
@@ -5502,7 +5502,7 @@
         "pk": "12",
         "fields": {
             "sku": "1012",
-            "stock": 7,
+            "stock": 14,
             "material_type": 1
         }
     },
@@ -5511,7 +5511,7 @@
         "pk": "13",
         "fields": {
             "sku": "1013",
-            "stock": 300,
+            "stock": 600,
             "material_type": 1
         }
     },
@@ -5520,7 +5520,7 @@
         "pk": "14",
         "fields": {
             "sku": "1014",
-            "stock": 13,
+            "stock": 26,
             "material_type": 1
         }
     },
@@ -5529,7 +5529,7 @@
         "pk": "15",
         "fields": {
             "sku": "1015",
-            "stock": 20,
+            "stock": 40,
             "material_type": 1
         }
     },
@@ -5538,7 +5538,7 @@
         "pk": "16",
         "fields": {
             "sku": "1016",
-            "stock": 298,
+            "stock": 600,
             "material_type": 1
         }
     },
@@ -5547,7 +5547,7 @@
         "pk": "17",
         "fields": {
             "sku": "1101",
-            "stock": 35,
+            "stock": 70,
             "material_type": 2
         }
     },
@@ -5610,7 +5610,7 @@
         "pk": "24",
         "fields": {
             "sku": "1111",
-            "stock": 6,
+            "stock": 12,
             "material_type": 2
         }
     },

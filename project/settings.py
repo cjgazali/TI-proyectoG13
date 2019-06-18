@@ -26,7 +26,7 @@ SECRET_KEY = '5xf%m2oojzfhf-11@_)ym#*s1t$^+p6vn0l#@(hk3h3)*v1o(%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['tuerca13.ing.puc.cl']  # 'tuerca13.ing.puc.cl' for production
+ALLOWED_HOSTS = []  # 'tuerca13.ing.puc.cl' for production
 
 APPEND_SLASH=False
 
@@ -96,15 +96,15 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_BEAT_SCHEDULE = {
     'main': {
         'task': 'app.tasks.main',
-        'schedule': crontab(minute='*/10')
+        'schedule': crontab(minute='*/20')
     },
     'ftp_ocs': {
         'task': 'app.tasks.ftp_ocs',
-        'schedule': crontab(minute='7,17,27,37,47,57')
+        'schedule': crontab(minute='10,30,50')
     },
     'dispatch_sushi': {
         'task': 'app.tasks.dispatch_sushi',
-        'schedule': crontab(minute='*/6')
+        'schedule': crontab(minute='15,35,55')
     }
 }
 # Password validation

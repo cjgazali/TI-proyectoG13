@@ -45,13 +45,25 @@ def get_current_stock():
     return totals
 
 
+def get_complete_current_stock():
+    """Para debugear, muestra todo lo que se tiene en cualquier parte."""
+    totals = defaultdict(int)  # sku: total
+    get_almacenes = obtener_almacenes()
+    for almacen in get_almacenes:
+        stock_response = obtener_skus_disponibles(almacen["_id"])
+        for product in stock_response:
+            totals[product["_id"]] += product["total"]
+    return totals
+
+
 def get_groups_stock():
     """Entrega lista de diccionarios con default 0,
     con { sku: total en bodega de otro grupo }"""
     dicts = []
     for n_group in range(1, 15):
         totals = defaultdict(int)  # sku: total
-        if n_group == 13:  # diccionario vacío para nosotros
+        if n_group == 13 or n_group == 10:  # diccionario vacío para nosotros
+            # y para grupo 10 xq de momento son mal negocio
             dicts.append(totals)
             continue
         try:
@@ -78,7 +90,7 @@ def post_to_all(sku, quantity, groups_stock):
             id_almacen_recepcion = almacen["_id"]
 
     for n_group in range(1,15):
-        if n_group != 13:
+        if n_group != 13 and n_group != 10:  # saltamos grupo 10 xq de momento es mal negocio
             # Pido el mínimo entre lo que quiero y lo que el grupo tenga
             group_post_quantity = min(groups_stock[n_group - 1][sku], quantity)
             if group_post_quantity > 0:  # si tienen
@@ -154,13 +166,13 @@ def review_inventory(totals, groups_stock):
                     if materia.sku.sku in skus_fabricables:
                         manufacture_raws(materia.sku.sku, remaining, product_lot)
                 else:
-                    try_manufacture(totals, materia.sku, remaining, product_lot)
+                    try_manufacture(totals, materia.sku.sku, remaining, product_lot)
 
 
 def lots_for_q(amount, min_lot):
     """Calcula lotes para una cantidad con lote mínimo de algún producto"""
     if amount % min_lot == 0:
-        return amount / min_lot
+        return int(amount / min_lot)
     else:
         return (amount // min_lot) + 1
 
@@ -212,7 +224,7 @@ def best_attempt_production(products, sku, min_lot, lots, ingredients):
     """Manda a fabricar lotes de producto, si hay ingredientes suficientes para cada lote.
     Sirve para abastecerse de productos tipo 2."""
     ids_origen, id_destino = get_almacenes_origenes_destino()
-    for i in range(0, lots):
+    for i in range(0, int(lots)):
         producir = True
         for ingredient in ingredients.keys():
             if products[ingredient] < ingredients[ingredient]:
@@ -326,15 +338,13 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
     """Esta función mueve una cantidad del producto con sku desde una lista
     de almacenes a almacen de destino"""
     contador = 0
-    while contador != cantidad and len(lista_almacenes) != 0:
-        id_actual = lista_almacenes.pop()
-        lista_ingredientes = obtener_productos_almacen(id_actual, sku)
+    for almacen in lista_almacenes:
+        lista_ingredientes = obtener_productos_almacen(almacen, sku)
         for elemento in lista_ingredientes:
             mover_entre_almacenes(elemento['_id'], almacen_destino)
             contador += 1
             if contador == cantidad:
                 return
-    return
 
 
 def move_product_client(sku, cantidad_productos, id_almacen_despacho, id_almacen_destino, oc, precio):
@@ -390,10 +400,16 @@ def find_and_dispatch_sushi():
     # print("got all sushi products by sku", sushi_products)
 
     for sku in sushi_products:
-        # se considera modelo ordenado por delivery_date creciente
-        pendings = SushiOrder.objects.filter(sku__exact=sku, dispatched=False)
+
+        now = datetime.utcnow()
+        epoch = datetime.utcfromtimestamp(0)
+        delta_now = now - epoch
+        seconds_now = int(delta_now.total_seconds())
+        # se considera modelo ordenado por delivery_date creciente, descarta obsoletas
+        pendings = SushiOrder.objects.filter(sku__exact=sku, dispatched=False, delivery_date__gt=seconds_now)
         if not pendings:
             continue
+
         pendings_counter = 0
         for product in sushi_products[sku]:
             pending = pendings[pendings_counter]
