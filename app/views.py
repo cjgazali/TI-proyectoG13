@@ -10,6 +10,8 @@ from app.serializers import OrderSerializer
 from app.subtasks import get_current_stock, check_group_oc_time, get_almacenes_origenes_destino
 
 
+accept_amount = 10
+
 @api_view(['GET'])  # only allows GET, else error code 405
 def stock_list(request):
     """
@@ -32,7 +34,7 @@ def stock_list(request):
         disponible_venta = max(totals[elem] - stock_minimos[elem], 0)
         if disponible_venta != 0:
             respuesta_final.append({"sku": elem, "nombre": aux_dict[elem],
-                                    "total": min(2, disponible_venta)})
+                                    "total": min(accept_amount, disponible_venta)})
     return Response(respuesta_final)
 
 
@@ -68,7 +70,7 @@ def create_order(request):
     if len(data['sku']) > 4:
         # print('rechazado porque es producto tipo 3 (len >4)')
         rechazar_oc(oc_id)
-    elif data["amount"] > 2:
+    elif data["amount"] > accept_amount:
         # print('rechazado porque pide más de 30')
         rechazar_oc(oc_id)
     elif data["sku"] not in ['1001', '1002', '1003', '1004', '1005', '1006', '1007', '1008',
