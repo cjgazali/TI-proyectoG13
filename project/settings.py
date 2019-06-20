@@ -100,11 +100,11 @@ CELERY_BEAT_SCHEDULE = {
     },
     'ftp_ocs': {
         'task': 'app.tasks.ftp_ocs',
-        'schedule': crontab(minute='10,30,50')
+        'schedule': crontab(minute='1,11,21,31,41,51')
     },
     'dispatch_sushi': {
         'task': 'app.tasks.dispatch_sushi',
-        'schedule': crontab(minute='15,35,55')
+        'schedule': crontab(minute='*/5')
     }
 }
 # Password validation
