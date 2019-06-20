@@ -3,22 +3,36 @@ h2, h1{
     font-family: "Verdana";
 }
 
-table, th, td {
+table.style1, th, td {
   border: 1px solid black;
   border-collapse: collapse
 }
 
-th {
+th, td.style1 {
   text-align: center;
 }
 
-table tr:nth-child(even) {
+table.style1 tr:nth-child(even) {
   background-color: #eee;
+  height: 40
 }
-table tr:nth-child(odd) {
+table.style1 tr:nth-child(odd) {
   background-color: #fff;
+  height: 40
 }
-table th {
+table.style1 th {
   color: #3A6BB0;
   background-color: #B8CDEB;
+}
+table.style2, table.style2 th, table.style2 td {
+  border: 1px solid white;
+  border-collapse: collapse
+}
+input{
+  height: 40;
+  text-align: center;
+}
+
+button{
+  height: 40;
 }
