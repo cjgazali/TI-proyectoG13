@@ -7,19 +7,21 @@ from app.services import sftp_ocs, consultar_oc
 
 @shared_task
 def renew_inventory():
-    print("hello renew_inventory")
+    # print("hello renew_inventory")
 
     review_inventory()
-    print("renew_inventory review_inventory")
+    # print("renew_inventory review_inventory")
 
-    print("bye renew_inventory")
+    # print("bye renew_inventory")
 
 
 @shared_task
 def post_inventory():
-    print("hello post_inventory")
+    # print("hello post_inventory")
 
-    print("bye post_inventory")
+    pass
+
+    # print("bye post_inventory")
 
 
 @shared_task
