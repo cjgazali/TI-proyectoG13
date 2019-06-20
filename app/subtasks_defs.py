@@ -113,8 +113,8 @@ def post_to_all(sku, quantity, groups_stock):
 
 def manufacture_raws(sku, diference, production_lot):
     """for review_inventory"""
-    lots = (diference // production_lot) + 1
-    amount = lots * production_lot
+    lots = lots_for_q(diference, production_lot)
+    amount = int(lots * production_lot)
     fabricar_sin_pago(sku, amount)
 
 

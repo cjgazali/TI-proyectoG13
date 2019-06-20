@@ -52,7 +52,9 @@ def get_current_stock():
 
 def get_groups_stock():
     """Entrega lista de diccionarios con default 0,
-    con { sku: total en bodega de otro grupo }"""
+    con { sku: total en bodega de otro grupo }
+
+    ESTA FUNCIÓN QUEDARÁ OBSOLETA"""
     dicts = []
     for n_group in range(1, 15):
         totals = defaultdict(int)  # sku: total
@@ -77,32 +79,25 @@ def get_groups_stock():
     return dicts
 
 
-def review_inventory(totals, groups_stock):
-    # Primero, vemos que skus podemos fabricar
+def review_inventory():
+    totals = get_current_stock()
+
     query = Assigment.objects.filter(group__exact=13)
     skus_fabricables = []
     for dato in query:
         skus_fabricables.append(dato.sku.sku)
 
     productos = RawMaterial.objects.all()
-
     for materia in productos:
         desired_stock = min_raws_factor * materia.stock
         if totals[materia.sku.sku] < desired_stock:
-            # Calculo cuanto me falta para obtener lo que quiero
-            remaining = desired_stock - totals[materia.sku.sku]  # lo que me falta para tener lo que quiero
-
-            # Intento pedir a los grupos y actualizo la cantidad faltante
-            remaining = post_to_all(materia.sku.sku, remaining, groups_stock)
-
-            # Trato de fabricar si no me dieron suficiente
-            if remaining > 0:
-                product_lot = Product.objects.filter(sku=materia.sku.sku).values("production_lot")[0]["production_lot"]
-                if materia.material_type == 1:
-                    if materia.sku.sku in skus_fabricables:
-                        manufacture_raws(materia.sku.sku, remaining, product_lot)
-                else:
-                    try_manufacture(totals, materia.sku.sku, remaining, product_lot)
+            remaining = desired_stock - totals[materia.sku.sku]
+            product_lot = Product.objects.filter(sku=materia.sku.sku).values("production_lot")[0]["production_lot"]
+            if materia.material_type == 1:
+                if materia.sku.sku in skus_fabricables:
+                    manufacture_raws(materia.sku.sku, remaining, product_lot)
+            else:
+                try_manufacture(totals, materia.sku.sku, remaining, product_lot)
 
 
 def review_order(oc_id, products, date, sku, amount, state):
