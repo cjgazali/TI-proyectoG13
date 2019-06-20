@@ -1,14 +1,14 @@
 from collections import defaultdict
 from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes
-from app.services import obtener_productos_almacen, get_group_stock, fabricar_sin_pago
-from app.services import post_order, mover_entre_bodegas, min_raws_factor, crear_oc, ids_oc
+from app.services import obtener_productos_almacen, get_group_stock
+from app.services import min_raws_factor
 from app.services import recepcionar_oc, rechazar_oc, despachar_producto
-from app.models import Ingredient, Product, RawMaterial, Assigment, SushiOrder
+from app.models import Product, RawMaterial, Assigment, SushiOrder
 from app.serializers import MarkSerializer, SushiOrderSerializer
 from app.subtasks_defs import lots_for_q, get_ingredients
 from app.subtasks_defs import post_to_all, manufacture_raws, try_manufacture
 from app.subtasks_defs import check_time_availability, check_will_produce_order, produce_order
-from datetime import datetime, timedelta
+from datetime import datetime
 
 """Funciones que se importan en tasks.py."""
 
@@ -126,11 +126,16 @@ def review_order(oc_id, products, date, sku, amount, state):
     will_produce_order = check_will_produce_order(products, lots, ingredients)
     if will_produce_order:
         if state == "creada":
-            print("review_order: oc accepted")
+            print("review_order: will produce")
+            # produce
+            produced = produce_order(sku, product_lot, lots, ingredients)
+            if not produced:
+                print("review_order: not produced")
+                return
             # accept
             recepcionar_oc(oc_id[0])
-            # produce
-            produce_order(sku, product_lot, lots, ingredients)
+            print("review_order: oc accepted")
+
             data = {'name': oc_id[1]}
             new = MarkSerializer(data=data)
             if new.is_valid():
