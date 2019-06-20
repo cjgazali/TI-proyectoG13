@@ -1,0 +1,30 @@
+{% load static %}
+<html>
+<link rel="stylesheet" href="{% static 'app/css/app.css' %}">
+<h1>¡Bienvenido!</h1>
+
+<h2>Nuestros productos:</h2>
+<table style="width:30%",>
+  <tr>
+     <th>Producto</th>
+     <th>Cantidad a pedir</th>
+   </tr>
+   <tr>
+
+{% for key, value in productos.items %}
+
+   <td>
+
+       {{ value }}
+
+   </td>
+
+   <td>
+
+       <input type="number" name="quantity" placeholder=0 min=0>
+
+   </td>
+ </tr>
+{%endfor%}
+</table>
+</html>
