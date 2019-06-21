@@ -77,18 +77,21 @@ def produce(sku, lot_quantity, ingredients, ids_origen, id_destino):
 
 # START defs for review_post
 def group_sku_stock(group, sku):
+    stock = 0
+
     try:
         group_stock = get_group_stock(group)
         if not isinstance(group_stock, list):
             group_stock = []
     except requests.exceptions.Timeout:
-        print(group, "GET timeout")
+        print(str(group) + " GET timeout ****")
         group_stock = []
+        stock = 2
     except:
-        print(group, "failed to GET")
+        print(str(group) + " failed to GET")
         group_stock = []
+        stock = 2
 
-    stock = 0
     for product in group_stock:
         if isinstance(product, dict):
             try:
@@ -96,7 +99,7 @@ def group_sku_stock(group, sku):
                     stock = product["total"]
                     break
             except:
-                print(group, "bad response from GET")
+                print(str(group) + " bad response from GET")
                 break
         else:
             break
@@ -116,11 +119,11 @@ def post_to_all(sku, quantity):
             continue
 
         available = group_sku_stock(n_group, sku)
-        print(n_group, sku, available, "to POST")
+        print("{} {} {} to POST".format(n_group, sku, available))
         # Pido el mínimo entre lo que quiero y lo que el grupo tenga
         group_post_quantity = min(available, quantity)
         if group_post_quantity > 0:  # si tienen
-            print(n_group, "will post")
+            print(str(n_group) + " will post -------------------")
             now = datetime.utcnow() - timedelta(hours=4)
             now += timedelta(hours=24)
             fecha = now.timestamp() * 1000
@@ -129,31 +132,33 @@ def post_to_all(sku, quantity):
                 response = crear_oc(ids_oc[13], ids_oc[n_group], sku, fecha, quantity, 1, 'b2b', url)
                 id_oc = response['_id']
             except:
-                print(n_group, "failed to crear_oc")
+                print(str(n_group) + " failed to crear_oc")
                 continue
 
             try:
                 response = post_order(n_group, sku, group_post_quantity, id_almacen_recepcion, id_oc)
             except requests.exceptions.Timeout:
-                print(n_group, "POST timeout")
+                print(str(n_group) + " POST timeout ****")
             except:
-                print(n_group, "failed to POST")
+                print(str(n_group) + " failed to POST")
                 continue
 
             try:
                 if response["aceptado"]:
                     # Veo cuánto me falta
                     accepted_amount = response["cantidad"]
-                    print(n_group, sku, accepted_amount, "accepted")
+                    print("{} {} {} accepted -------------------".format(n_group, sku, accepted_amount))
                     quantity = max(0, quantity - accepted_amount)
                     if quantity == 0:
                         break
                 else:
-                    print(n_group, "not accepted")
+                    print(str(n_group) + " not accepted -------------------")
                     pass
             except:
-                print(n_group, "bad response from POST")
+                print(str(n_group) + " bad response from POST -------------------")
                 continue
+        else:
+            print(str(n_group) + " will NOT post")
 # END defs for review_post
 
 
