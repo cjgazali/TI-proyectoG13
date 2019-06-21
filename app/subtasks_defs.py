@@ -48,7 +48,7 @@ def get_almacenes_origenes_destino(to_kitchen=False):
     return ids_origen, id_destino
 
 
-def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
+def move_product_destiny(lista_almacenes, almacen_destino, cantidad, sku):
     """for produce:
     Esta función mueve una cantidad del producto con sku desde una lista
     de almacenes a almacen de destino"""
@@ -56,8 +56,9 @@ def move_product_dispatch(lista_almacenes, almacen_destino, cantidad, sku):
     for almacen in lista_almacenes:
         lista_ingredientes = obtener_productos_almacen(almacen, sku)
         for elemento in lista_ingredientes:
-            mover_entre_almacenes(elemento['_id'], almacen_destino)
-            contador += 1
+            response = mover_entre_almacenes(elemento['_id'], almacen_destino)
+            if response:
+                contador += 1
             if contador == cantidad:
                 return
 
@@ -66,9 +67,12 @@ def produce(sku, lot_quantity, ingredients, ids_origen, id_destino):
     """Prepara ingredientes y manda producir un lote de un producto."""
     # Debemos mover los ingredientes a almacén correspondiente
     for ingredient in ingredients.keys():
-        move_product_dispatch(ids_origen, id_destino, ingredients[ingredient], ingredient)
+        move_product_destiny(ids_origen, id_destino, ingredients[ingredient], ingredient)
     # Mandamos a fabricar
-    fabricar_sin_pago(sku, lot_quantity)
+    response = fabricar_sin_pago(sku, lot_quantity)
+    if response:
+        return True
+    return False
 
 
 # START defs for review_inventory
@@ -151,7 +155,7 @@ def check_time_availability(date, sku):
     now = datetime.utcnow()  # - timedelta(hours=4) servidor del profe también tiene desfase de 4 hrs
     production_mins = Product.objects.filter(sku=sku).values()[0]['expected_production_time']
     production_delta = timedelta(minutes=production_mins)
-    extra = timedelta(minutes=15)  # margen arbitrario
+    extra = timedelta(minutes=10)  # margen arbitrario
     date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%fZ")
 
     if now + production_delta + extra < date:
@@ -174,5 +178,8 @@ def produce_order(sku, min_lot, lots, ingredients):
     Produce de a lotes para no saturar cocina."""
     ids_origen, id_destino = get_almacenes_origenes_destino(True)  # True = to_kitchen
     for i in range(0, lots):
-        produce(sku, min_lot, ingredients, ids_origen, id_destino)
+        produced = produce(sku, min_lot, ingredients, ids_origen, id_destino)
+        if not produced:
+            return False
+    return True
 # END defs for review_order

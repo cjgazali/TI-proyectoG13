@@ -95,6 +95,8 @@ def fabricar_sin_pago(sku, cantidad):
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     body = {'sku': sku, 'cantidad': cantidad}
     result = requests.put(url, data=json.dumps(body), headers=headers)
+    if result.status_code != 200:
+        return None
     response = json.loads(result.text)
     return response
 
@@ -108,6 +110,8 @@ def mover_entre_almacenes(id_producto, id_almacen_destino):
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     body = {'productoId': id_producto, 'almacenId': id_almacen_destino}
     result = requests.post(url, data=json.dumps(body), headers=headers)
+    if result.status_code != 200:
+        return None
     response = json.loads(result.text)
     return response
 
