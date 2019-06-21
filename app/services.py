@@ -122,6 +122,8 @@ def mover_entre_bodegas(id_producto, id_almacen_destino, oc, precio):
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     body = {'productoId': id_producto, 'almacenId': id_almacen_destino, 'oc': oc, "precio": precio}
     result = requests.post(url, data=json.dumps(body), headers=headers)
+    if result.status_code != 200:
+        return None
     response = json.loads(result.text)
     return response
 
