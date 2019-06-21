@@ -1,27 +1,27 @@
 from celery import shared_task
-from app.subtasks import get_current_stock, get_groups_stock, review_inventory
+from app.subtasks import get_current_stock, review_inventory
 from app.subtasks import review_order, find_and_dispatch_sushi
 from app.models import Mark
 from app.services import sftp_ocs, consultar_oc
 
 
 @shared_task
-def main():
-    # print("hello main")
+def renew_inventory():
+    # print("hello renew_inventory")
 
-    # empty_receptions()
-    # print("empty_receptions")
+    review_inventory()
+    # print("renew_inventory review_inventory")
 
-    totals = get_current_stock()
-    # print("main totals")
+    # print("bye renew_inventory")
 
-    groups_stock = get_groups_stock()
-    # print("main groups_stock")
 
-    review_inventory(totals, groups_stock)
-    # print("main review_inventory")
+@shared_task
+def post_inventory():
+    # print("hello post_inventory")
 
-    # print("bye main")
+    pass
+
+    # print("bye post_inventory")
 
 
 @shared_task
