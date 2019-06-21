@@ -1,5 +1,5 @@
 from celery import shared_task
-from app.subtasks import get_current_stock, review_inventory
+from app.subtasks import get_current_stock, review_inventory, review_post
 from app.subtasks import review_order, find_and_dispatch_sushi
 from app.models import Mark
 from app.services import sftp_ocs, consultar_oc
@@ -17,11 +17,12 @@ def renew_inventory():
 
 @shared_task
 def post_inventory():
-    # print("hello post_inventory")
+    print("hello post_inventory")
 
-    pass
+    review_post()
+    print("post_inventory review_post")
 
-    # print("bye post_inventory")
+    print("bye post_inventory")
 
 
 @shared_task
