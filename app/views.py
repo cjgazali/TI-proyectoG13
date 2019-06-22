@@ -10,6 +10,7 @@ from app.serializers import OrderSerializer
 from app.subtasks import get_current_stock
 from app.subtasks_defs import get_almacenes_origenes_destino
 from app.subviews import check_group_oc_time
+from django.shortcuts import render
 
 
 accept_amount = 10
@@ -155,3 +156,10 @@ def order_status(request, id):
         return Response({ "error": "400 (Bad Request): Falta parámetro obligatorio." }, status=status.HTTP_400_BAD_REQUEST)
     respuesta = {"status":request.data["status"]}
     return Response(respuesta, status=status.HTTP_204_NO_CONTENT)
+
+def bonus_home(request):
+    productos = {}
+    for producto in Product.objects.raw('SELECT sku, name FROM app_product'):
+        if int(producto.sku) > 10000:
+            productos[producto.sku] = producto.name
+    return render(request, 'app/home.html', {"productos":productos})

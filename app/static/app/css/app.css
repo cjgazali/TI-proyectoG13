@@ -1,0 +1,38 @@
+h2, h1{
+    color: #719DDC;
+    font-family: "Verdana";
+}
+
+table.style1, th, td {
+  border: 1px solid black;
+  border-collapse: collapse
+}
+
+th, td.style1 {
+  text-align: center;
+}
+
+table.style1 tr:nth-child(even) {
+  background-color: #eee;
+  height: 40
+}
+table.style1 tr:nth-child(odd) {
+  background-color: #fff;
+  height: 40
+}
+table.style1 th {
+  color: #3A6BB0;
+  background-color: #B8CDEB;
+}
+table.style2, table.style2 th, table.style2 td {
+  border: 1px solid white;
+  border-collapse: collapse
+}
+input{
+  height: 40;
+  text-align: center;
+}
+
+button{
+  height: 40;
+}
