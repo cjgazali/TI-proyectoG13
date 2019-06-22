@@ -64,9 +64,10 @@ def obtener_almacenes():
 
 # Esta función muestra los productos no vencidos en el almacén ID para el SKU indicado
 def obtener_productos_almacen(id_almacen, sku):
-    frase_a_hashear = 'GET{}{}'.format(id_almacen, sku)
+    limit = 200
+    frase_a_hashear = 'GET{}{}'.format(id_almacen, sku, limit)
     frase_hasheada = calcular_hash(frase_a_hashear)
-    url = url_base + '/stock?almacenId={}&sku={}'.format(id_almacen, sku)
+    url = url_base + '/stock?almacenId={}&sku={}&limit={}'.format(id_almacen, sku, limit)
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     result = requests.get(url, headers=headers)
     productos = json.loads(result.text)
