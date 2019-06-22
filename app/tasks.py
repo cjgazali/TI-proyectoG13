@@ -17,12 +17,12 @@ def renew_inventory():
 
 @shared_task
 def post_inventory():
-    print("hello post_inventory")
+    # print("hello post_inventory")
 
     review_post()
-    print("post_inventory review_post")
+    # print("post_inventory review_post")
 
-    print("bye post_inventory")
+    # print("bye post_inventory")
 
 
 @shared_task
