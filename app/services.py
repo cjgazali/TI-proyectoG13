@@ -145,7 +145,7 @@ def despachar_producto(id_producto, id_oc, direccion="BLABLA", precio=1):
 
 
 def get_group_stock(n_group):
-    result = requests.get(inventories_url.format(n_group), timeout=4)
+    result = requests.get(inventories_url.format(n_group), timeout=5)
     response = json.loads(result.text)
     return response
 

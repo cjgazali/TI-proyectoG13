@@ -77,7 +77,7 @@ def review_post():
         desired_stock = min_raws_factor * materia.stock
         if totals[materia.sku.sku] < desired_stock:
             remaining = desired_stock - totals[materia.sku.sku]
-            print("{} {} will post_to_all".format(materia.sku.sku, remaining))
+            # print("{} {} will post_to_all".format(materia.sku.sku, remaining))
             post_to_all(materia.sku.sku, remaining)
 
 
