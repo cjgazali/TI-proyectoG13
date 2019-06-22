@@ -11,28 +11,52 @@ from datetime import datetime
 """Funciones que se importan en tasks.py."""
 
 
-def empty_receptions():
-    """Vacía recepción y pulmón hacia bodegas extra."""
+def empty_reception():
+    """Vacía recepción hacia bodegas extra."""
     almacenes_extra = []
     almacenes = obtener_almacenes()
     for almacen in almacenes:
-         if almacen['pulmon'] == True and almacen["usedSpace"] > 0:
-             #print("Se cumple la condición")
-             pulmon = almacen
+        if almacen['recepcion']:
+            recepcion = almacen
+        elif not almacen["pulmon"] and not almacen["despacho"] and not almacen["cocina"]:
+            almacenes_extra.append(almacen)
 
-             for almacen_extra in almacenes:
-                 if almacen_extra["pulmon"] == False and almacen_extra["recepcion"] == False and almacen_extra["despacho"] == False and almacen_extra["cocina"] == False:
-                     almacenes_extra.append(almacen_extra)
+    if recepcion["usedSpace"] > 0:
+        skus = obtener_skus_disponibles(recepcion["_id"])
+        for sku in skus:
+            productos = obtener_productos_almacen(recepcion["_id"], sku["_id"])
+            for producto in productos:
+                if almacenes_extra[0]["usedSpace"] < almacenes_extra[0]["totalSpace"]:
+                    mover_entre_almacenes(producto["_id"], almacenes_extra[0]["_id"])
+                elif almacenes_extra[1]["usedSpace"] < almacenes_extra[1]["totalSpace"]:
+                    mover_entre_almacenes(producto["_id"], almacenes_extra[1]["_id"])
+                else:
+                    print("Alerta, almacenes extra llenos")
+                    return
 
-             skus = obtener_skus_disponibles(pulmon["_id"])
-             for sku in skus:
-                 productos = obtener_productos_almacen(pulmon["_id"], sku["_id"])
-                 for producto in productos:
-                     if almacenes_extra[0]["usedSpace"] < almacenes_extra[0]["totalSpace"]:
-                         mover_entre_almacenes(producto["_id"], almacenes_extra[0]["_id"])
-                     else:
-                         if almacenes_extra[1]["usedSpace"] < almacenes_extra[1]["totalSpace"]:
-                             mover_entre_almacenes(producto["_id"], almacenes_extra[1]["_id"])
+
+def empty_pulmon():
+    """Vacía pulmon hacia bodegas extra."""
+    almacenes_extra = []
+    almacenes = obtener_almacenes()
+    for almacen in almacenes:
+        if almacen['pulmon']:
+            pulmon = almacen
+        elif not almacen["recepcion"] and not almacen["despacho"] and not almacen["cocina"]:
+            almacenes_extra.append(almacen)
+
+    if pulmon["usedSpace"] > 0:
+        skus = obtener_skus_disponibles(pulmon["_id"])
+        for sku in skus:
+            productos = obtener_productos_almacen(pulmon["_id"], sku["_id"])
+            for producto in productos:
+                if almacenes_extra[0]["usedSpace"] < almacenes_extra[0]["totalSpace"]:
+                    mover_entre_almacenes(producto["_id"], almacenes_extra[0]["_id"])
+                elif almacenes_extra[1]["usedSpace"] < almacenes_extra[1]["totalSpace"]:
+                    mover_entre_almacenes(producto["_id"], almacenes_extra[1]["_id"])
+                else:
+                    print("Alerta, almacenes extra llenos")
+                    return
 
 
 def get_current_stock():

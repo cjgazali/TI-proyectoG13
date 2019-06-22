@@ -1,6 +1,6 @@
 from celery import shared_task
 from app.subtasks import get_current_stock, review_inventory, review_post
-from app.subtasks import review_order, find_and_dispatch_sushi
+from app.subtasks import review_order, find_and_dispatch_sushi, empty_reception, empty_pulmon
 from app.models import Mark
 from app.services import sftp_ocs, consultar_oc
 
@@ -53,3 +53,21 @@ def dispatch_sushi():
     # print("dispatch_sushi sushi ocs considered")
 
     # print("bye dispatch_sushi")
+
+
+@shared_task
+def clear_reception():
+    #print("hello clear_reception")
+
+    empty_reception()
+
+    # print("bye clear_reception")
+
+
+@shared_task
+def clear_pulmon():
+    #print("hello clear_pulmon")
+
+    empty_pulmon()
+
+    # print("bye clear_pulmon")

@@ -81,9 +81,7 @@ def create_order(request):
             rechazar_oc(oc_id)
         else:
             if check_group_oc_time(fecha_entrega):
-
-                # aceptar oc, hay productos y alcanza el tiempo
-                recepcionar_oc(oc_id)
+                # hay productos y tenemos al menos 10 minutos para despachar
 
                 ids_origen, id_almacen_despacho = get_almacenes_origenes_destino()
 
@@ -101,6 +99,7 @@ def create_order(request):
                         break
 
                 if cantidad_despachada == data['amount']:
+                    recepcionar_oc(oc_id)  # aceptamos cuando ya aseguramos despacho completo
                     accepted_and_dispatched = True
 
             else:
