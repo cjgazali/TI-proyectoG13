@@ -109,6 +109,14 @@ CELERY_BEAT_SCHEDULE = {
     'dispatch_sushi': {
         'task': 'app.tasks.dispatch_sushi',
         'schedule': crontab(minute='*/4')
+    },
+    'clear_reception': {
+        'task': 'app.tasks.clear_reception',
+        'schedule': crontab(minute='14')
+    },
+    'clear_pulmon': {
+        'task': 'app.tasks.clear_pulmon',
+        'schedule': crontab(minute='15')
     }
 }
 # Password validation
