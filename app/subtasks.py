@@ -29,10 +29,8 @@ def empty_reception():
             productos = obtener_productos_almacen(recepcion["_id"], sku["_id"])
             for producto in productos:
                 if almacenes_extra[0]["usedSpace"] < almacenes_extra[0]["totalSpace"]:
-                    print("vaciando recepcion")
                     mover_entre_almacenes(producto["_id"], almacenes_extra[0]["_id"])
                 elif almacenes_extra[1]["usedSpace"] < almacenes_extra[1]["totalSpace"]:
-                    print("vaciando recepcion")
                     mover_entre_almacenes(producto["_id"], almacenes_extra[1]["_id"])
                 else:
                     print("Alerta, almacenes extra llenos")
@@ -56,10 +54,8 @@ def empty_pulmon():
             for producto in productos:
                 if almacenes_extra[0]["usedSpace"] < almacenes_extra[0]["totalSpace"]:
                     mover_entre_almacenes(producto["_id"], almacenes_extra[0]["_id"])
-                    print("vaciando pulmon")
                 elif almacenes_extra[1]["usedSpace"] < almacenes_extra[1]["totalSpace"]:
                     mover_entre_almacenes(producto["_id"], almacenes_extra[1]["_id"])
-                    print("vaciando pulmon")
                 else:
                     print("Alerta, almacenes extra llenos")
                     return
