@@ -56,17 +56,17 @@ def dispatch_sushi():
 
 @shared_task
 def clear_reception():
-    print("hello clear_reception")
+    #print("hello clear_reception")
 
-    #empty_reception()
+    empty_reception()
 
     # print("bye clear_reception")
 
 
 @shared_task
 def clear_pulmon():
-    print("hello clear_pulmon")
+    #print("hello clear_pulmon")
 
-    #empty_pulmon()
+    empty_pulmon()
 
     # print("bye clear_pulmon")
