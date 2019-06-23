@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view  # DRF improves function view to 
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
-from app.services import get_client_ip, get_products_for_sale
+from app.services import get_client_ip, get_products_for_sale, add_to_cart_file
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from app.subtasks import get_current_stock
@@ -173,6 +173,7 @@ def prueba(request):
         pedido['ip'] = get_client_ip(request)
     context = {'pedido': pedido}
     messages.success(request, '¡Agregado al carro!')
+    add_to_cart_file(request, pedido['sku'], pedido['cantidad'], pedido['ip'])
     return render(request, 'app/home.html', {'mensaje':True, 'productos':productos})
     #return render( request, 'app/prueba.html', context)
 

@@ -259,6 +259,30 @@ def get_client_ip(request):
         print("returning REMOTE_ADDR")
         ip = request.META.get('REMOTE_ADDR')
     return ip
+def update_dict(dict, new_key, new_value):
+    if new_key in dict:
+        dict[new_key]+=new_value
+    else:
+        dict[new_key] = new_value
+
+    return dict
+
+def add_to_cart_file(request, sku, quantity, ip):
+    file_name = str(ip)+".json"
+    agregado = {sku:int(quantity)}
+    try:
+        with open(file_name) as outfile:
+            data = json.load(outfile)
+
+        update_dict(data, sku, int(quantity))
+        with open(file_name, 'w+') as outfile:
+            json.dump(data, outfile)
+
+    except FileNotFoundError:
+        with open(file_name, 'w+') as outfile:
+            json.dump(agregado, outfile)
+
+
 
 if __name__ == '__main__':
     pass
