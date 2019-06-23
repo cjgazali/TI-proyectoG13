@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view  # DRF improves function view to 
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
+from app.services import get_client_ip
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from app.subtasks import get_current_stock
@@ -170,5 +171,6 @@ def prueba(request):
     for key, value in valores:
         pedido['sku'] = key
         pedido['cantidad'] = value
+        pedido['ip'] = get_client_ip(request)
     context = {'pedido': pedido}
     return render( request, 'app/prueba.html', context)

@@ -26,7 +26,7 @@ SECRET_KEY = '5xf%m2oojzfhf-11@_)ym#*s1t$^+p6vn0l#@(hk3h3)*v1o(%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []  # 'tuerca13.ing.puc.cl' for production
+ALLOWED_HOSTS = ['https://floating-journey-85015.herokuapp.com/']  # 'tuerca13.ing.puc.cl' for production
 
 APPEND_SLASH=False
 
@@ -142,5 +142,5 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'swinfo/static/')
 STATIC_URL = '/static/'
