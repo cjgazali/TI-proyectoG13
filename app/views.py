@@ -163,7 +163,7 @@ def bonus_home(request):
     productos = get_products_for_sale()
     return render(request, 'app/home.html', {"productos":productos})
 
-def prueba(request):
+def add_to_cart(request):
     productos = get_products_for_sale()
     valores = request.GET.items()
     pedido = {}
@@ -171,11 +171,10 @@ def prueba(request):
         pedido['sku'] = key
         pedido['cantidad'] = value
         pedido['ip'] = get_client_ip(request)
-    context = {'pedido': pedido}
+
     messages.success(request, '¡Agregado al carro!')
     add_to_cart_file(request, pedido['sku'], pedido['cantidad'], pedido['ip'])
     return render(request, 'app/home.html', {'mensaje':True, 'productos':productos})
-    #return render( request, 'app/prueba.html', context)
 
 def alerta(request):
     messages.add_message(request, messages.INFO, 'Hello world.')

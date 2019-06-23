@@ -6,5 +6,5 @@ urlpatterns = [
     path('orders', views.create_order),
     path('orders/<int:id>/notification', views.order_status, name="order_status"),
     path('ventas', views.bonus_home),
-    path('prueba', views.prueba),
+    path('add_to_cart', views.add_to_cart),
 ]
