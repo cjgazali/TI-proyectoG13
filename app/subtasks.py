@@ -34,6 +34,12 @@ def empty_reception():
                     print("Alerta, almacenes extra llenos")
                     return
 
+                almacenes_extra = []
+                almacenes = obtener_almacenes()
+                for almacen in almacenes:
+                    if not almacen['recepcion'] and not almacen["pulmon"] and not almacen["despacho"] and not almacen["cocina"]:
+                        almacenes_extra.append(almacen)
+
 
 def empty_pulmon():
     """Vacía pulmon hacia bodegas extra."""
@@ -57,6 +63,12 @@ def empty_pulmon():
                 else:
                     print("Alerta, almacenes extra llenos")
                     return
+
+                almacenes_extra = []
+                almacenes = obtener_almacenes()
+                for almacen in almacenes:
+                    if not almacen['recepcion'] and not almacen["pulmon"] and not almacen["despacho"] and not almacen["cocina"]:
+                        almacenes_extra.append(almacen)
 
 
 def get_current_stock():
