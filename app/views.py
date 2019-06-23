@@ -5,13 +5,14 @@ from rest_framework.decorators import api_view  # DRF improves function view to 
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
-from app.services import get_client_ip
+from app.services import get_client_ip, get_products_for_sale
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from app.subtasks import get_current_stock
 from app.subtasks_defs import get_almacenes_origenes_destino
 from app.subviews import check_group_oc_time
 from django.shortcuts import render
+from django.contrib import messages
 
 
 accept_amount = 10
@@ -159,13 +160,11 @@ def order_status(request, id):
     return Response(respuesta, status=status.HTTP_204_NO_CONTENT)
 
 def bonus_home(request):
-    productos = {}
-    for producto in Product.objects.raw('SELECT sku, name FROM app_product'):
-        if int(producto.sku) > 10000:
-            productos[producto.sku] = producto.name
+    productos = get_products_for_sale()
     return render(request, 'app/home.html', {"productos":productos})
 
 def prueba(request):
+    productos = get_products_for_sale()
     valores = request.GET.items()
     pedido = {}
     for key, value in valores:
@@ -173,4 +172,9 @@ def prueba(request):
         pedido['cantidad'] = value
         pedido['ip'] = get_client_ip(request)
     context = {'pedido': pedido}
-    return render( request, 'app/prueba.html', context)
+    messages.success(request, '¡Agregado al carro!')
+    return render(request, 'app/home.html', {'mensaje':True, 'productos':productos})
+    #return render( request, 'app/prueba.html', context)
+
+def alerta(request):
+    messages.add_message(request, messages.INFO, 'Hello world.')

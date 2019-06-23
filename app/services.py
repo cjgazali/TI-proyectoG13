@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 import pysftp
 import hmac
 from base64 import encodestring
+from app.models import Product
 
 context = "DEVELOPMENT"  # or DEVELOPMENT
 # url API profe
@@ -238,6 +239,13 @@ def post_notification(status, n_group, order_id):
     result = requests.post(orders_url.format(n_group)+"/{}/notification".format(order_id), data=json.dumps(body), headers=headers)
     response = json.loads(result.text)
     return response
+
+def get_products_for_sale():
+    productos = {}
+    for producto in Product.objects.raw('SELECT sku, name FROM app_product'):
+        if int(producto.sku) > 10000:
+            productos[producto.sku] = producto.name
+    return productos
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
