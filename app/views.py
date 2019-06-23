@@ -1,7 +1,7 @@
 from rest_framework.response import Response  # DRF's HTTPResponse
 from rest_framework.decorators import api_view  # DRF improves function view to APIView
 from rest_framework import status
-from app.services import obtener_productos_almacen, mover_entre_bodegas
+from app.services import obtener_productos_almacen, mover_entre_bodegas, min_post_factor
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
 from app.models import Product, RawMaterial
 from app.serializers import OrderSerializer
@@ -77,7 +77,7 @@ def create_order(request):
             return Response({"error": "404 (Not Found): sku no existe."}, status=status.HTTP_404_NOT_FOUND)
 
         minimum_stock = raw_material[0]['stock']
-        if totals[data['sku']] - data['amount'] < minimum_stock:
+        if totals[data['sku']] - data['amount'] < minimum_stock * min_post_factor:
             rechazar_oc(oc_id)
         else:
             if check_group_oc_time(fecha_entrega):

@@ -34,8 +34,8 @@ server_url = "http://tuerca{}.ing.puc.cl"
 inventories_url = server_url + "/inventories"
 orders_url = server_url + "/orders"
 
-min_stock_factor = 2
 min_raws_factor = 2
+min_post_factor = 1.5
 
 
 # Código replicado de https://sites.google.com/site/studyingpython/home/basis/hmac-sha1
