@@ -85,6 +85,7 @@ def review_inventory():
         desired_stock = min_raws_factor * materia.stock
         if totals[materia.sku.sku] < desired_stock:
             remaining = desired_stock - totals[materia.sku.sku]
+            remaining = int((remaining // 2) + 1)
             product_lot = Product.objects.filter(sku=materia.sku.sku).values("production_lot")[0]["production_lot"]
             if materia.material_type == 1:
                 if materia.sku.sku in skus_fabricables:
