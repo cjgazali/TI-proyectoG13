@@ -112,11 +112,11 @@ CELERY_BEAT_SCHEDULE = {
     },
     'clear_reception': {
         'task': 'app.tasks.clear_reception',
-        'schedule': crontab(minute='14')
+        'schedule': crontab(minute='5,20,35,50')
     },
     'clear_pulmon': {
         'task': 'app.tasks.clear_pulmon',
-        'schedule': crontab(minute='15')
+        'schedule': crontab(minute='25')
     }
 }
 # Password validation
