@@ -163,3 +163,12 @@ def bonus_home(request):
         if int(producto.sku) > 10000:
             productos[producto.sku] = producto.name
     return render(request, 'app/home.html', {"productos":productos})
+
+def prueba(request):
+    valores = request.GET.items()
+    pedido = {}
+    for key, value in valores:
+        pedido['sku'] = key
+        pedido['cantidad'] = value
+    context = {'pedido': pedido}
+    return render( request, 'app/prueba.html', context)

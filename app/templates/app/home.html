@@ -4,7 +4,7 @@
 <h1>¡Bienvenido!</h1>
 
 <h2>Nuestros productos:</h2>
-<table class="style1" style="width:42%; float: left;",>
+<table>
   <tr>
      <th>Producto</th>
      <th>Cantidad a pedir</th>
@@ -16,13 +16,12 @@
    <td>
 
        {{ value }}
-
    </td>
 
-   <td class="style1">
-
-       <input type="number" name="quantity" placeholder=0 min=0> <button type="button">Agregar al carro</button>
-
+   <td>
+      <form action="/prueba" method="GET">
+       <input type="number" name={{key}} placeholder=0 min=0/> <input type="submit" value= "Agregar al carro"/>
+     </form>
    </td>
 
 
