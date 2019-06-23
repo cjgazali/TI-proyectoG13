@@ -1,6 +1,6 @@
-from app.services import obtener_almacenes, mover_entre_almacenes
-from app.services import obtener_productos_almacen, fabricar_sin_pago
-from app.services import post_order, crear_oc, ids_oc
+import requests
+from app.services import obtener_almacenes, mover_entre_almacenes, obtener_productos_almacen, fabricar_sin_pago
+from app.services import get_group_stock, post_order, crear_oc, ids_oc
 from app.models import Ingredient, Product
 from datetime import datetime, timedelta
 
@@ -75,42 +75,96 @@ def produce(sku, lot_quantity, ingredients, ids_origen, id_destino):
     return False
 
 
-# START defs for review_inventory
-def post_to_all(sku, quantity, groups_stock):
-    """for review_inventory"""
+# START defs for review_post
+def group_sku_stock(group, sku):
+    stock = 2
+
+    try:
+        group_stock = get_group_stock(group)
+        if not isinstance(group_stock, list):
+            group_stock = []
+    except requests.exceptions.Timeout:
+        # print(str(group) + " GET timeout ****")
+        group_stock = []
+        stock = 0
+    except:
+        # print(str(group) + " failed to GET")
+        group_stock = []
+        stock = 0
+
+    for product in group_stock:
+        if isinstance(product, dict):
+            try:
+                if product["sku"] == sku:
+                    stock = product["total"]
+                    break
+            except:
+                # print(str(group) + " bad response from GET")
+                break
+        else:
+            break
+    return stock
+
+
+def post_to_all(sku, quantity):
+    """Hace post a todos por una cantidad objetivo."""
+    id_almacen_recepcion = ""
     almacenes = obtener_almacenes()
     for almacen in almacenes:
         if almacen['recepcion']:
             id_almacen_recepcion = almacen["_id"]
 
-    for n_group in range(1,15):
-        if n_group != 13 and n_group != 10:  # saltamos grupo 10 xq de momento es mal negocio
-            # Pido el mínimo entre lo que quiero y lo que el grupo tenga
-            group_post_quantity = min(groups_stock[n_group - 1][sku], quantity)
-            if group_post_quantity > 0:  # si tienen
-                try:
-                    now = datetime.utcnow() - timedelta(hours=4)
-                    now += timedelta(hours=24)
-                    fecha = now.timestamp() * 1000
-                    # Revisar esta url
-                    url = 'http://tuerca13.ing.puc.cl/orders/{_id}/notification'
-                    result = crear_oc(ids_oc[13], ids_oc[n_group], sku, fecha, quantity, 1, 'b2b', url)
-                    id_oc = result['_id']
-                    response = post_order(n_group, sku, group_post_quantity, id_almacen_recepcion, id_oc)
-                except:
-                    continue
-                try:
-                    if response["aceptado"]:
-                        # Veo cuánto me falta
-                        accepted_amount = response["cantidad"]
-                        quantity = max(0, quantity - accepted_amount)
-                        if quantity == 0:
-                            break
-                except:
-                    continue
-    return quantity
+    for n_group in range(1, 15):
+        if n_group == 13:
+            continue
+
+        available = group_sku_stock(n_group, sku)
+        # print("{} {} {} to POST".format(n_group, sku, available))
+        # Pido el mínimo entre lo que quiero y lo que el grupo tenga
+        group_post_quantity = min(available, quantity)
+        if group_post_quantity > 0:  # si tienen
+            # print(str(n_group) + " will post -------------------")
+            now = datetime.utcnow() - timedelta(hours=4)
+            now += timedelta(hours=24)
+            fecha = now.timestamp() * 1000
+            url = 'http://tuerca13.ing.puc.cl/orders/{_id}/notification'
+            try:
+                response = crear_oc(ids_oc[13], ids_oc[n_group], sku, fecha, quantity, 1, 'b2b', url)
+                id_oc = response['_id']
+            except:
+                # print(str(n_group) + " failed to crear_oc")
+                continue
+
+            try:
+                response = post_order(n_group, sku, group_post_quantity, id_almacen_recepcion, id_oc)
+            except requests.exceptions.Timeout:
+                # print(str(n_group) + " POST timeout ****")
+                continue
+            except:
+                # print(str(n_group) + " failed to POST")
+                continue
+
+            try:
+                if response["aceptado"]:
+                    # Veo cuánto me falta
+                    accepted_amount = response["cantidad"]
+                    # print("{} {} {} accepted -------------------".format(n_group, sku, accepted_amount))
+                    quantity = max(0, quantity - accepted_amount)
+                    if quantity == 0:
+                        break
+                else:
+                    # print(str(n_group) + " not accepted -------------------")
+                    pass
+            except:
+                # print(str(n_group) + " bad response from POST -------------------")
+                continue
+        else:
+            # print(str(n_group) + " will NOT post")
+            pass
+# END defs for review_post
 
 
+# START defs for review_inventory
 def manufacture_raws(sku, diference, production_lot):
     """for review_inventory"""
     lots = lots_for_q(diference, production_lot)

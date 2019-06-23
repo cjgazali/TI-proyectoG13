@@ -1,8 +1,6 @@
 from collections import defaultdict
-from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes
-from app.services import obtener_productos_almacen, get_group_stock
-from app.services import min_raws_factor
-from app.services import recepcionar_oc, rechazar_oc, despachar_producto
+from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen
+from app.services import min_raws_factor, recepcionar_oc, rechazar_oc, despachar_producto
 from app.models import Product, RawMaterial, Assigment, SushiOrder
 from app.serializers import MarkSerializer, SushiOrderSerializer
 from app.subtasks_defs import lots_for_q, get_ingredients
@@ -74,35 +72,6 @@ def get_current_stock():
     return totals
 
 
-def get_groups_stock():
-    """Entrega lista de diccionarios con default 0,
-    con { sku: total en bodega de otro grupo }
-
-    ESTA FUNCIÓN QUEDARÁ OBSOLETA"""
-    dicts = []
-    for n_group in range(1, 15):
-        totals = defaultdict(int)  # sku: total
-        if n_group == 13 or n_group == 10:  # diccionario vacío para nosotros
-            # y para grupo 10 xq de momento son mal negocio
-            dicts.append(totals)
-            continue
-        try:
-            group_stock = get_group_stock(n_group)
-        except:
-            # print("fail", n_group)
-            group_stock = []
-        for product in group_stock:
-            if isinstance(product, dict):
-                try:
-                    totals[product["sku"]] += product["total"]
-                except:
-                    # print("KeyError", n_group)
-                    break
-        dicts.append(totals)
-        # print(totals)
-    return dicts
-
-
 def review_inventory():
     totals = get_current_stock()
 
@@ -122,6 +91,18 @@ def review_inventory():
                     manufacture_raws(materia.sku.sku, remaining, product_lot)
             else:
                 try_manufacture(totals, materia.sku.sku, remaining, product_lot)
+
+
+def review_post():
+    totals = get_current_stock()
+
+    productos = RawMaterial.objects.filter(material_type=1)
+    for materia in productos:
+        desired_stock = min_raws_factor * materia.stock
+        if totals[materia.sku.sku] < desired_stock:
+            remaining = desired_stock - totals[materia.sku.sku]
+            # print("{} {} will post_to_all".format(materia.sku.sku, remaining))
+            post_to_all(materia.sku.sku, remaining)
 
 
 def review_order(oc_id, products, date, sku, amount, state):
