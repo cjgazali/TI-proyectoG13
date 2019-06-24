@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view  # DRF improves function view to 
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
-from app.services import get_client_ip, get_products_for_sale, add_to_cart_file, sku_to_name
+from app.services import get_client_ip, get_products_for_sale, add_to_cart_file, sku_with_name, update_cart_file
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from app.subtasks import get_current_stock
@@ -176,6 +176,22 @@ def add_to_cart(request):
     add_to_cart_file(request, pedido['sku'], pedido['cantidad'], pedido['ip'])
     return render(request, 'app/home.html', {'mensaje':True, 'productos':productos})
 
+def update_cart(request):
+    productos = get_products_for_sale()
+    valores = request.GET.items()
+    pedido = {}
+    for key, value in valores:
+        pedido['sku'] = key
+        pedido['cantidad'] = value
+        pedido['ip'] = get_client_ip(request)
+    update_cart_file(request, pedido['sku'], pedido['cantidad'], pedido['ip'])
+
+    file_name = str(get_client_ip(request))+".json"
+
+    with open(file_name) as outfile:
+        data = json.load(outfile)
+
+    return render(request, 'app/cart.html', {'carro':sku_with_name(data)})
 
 def see_cart(request):
     file_name = str(get_client_ip(request))+".json"
@@ -183,6 +199,6 @@ def see_cart(request):
         with open(file_name) as outfile:
             data = json.load(outfile)
 
-        return render(request, 'app/cart.html', {'carro_sku':data, 'carro_nombre':sku_to_name(data)})
+        return render(request, 'app/cart.html', {'carro':sku_with_name(data)})
     except FileNotFoundError:
-        return render(request, 'app/cart.html', {'carro_sku':False})
+        return render(request, 'app/cart.html', {'carro':False})

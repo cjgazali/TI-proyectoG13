@@ -1,10 +1,10 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'app/css/app.css' %}">
-{%if not carro_sku%}
+{%if not carro%}
 Su carro se encuentra actualmente vacío.
 {%endif%}
 
-{%if carro_sku%}
+{%if carro%}
 <h1>Carro de compras</h1>
 <p></p>
 <h5 style="color:#069"> Si desea eliminar un producto por completo, actualice la cantidad a cero.</h5>
@@ -17,18 +17,19 @@ Su carro se encuentra actualmente vacío.
    </tr>
    <tr>
 
-{% for key, value in carro_nombre.items %}
+{% for key, value in carro.items %}
 
    <td>
-       {{ key }}
+       {{ value.0 }}
    </td>
 
    <td>
-       {{ value }}
+       {{ value.1 }}
    </td>
 
    <td>
-      <form action="/add_to_cart" method="GET">
+
+      <form action="/update_cart" method="GET">
        <input type="number" name={{key}} placeholder=0 min=0> <input type="submit" value= "Actualizar">
      </form>
    </td>
