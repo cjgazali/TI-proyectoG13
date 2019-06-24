@@ -77,7 +77,7 @@ def produce(sku, lot_quantity, ingredients, ids_origen, id_destino):
 
 # START defs for review_post
 def group_sku_stock(group, sku):
-    stock = 2
+    stock = 0
 
     try:
         group_stock = get_group_stock(group)
@@ -86,11 +86,9 @@ def group_sku_stock(group, sku):
     except requests.exceptions.Timeout:
         # print(str(group) + " GET timeout ****")
         group_stock = []
-        stock = 0
     except:
         # print(str(group) + " failed to GET")
         group_stock = []
-        stock = 0
 
     for product in group_stock:
         if isinstance(product, dict):
