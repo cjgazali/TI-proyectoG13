@@ -1,0 +1,42 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'app/css/app.css' %}">
+{%if not carro_sku%}
+Su carro se encuentra actualmente vacío.
+{%endif%}
+
+{%if carro_sku%}
+<h1>Carro de compras</h1>
+<p></p>
+<h5 style="color:#069"> Si desea eliminar un producto por completo, actualice la cantidad a cero.</h5>
+<p></p>
+<table>
+  <tr>
+     <th>Producto</th>
+     <th>Cantidad actual</th>
+     <th>Cambiar cantidad a pedir</th>
+   </tr>
+   <tr>
+
+{% for key, value in carro_nombre.items %}
+
+   <td>
+       {{ key }}
+   </td>
+
+   <td>
+       {{ value }}
+   </td>
+
+   <td>
+      <form action="/add_to_cart" method="GET">
+       <input type="number" name={{key}} placeholder=0 min=0> <input type="submit" value= "Actualizar">
+     </form>
+   </td>
+
+
+ </tr>
+{%endfor%}
+</table>
+{%endif%}
+
+<h4 ><a href = "/ventas">Volver</a></h4>

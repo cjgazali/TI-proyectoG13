@@ -282,7 +282,12 @@ def add_to_cart_file(request, sku, quantity, ip):
         with open(file_name, 'w+') as outfile:
             json.dump(agregado, outfile)
 
-
+def sku_to_name(cart):
+    productos = get_products_for_sale()
+    resultado = {}
+    for sku in cart:
+        resultado.update({productos[sku]: cart[sku]})
+    return resultado
 
 if __name__ == '__main__':
     pass
