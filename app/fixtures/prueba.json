@@ -5412,7 +5412,7 @@
         "pk": "2",
         "fields": {
             "sku": "1002",
-            "stock": 38,
+            "stock": 28,
             "material_type": 1
         }
     },
