@@ -34,8 +34,8 @@ server_url = "http://tuerca{}.ing.puc.cl"
 inventories_url = server_url + "/inventories"
 orders_url = server_url + "/orders"
 
-min_stock_factor = 2
 min_raws_factor = 2
+min_post_factor = 1.5
 
 
 # Código replicado de https://sites.google.com/site/studyingpython/home/basis/hmac-sha1
@@ -64,9 +64,10 @@ def obtener_almacenes():
 
 # Esta función muestra los productos no vencidos en el almacén ID para el SKU indicado
 def obtener_productos_almacen(id_almacen, sku):
+    limit = 200
     frase_a_hashear = 'GET{}{}'.format(id_almacen, sku)
     frase_hasheada = calcular_hash(frase_a_hashear)
-    url = url_base + '/stock?almacenId={}&sku={}'.format(id_almacen, sku)
+    url = url_base + '/stock?almacenId={}&sku={}&limit={}'.format(id_almacen, sku, limit)
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     result = requests.get(url, headers=headers)
     productos = json.loads(result.text)
@@ -95,6 +96,8 @@ def fabricar_sin_pago(sku, cantidad):
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     body = {'sku': sku, 'cantidad': cantidad}
     result = requests.put(url, data=json.dumps(body), headers=headers)
+    if result.status_code != 200:
+        return None
     response = json.loads(result.text)
     return response
 
@@ -108,6 +111,8 @@ def mover_entre_almacenes(id_producto, id_almacen_destino):
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     body = {'productoId': id_producto, 'almacenId': id_almacen_destino}
     result = requests.post(url, data=json.dumps(body), headers=headers)
+    if result.status_code != 200:
+        return None
     response = json.loads(result.text)
     return response
 
@@ -122,6 +127,8 @@ def mover_entre_bodegas(id_producto, id_almacen_destino, oc, precio):
     headers = {'Content-Type': 'application/json', 'Authorization': 'INTEGRACION grupo13:{}'.format(frase_hasheada)}
     body = {'productoId': id_producto, 'almacenId': id_almacen_destino, 'oc': oc, "precio": precio}
     result = requests.post(url, data=json.dumps(body), headers=headers)
+    if result.status_code != 200:
+        return None
     response = json.loads(result.text)
     return response
 
@@ -139,7 +146,7 @@ def despachar_producto(id_producto, id_oc, direccion="BLABLA", precio=1):
 
 
 def get_group_stock(n_group):
-    result = requests.get(inventories_url.format(n_group), timeout=8)
+    result = requests.get(inventories_url.format(n_group), timeout=5)
     response = json.loads(result.text)
     return response
 
@@ -147,7 +154,7 @@ def get_group_stock(n_group):
 def post_order(n_group, sku, quantity, id_almacen_recepcion, id_oc):
     headers = {'Content-Type': 'application/json', "group": "13"}
     body = {'sku': str(sku), 'cantidad': str(quantity), "almacenId": id_almacen_recepcion, 'oc': id_oc}
-    result = requests.post(orders_url.format(n_group), data=json.dumps(body), headers=headers, timeout=20)
+    result = requests.post(orders_url.format(n_group), data=json.dumps(body), headers=headers, timeout=15)
     response = json.loads(result.text)
     return response
 
@@ -242,3 +249,4 @@ def post_notification(status, n_group, order_id):
 
 if __name__ == '__main__':
     pass
+

@@ -5403,7 +5403,7 @@
         "pk": "1",
         "fields": {
             "sku": "1001",
-            "stock": 64,
+            "stock": 56,
             "material_type": 1
         }
     },
@@ -5412,7 +5412,7 @@
         "pk": "2",
         "fields": {
             "sku": "1002",
-            "stock": 200,
+            "stock": 28,
             "material_type": 1
         }
     },
@@ -5421,7 +5421,7 @@
         "pk": "3",
         "fields": {
             "sku": "1003",
-            "stock": 24,
+            "stock": 21,
             "material_type": 1
         }
     },
@@ -5430,7 +5430,7 @@
         "pk": "4",
         "fields": {
             "sku": "1004",
-            "stock": 16,
+            "stock": 14,
             "material_type": 1
         }
     },
@@ -5457,7 +5457,7 @@
         "pk": "7",
         "fields": {
             "sku": "1007",
-            "stock": 52,
+            "stock": 56,
             "material_type": 1
         }
     },
@@ -5484,7 +5484,7 @@
         "pk": "10",
         "fields": {
             "sku": "1010",
-            "stock": 66,
+            "stock": 22,
             "material_type": 1
         }
     },
@@ -5511,7 +5511,7 @@
         "pk": "13",
         "fields": {
             "sku": "1013",
-            "stock": 600,
+            "stock": 300,
             "material_type": 1
         }
     },
@@ -5538,7 +5538,7 @@
         "pk": "16",
         "fields": {
             "sku": "1016",
-            "stock": 600,
+            "stock": 200,
             "material_type": 1
         }
     },
@@ -5547,7 +5547,7 @@
         "pk": "17",
         "fields": {
             "sku": "1101",
-            "stock": 70,
+            "stock": 30,
             "material_type": 2
         }
     },
@@ -5565,7 +5565,7 @@
         "pk": "19",
         "fields": {
             "sku": "1106",
-            "stock": 400,
+            "stock": 200,
             "material_type": 2
         }
     },
@@ -5619,7 +5619,7 @@
         "pk": "25",
         "fields": {
             "sku": "1112",
-            "stock": 130,
+            "stock": 50,
             "material_type": 2
         }
     },
@@ -5646,7 +5646,7 @@
         "pk": "28",
         "fields": {
             "sku": "1116",
-            "stock": 250,
+            "stock": 50,
             "material_type": 2
         }
     },
@@ -5655,7 +5655,7 @@
         "pk": "29",
         "fields": {
             "sku": "1201",
-            "stock": 250,
+            "stock": 50,
             "material_type": 2
         }
     },
@@ -5682,7 +5682,7 @@
         "pk": "32",
         "fields": {
             "sku": "1210",
-            "stock": 150,
+            "stock": 50,
             "material_type": 2
         }
     },
