@@ -303,5 +303,8 @@ def sku_with_name(cart):
         resultado.update({sku: (productos[sku],cart[sku])})
     return resultado
 
+def address_to_coordinates(calle, numero):
+    bla = requests.get("https://api.mapbox.com/geocoding/v5/mapbox.places/{}%20{}.json?types=address&proximity=-70.6693,-33.4489&access_token=pk.eyJ1Ijoic25vcmxheDgiLCJhIjoiY2p4YjZ6aXF1MDN3cTNwbG94cnExcXFjYSJ9.DdB8WOhH8k6kyL_jFrC2-Q".format(calle, numero))
+    return json.loads(bla.text)['features'][0]['center']
 if __name__ == '__main__':
     pass

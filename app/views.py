@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view  # DRF improves function view to 
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
-from app.services import get_client_ip, get_products_for_sale, add_to_cart_file, sku_with_name, update_cart_file
+from app.services import get_client_ip, get_products_for_sale, add_to_cart_file, sku_with_name, update_cart_file, address_to_coordinates
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from app.subtasks import get_current_stock
@@ -14,6 +14,7 @@ from app.subviews import check_group_oc_time
 from django.shortcuts import render
 from django.contrib import messages
 import json
+import requests
 
 accept_amount = 10
 
@@ -202,3 +203,15 @@ def see_cart(request):
         return render(request, 'app/cart.html', {'carro':sku_with_name(data)})
     except FileNotFoundError:
         return render(request, 'app/cart.html', {'carro':False})
+
+def confirm_purchase(request):
+    return render(request, 'app/purchase.html', {'coordenadas':(-70.6693, -33.4489), 'zoom':9})
+
+
+def get_address(request):
+    respuesta = {}
+    valores = request.GET.items()
+    for key, value in valores:
+        respuesta.update({key:value})
+    coordenadas = address_to_coordinates(respuesta["calle"], respuesta["numero"])
+    return render(request, 'app/purchase.html', {'coordenadas':coordenadas, 'zoom':15})

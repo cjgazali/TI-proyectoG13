@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+  </head>
+  <body>
+   <div id='map' width="100%" style='height:400px'></div>
+   <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic25vcmxheDgiLCJhIjoiY2p4YjlybGhvMDR0MjN0bG9tZTI1MzIydiJ9.3pwf3y-Cl_fDbN5KQtP0kA';
+    var map = new mapboxgl.Map({
+     container: 'map',
+     style: 'mapbox://styles/mapbox/streets-v10',
+     center: [{{coordenadas.0}}, {{coordenadas.1}}],
+     zoom: {{zoom}}
+    });
+
+
+
+   </script>
+   Por favor, ingrese su ubicación:
+   <p></p>
+   <form action="/get_address" method="GET">
+    <input type="text" name=calle placeholder=Calle> <input type="text" name=numero placeholder=Numero> <input type="submit" value= "Buscar">
+  </form>
+
+  {{coordenadas}}
+  </body>
+</html>
