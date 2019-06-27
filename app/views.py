@@ -214,4 +214,4 @@ def get_address(request):
     for key, value in valores:
         respuesta.update({key:value})
     coordenadas = address_to_coordinates(respuesta["calle"], respuesta["numero"])
-    return render(request, 'app/purchase.html', {'coordenadas':coordenadas, 'zoom':15})
+    return render(request, 'app/purchase.html', {'coordenadas':coordenadas, 'zoom':16})
