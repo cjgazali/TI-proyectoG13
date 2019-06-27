@@ -127,7 +127,7 @@ def post_to_all(sku, quantity):
             fecha = now.timestamp() * 1000
             url = 'http://tuerca13.ing.puc.cl/orders/{_id}/notification'
             try:
-                response = crear_oc(ids_oc[13], ids_oc[n_group], sku, fecha, quantity, 1, 'b2b', url)
+                response = crear_oc(ids_oc[13], ids_oc[n_group], sku, fecha, group_post_quantity, 1, 'b2b', url)
                 id_oc = response['_id']
             except:
                 # print(str(n_group) + " failed to crear_oc")
