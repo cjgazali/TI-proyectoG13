@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view  # DRF improves function view to 
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
-from app.services import get_client_ip, get_products_for_sale, add_to_cart_file, sku_with_name, update_cart_file, address_to_coordinates
+from app.services import get_client_ip, get_products_for_sale, add_to_cart_file, sku_with_name, update_cart_file, address_to_coordinates, receipt_creation
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from app.subtasks import get_current_stock
@@ -215,3 +215,11 @@ def get_address(request):
         respuesta.update({key:value})
     coordenadas = address_to_coordinates(respuesta["calle"], respuesta["numero"])
     return render(request, 'app/purchase.html', {'coordenadas':coordenadas, 'zoom':16})
+
+def generate_receipt(request):
+    respuesta = {}
+    valores = request.GET.items()
+    for key, value in valores:
+        respuesta.update({key:value})
+    entregar = receipt_creation(respuesta['nombre'], 10000)
+    return render(request, 'app/receipt.html', {'respuesta': entregar})

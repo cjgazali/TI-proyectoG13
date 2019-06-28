@@ -19,6 +19,9 @@ if context == "PRODUCTION":
     url_oc = "https://integracion-2019-prod.herokuapp.com/oc"
     sftp_user_name = "grupo13"
     sftp_password = "UM5Hh7PbLZxJ8t241"
+    group_id = "5cc66e378820160004a4c3c"
+    #generacion boleta
+    receipt_url = "https://integracion-2019-prod.herokuapp.com"
 else:
     ids_oc = {1: '5cbd31b7c445af0004739be3', 2: '5cbd31b7c445af0004739be4', 3: '5cbd31b7c445af0004739be5',
               4: '5cbd31b7c445af0004739be6', 5: '5cbd31b7c445af0004739be7', 6: '5cbd31b7c445af0004739be8',
@@ -29,6 +32,10 @@ else:
     url_oc = "https://integracion-2019-dev.herokuapp.com/oc"
     sftp_user_name = "grupo13_dev"
     sftp_password = "c7vq41weKJGcvas"
+    group_id = "5cbd31b7c445af0004739bef"
+    #generacion boleta
+    receipt_url = "https://integracion-2019-dev.herokuapp.com"
+
 
 # url API grupos
 server_url = "http://tuerca{}.ing.puc.cl"
@@ -294,8 +301,6 @@ def update_cart_file(request, sku, quantity, ip):
     with open(file_name, 'w+') as outfile:
         json.dump(data, outfile)
 
-
-
 def sku_with_name(cart):
     productos = get_products_for_sale()
     resultado = {}
@@ -306,5 +311,13 @@ def sku_with_name(cart):
 def address_to_coordinates(calle, numero):
     bla = requests.get("https://api.mapbox.com/geocoding/v5/mapbox.places/{}%20{}.json?types=address&proximity=-70.6693,-33.4489&access_token=pk.eyJ1Ijoic25vcmxheDgiLCJhIjoiY2p4YjZ6aXF1MDN3cTNwbG94cnExcXFjYSJ9.DdB8WOhH8k6kyL_jFrC2-Q".format(calle, numero))
     return json.loads(bla.text)['features'][0]['center']
+
+def receipt_creation(cliente, precio):
+    url = receipt_url+'/sii/boleta'
+    headers = {'Content-Type': 'application/json'}
+    body = {'proveedor': group_id, 'cliente': cliente, 'total': precio}
+    result = requests.post(url, data=json.dumps(body), headers=headers)
+    boleta = json.loads(result.text)
+    return boleta
 if __name__ == '__main__':
     pass

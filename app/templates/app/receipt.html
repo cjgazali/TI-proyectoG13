@@ -1,0 +1,40 @@
+<html>
+  <head>
+    {%load staticfiles%}
+    <link rel="stylesheet" href="{% static 'app/css/app.css' %}">
+    <h1>Boleta de su pedido</h1>
+    <p></p>
+
+    <table>
+      <tr>
+         <th>Id</th>
+         <th>Monto neto</th>
+         <th>Iva pagado</th>
+         <th>Monto final</th>
+       </tr>
+       <tr>
+
+       <td>
+
+           {{ respuesta.oc }}
+       </td>
+       <td>
+
+           {{ respuesta.bruto }}
+       </td>
+       <td>
+
+           {{ respuesta.iva }}
+       </td>
+
+       <td>
+
+           {{ respuesta.total }}
+       </td>
+     </tr>
+    </table>
+  </head>
+</html>
+<!-- 
+Boleta siendo generada.
+{{respuesta}} -->

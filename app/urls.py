@@ -11,5 +11,6 @@ urlpatterns = [
     path('update_cart', views.update_cart),
     path('confirm_purchase', views.confirm_purchase),
     path('get_address', views.get_address),
+    path('generate_receipt', views.generate_receipt),
 
 ]
