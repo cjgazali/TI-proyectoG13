@@ -16,7 +16,7 @@ class ProductSerializer(serializers.ModelSerializer):
                   'number_products', 'expected_duration_time', 'equivalence_units',
                   'measurement_unit', 'production_lot', 'expected_production_time',
                   'producer_groups', 'production', 'dispatch_space',
-                  'reception_space', 'minimum_stock')
+                  'reception_space', 'minimum_stock', 'price')
 
 
 class IngredientSerializer(serializers.ModelSerializer):

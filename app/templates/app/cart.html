@@ -5,6 +5,8 @@ Su carro se encuentra actualmente vacío.
 {%endif%}
 
 {%if carro%}
+
+<center>
 <h1>Carro de compras</h1>
 <p></p>
 <h5 style="color:#069"> Si desea eliminar un producto por completo, actualice la cantidad a cero.</h5>
@@ -13,11 +15,14 @@ Su carro se encuentra actualmente vacío.
   <tr>
      <th>Producto</th>
      <th>Cantidad actual</th>
+      <th>Valor unidad</th>
+      <th>Valor </th>
      <th>Cambiar cantidad a pedir</th>
    </tr>
    <tr>
 
 {% for key, value in carro.items %}
+
 
    <td>
        {{ value.0 }}
@@ -28,6 +33,12 @@ Su carro se encuentra actualmente vacío.
    </td>
 
    <td>
+       {{ value.2}}
+   </td>
+   <td>
+       {{ value.3}}
+   </td>
+   <td>
 
       <form action="/update_cart" method="GET">
        <input type="number" name={{key}} placeholder=0 min=0> <input type="submit" value= "Actualizar">
@@ -37,12 +48,27 @@ Su carro se encuentra actualmente vacío.
 
  </tr>
 {%endfor%}
+
+
 </table>
+
+    <br>
+    <table>
+  <tr>
+     <th>Monto a pagar</th>
+   </tr>
+   <td>
+       {{ valor }}
+   </td>
+   </table>
+
 <p> </p>
 <form action = "/confirm_purchase" method="GET">
+         <input type="hidden" name="valor" value="{{valor}}">
  <input type="submit" value= "Confirmar pedido">
 </form>
 {%endif%}
 
 
 <h4 ><a href = "/ventas">Volver</a></h4>
+</center>

@@ -32,6 +32,7 @@ class Product(models.Model):
     dispatch_space = models.IntegerField()
     reception_space = models.IntegerField()
     minimum_stock = models.IntegerField(default=0)
+    price = models.IntegerField(default=0)
 
 
 class Ingredient(models.Model):
