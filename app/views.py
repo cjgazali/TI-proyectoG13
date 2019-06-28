@@ -5,7 +5,8 @@ from rest_framework.decorators import api_view  # DRF improves function view to 
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes
-from app.services import get_client_ip, get_products_for_sale, add_to_cart_file, sku_with_name, update_cart_file, address_to_coordinates, receipt_creation
+from app.subtasks_bonus import update_cart_file, address_to_coordinates, receipt_creation
+from app.subtasks_bonus import get_client_ip, get_products_for_sale, add_to_cart_file, sku_with_name
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
 from app.subtasks import get_current_stock
@@ -160,9 +161,11 @@ def order_status(request, id):
     respuesta = {"status":request.data["status"]}
     return Response(respuesta, status=status.HTTP_204_NO_CONTENT)
 
+
 def bonus_home(request):
     productos = get_products_for_sale()
     return render(request, 'app/home.html', {"productos":productos})
+
 
 def add_to_cart(request):
     productos = get_products_for_sale()
@@ -176,6 +179,7 @@ def add_to_cart(request):
     messages.success(request, '¡Agregado al carro!')
     add_to_cart_file(request, pedido['sku'], pedido['cantidad'], pedido['ip'])
     return render(request, 'app/home.html', {'mensaje':True, 'productos':productos})
+
 
 def update_cart(request):
     productos = get_products_for_sale()
@@ -194,6 +198,7 @@ def update_cart(request):
 
     return render(request, 'app/cart.html', {'carro':sku_with_name(data)})
 
+
 def see_cart(request):
     file_name = str(get_client_ip(request))+".json"
     try:
@@ -203,6 +208,7 @@ def see_cart(request):
         return render(request, 'app/cart.html', {'carro':sku_with_name(data)})
     except FileNotFoundError:
         return render(request, 'app/cart.html', {'carro':False})
+
 
 def confirm_purchase(request):
     return render(request, 'app/purchase.html', {'coordenadas':(-70.6693, -33.4489), 'zoom':9})
@@ -215,6 +221,7 @@ def get_address(request):
         respuesta.update({key:value})
     coordenadas = address_to_coordinates(respuesta["calle"], respuesta["numero"])
     return render(request, 'app/purchase.html', {'coordenadas':coordenadas, 'zoom':16})
+
 
 def generate_receipt(request):
     respuesta = {}
