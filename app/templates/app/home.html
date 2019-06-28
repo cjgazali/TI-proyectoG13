@@ -24,20 +24,25 @@
 <table>
   <tr>
      <th>Producto</th>
+      <th>Precio</th>
      <th>Cantidad a pedir</th>
    </tr>
    <tr>
 
-{% for key, value in productos.items %}
+{% for sku, lista in productos.items %}
 
    <td>
 
-       {{ value }}
+       {{ lista.name }}
+   </td>
+    <td>
+
+       {{ lista.price }}
    </td>
 
    <td>
       <form action="/add_to_cart" method="GET">
-       <input type="number" name={{key}} placeholder=0 min=0> <input type="submit" value= "Agregar al carro">
+       <input type="number" name={{sku}} placeholder=0 min=0> <input type="submit" value= "Agregar al carro">
      </form>
    </td>
 

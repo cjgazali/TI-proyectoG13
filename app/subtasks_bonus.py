@@ -8,7 +8,7 @@ def get_products_for_sale():
     productos = {}
     for producto in Product.objects.raw('SELECT sku, name FROM app_product'):
         if len(producto.sku) > 4:
-            productos[producto.sku] = producto.name
+            productos[producto.sku] = {'name': producto.name, 'price': producto.price}
     return productos
 
 
@@ -35,9 +35,9 @@ def update_dict(dict, new_key, new_value):
     return dict
 
 
-def add_to_cart_file(request, sku, quantity, ip):
+def add_to_cart_file(sku, quantity, ip):
     file_name = str(ip)+".json"
-    agregado = {sku:int(quantity)}
+    agregado = {sku: int(quantity)}
     try:
         with open(file_name) as outfile:
             data = json.load(outfile)
@@ -53,7 +53,11 @@ def add_to_cart_file(request, sku, quantity, ip):
 
 def update_cart_file(request, sku, quantity, ip):
     file_name = str(ip)+".json"
-    nuevo = {sku:int(quantity)}
+    try:
+        nuevo = {sku: int(quantity)}
+    except:
+        nuevo = {sku: 0}
+        quantity = 0
     with open(file_name) as outfile:
         data = json.load(outfile)
     if int(quantity) > 0:
@@ -67,9 +71,12 @@ def update_cart_file(request, sku, quantity, ip):
 def sku_with_name(cart):
     productos = get_products_for_sale()
     resultado = {}
+    valor = 0
     for sku in cart:
-        resultado.update({sku: (productos[sku],cart[sku])})
-    return resultado
+        total = int(productos[sku]["price"] * cart[sku])
+        valor += total
+        resultado.update({sku: (productos[sku]["name"], cart[sku], productos[sku]["price"], total)})
+    return resultado, valor
 
 
 def address_to_coordinates(calle, numero):

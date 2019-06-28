@@ -1,7 +1,9 @@
 
 <!DOCTYPE html>
 <html>
+
   <head>
+      <center>
     {%load staticfiles%}
     <link rel="stylesheet" href="{% static 'app/css/app.css' %}">
     <h1>Ingresar ubicación</h1>
@@ -9,12 +11,15 @@
     Por favor, ingrese su dirección de despacho:
     <p></p>
     <form action="/get_address" method="GET">
+         <input type="hidden" name="valor" value="{{valor}}">
      <input type="text" name=calle placeholder=Calle> <input type="text" name=numero placeholder=Numero> <input type="submit" value= "Buscar">
    </form>
    <p></p>
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    </center>
   </head>
+
   <body>
    <div id='map' width="100%" style='height:400px'></div>
    <script>
@@ -66,11 +71,16 @@ map.addLayer({
 
    </script>
    <p></p>
-
+    <center>
   Si la ubicación marcada es la correcta, por favor ingrese su nombre y confirme el envío a continuación:
   <p></p>
   <form action="/generate_receipt" method="GET">
-   <input type="text" name=nombre placeholder=Nombre> <input type="submit" value= "Confirmar">
+      <input type="hidden" name="valor" value="{{valor}}">
+   <input type="text" name=nombre placeholder=Nombre>
+      <input type="submit" value= "Pagar">
+
  </form>
+   </center>
   </body>
+
 </html>
