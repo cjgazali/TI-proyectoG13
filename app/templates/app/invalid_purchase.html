@@ -1,0 +1,22 @@
+{% load staticfiles %}
+¡Lo sentimos! Los siguientes productos no se encuentran disponibles:
+<link rel="stylesheet" href="{% static 'app/css/app.css' %}">
+<p></p>
+<table>
+  <tr>
+     <th>Producto</th>
+   </tr>
+   <tr>
+
+{% for producto in infactibles %}
+
+   <td>
+
+       {{ producto }}
+   </td>
+ </tr>
+{%endfor%}
+</table>
+
+<p></p>
+<h4 ><a href = "/ventas">Volver</a></h4>

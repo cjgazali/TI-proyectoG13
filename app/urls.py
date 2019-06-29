@@ -12,6 +12,7 @@ urlpatterns = [
     path('confirm_purchase', views.confirm_purchase),
     path('get_address', views.get_address),
     path('generate_receipt', views.generate_receipt),
-    path('boleta/<str:oc>/<str:bruto>/<str:total>/<str:iva>', views.mostrar_boleta)
+    path('boleta/<str:oc>/<str:bruto>/<str:total>/<str:iva>', views.mostrar_boleta),
+    path('payment_error', views.payment_error),
 
 ]

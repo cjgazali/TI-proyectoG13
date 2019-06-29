@@ -17,6 +17,7 @@ from app.subtasks_defs import check_will_produce_order, lots_for_q, get_ingredie
 from django.contrib import messages
 import json
 import requests
+import os
 
 accept_amount = 10
 
@@ -235,7 +236,11 @@ def confirm_purchase(request):
             return render(request, 'app/purchase.html', {'coordenadas': (-70.6693, -33.4489), 'zoom': 9,
                                                          'valor': respuesta['valor']})
         else:
-            return render(request, 'app/cart.html', {'carro': False})
+            productos = get_products_for_sale()
+            infactibles_nombre = []
+            for sku in infactibles:
+                infactibles_nombre.append(productos[sku]['name'])
+            return render(request, 'app/invalid_purchase.html', {'infactibles': infactibles_nombre})
             # Aqui debemos retornar una alerta de que no tenemos stock suficiente para sushi con los ids en lista infactibles
 
     except FileNotFoundError:
@@ -272,7 +277,7 @@ def generate_receipt(request):
     return redirect(redireccion)
 
 
-def mostrar_boleta(request, oc, bruto, total, iva):
+def mostrar_boleta(request, oc, bruto, total, iv):
     file_name = str(get_client_ip(request)) + ".json"
 
     with open(file_name) as outfile:
@@ -280,6 +285,8 @@ def mostrar_boleta(request, oc, bruto, total, iva):
 
     fabricar_bonus(data, oc)
 
-    # Deberiamos borrar el archivo json
-
+    os.remove("./"+file_name)
     return render(request, "app/receipt.html", {'oc': oc, 'bruto': bruto, 'total': total, 'iva': iva})
+
+def payment_error(request):
+    return render(request, 'app/payment_error.html')
