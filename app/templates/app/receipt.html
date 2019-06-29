@@ -1,0 +1,45 @@
+<html>
+  <head>
+      <center>
+    {%load staticfiles%}
+    <link rel="stylesheet" href="{% static 'app/css/app.css' %}">
+    <h1>Boleta de su pedido</h1>
+    <p></p>
+
+    <table>
+      <tr>
+         <th>Id</th>
+         <th>Monto neto</th>
+         <th>Iva pagado</th>
+         <th>Monto final</th>
+       </tr>
+       <tr>
+
+       <td>
+
+           {{ oc }}
+       </td>
+       <td>
+
+           {{ bruto }}
+       </td>
+       <td>
+
+           {{ iva }}
+       </td>
+
+       <td>
+
+           {{ total }}
+       </td>
+     </tr>
+    </table>
+      </center>
+  </head>
+</html>
+
+<p></p>
+<h4 ><a href = "/ventas">Volver</a></h4>
+<!--
+Boleta siendo generada.
+{{respuesta}} -->

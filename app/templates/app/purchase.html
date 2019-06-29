@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <center>
+    {%load staticfiles%}
+    <link rel="stylesheet" href="{% static 'app/css/app.css' %}">
+    <h1>Ingresar ubicación</h1>
+    <p></p>
+    Por favor, ingrese su dirección de despacho:
+    <p></p>
+    <form action="/get_address" method="GET">
+         <input type="hidden" name="valor" value="{{valor}}">
+     <input type="text" name=calle placeholder=Calle> <input type="text" name=numero placeholder=Numero> <input type="submit" value= "Buscar">
+   </form>
+   <p></p>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    </center>
+  </head>
+
+  <body>
+   <div id='map' width="100%" style='height:400px'></div>
+   <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic25vcmxheDgiLCJhIjoiY2p4YjlybGhvMDR0MjN0bG9tZTI1MzIydiJ9.3pwf3y-Cl_fDbN5KQtP0kA';
+    var map = new mapboxgl.Map({
+     container: 'map',
+     style: 'mapbox://styles/mapbox/streets-v10',
+     center: [{{coordenadas.0}}, {{coordenadas.1}}],
+     zoom: {{zoom}}
+    });
+
+    map.on('load', function () {
+// Add a layer showing the places.
+map.addLayer({
+"id": "places",
+"interactive":true,
+"type": "symbol",
+"source": {
+"type": "geojson",
+"data": {
+"type": "FeatureCollection",
+"features": [{
+"type": "Feature",
+"properties": {
+"description": "<strong>Make it Mount Pleasant</strong><p><a href=\"http://www.mtpleasantdc.com/makeitmtpleasant\" target=\"_blank\" title=\"Opens in a new window\">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
+"icon": "circle",
+"title":"UBICACIÓN"
+},
+"geometry": {
+"type": "Point",
+"coordinates": [{{coordenadas.0}}, {{coordenadas.1}}]
+}
+}]
+}
+},
+"layout": {
+"icon-size":1,
+"icon-image": "{icon}-15",
+"icon-allow-overlap": true,
+"text-field": "{title}",
+"text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+"text-offset": [0, 0.6],
+"text-anchor": "top",
+}
+});
+
+});
+
+
+   </script>
+   <p></p>
+    <center>
+  Si la ubicación marcada es la correcta, por favor ingrese su nombre y confirme el envío a continuación:
+  <p></p>
+  <form action="/generate_receipt" method="GET">
+      <input type="hidden" name="valor" value="{{valor}}">
+   <input type="text" name=nombre placeholder=Nombre>
+      <input type="submit" value= "Pagar">
+
+ </form>
+   </center>
+  </body>
+
+</html>

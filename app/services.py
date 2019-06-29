@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 import pysftp
 import hmac
 from base64 import encodestring
+from app.models import Product
 
 context = "PRODUCTION"  # or DEVELOPMENT
 # url API profe
@@ -18,6 +19,8 @@ if context == "PRODUCTION":
     url_oc = "https://integracion-2019-prod.herokuapp.com/oc"
     sftp_user_name = "grupo13"
     sftp_password = "UM5Hh7PbLZxJ8t241"
+    #generacion boleta
+    receipt_url = "https://integracion-2019-prod.herokuapp.com"
 else:
     ids_oc = {1: '5cbd31b7c445af0004739be3', 2: '5cbd31b7c445af0004739be4', 3: '5cbd31b7c445af0004739be5',
               4: '5cbd31b7c445af0004739be6', 5: '5cbd31b7c445af0004739be7', 6: '5cbd31b7c445af0004739be8',
@@ -28,6 +31,9 @@ else:
     url_oc = "https://integracion-2019-dev.herokuapp.com/oc"
     sftp_user_name = "grupo13_dev"
     sftp_password = "c7vq41weKJGcvas"
+    #generacion boleta
+    receipt_url = "https://integracion-2019-dev.herokuapp.com"
+
 
 # url API grupos
 server_url = "http://tuerca{}.ing.puc.cl"
@@ -246,7 +252,5 @@ def post_notification(status, n_group, order_id):
     response = json.loads(result.text)
     return response
 
-
 if __name__ == '__main__':
     pass
-

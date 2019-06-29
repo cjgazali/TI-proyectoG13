@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</head>
+<link rel="stylesheet" href="{% static 'app/css/app.css' %}">
+<center>
+<h1>¡Bienvenido!</h1>
+
+<h2>Nuestros productos:</h2>
+{% if messages %}
+  {% for message in messages %}
+ <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+ </div>
+  {% endfor %}
+
+{% endif %}
+<h4><a href = "/ventas/cart">Ver carro y confirmar pedido</a></h4>
+<table>
+  <tr>
+     <th>Producto</th>
+      <th>Precio</th>
+     <th>Cantidad a pedir</th>
+   </tr>
+   <tr>
+
+{% for sku, lista in productos.items %}
+
+   <td>
+
+       {{ lista.name }}
+   </td>
+    <td>
+
+       {{ lista.price }}
+   </td>
+
+   <td>
+      <form action="/add_to_cart" method="GET">
+       <input type="number" name={{sku}} placeholder=0 min=0> <input type="submit" value= "Agregar al carro">
+     </form>
+   </td>
+
+
+ </tr>
+{%endfor%}
+</table>
+<p></p>
+</center>
