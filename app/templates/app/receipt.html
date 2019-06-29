@@ -1,5 +1,6 @@
 <html>
   <head>
+      <center>
     {%load staticfiles%}
     <link rel="stylesheet" href="{% static 'app/css/app.css' %}">
     <h1>Boleta de su pedido</h1>
@@ -16,23 +17,24 @@
 
        <td>
 
-           {{ respuesta.oc }}
+           {{ oc }}
        </td>
        <td>
 
-           {{ respuesta.bruto }}
+           {{ bruto }}
        </td>
        <td>
 
-           {{ respuesta.iva }}
+           {{ iva }}
        </td>
 
        <td>
 
-           {{ respuesta.total }}
+           {{ total }}
        </td>
      </tr>
     </table>
+      </center>
   </head>
 </html>
 <!-- 

@@ -1,7 +1,10 @@
 from app.models import Product
+from app.serializers import SushiOrderSerializer
 import json
 import requests
 from app.services import receipt_url, ids_oc
+from app.subtasks_defs import get_ingredients, lots_for_q, produce_order
+from datetime import datetime, timedelta
 
 
 def get_products_for_sale():
@@ -91,6 +94,26 @@ def receipt_creation(cliente, precio):
     result = requests.post(url, data=json.dumps(body), headers=headers)
     boleta = json.loads(result.text)
     return boleta
+
+
+def fabricar_bonus(pedido, oc):
+    for elem in pedido:
+        product_lot = Product.objects.filter(sku=elem).values("production_lot")[0]["production_lot"]
+        lots = lots_for_q(pedido[elem], product_lot)
+        ingredients = get_ingredients(elem)
+        produce_order(elem, product_lot, lots, ingredients)
+
+        # Agregamos registros a SushiOrder
+        for i in range(pedido[elem]):
+            now = datetime.utcnow()
+            now += timedelta(hours=2)
+            epoch = datetime.utcfromtimestamp(0)
+            delta = now - epoch
+            seconds = int(delta.total_seconds())
+            data2 = {'oc': oc, 'sku': elem, 'delivery_date': seconds, 'dispatched': False}
+            new2 = SushiOrderSerializer(data=data2)
+            if new2.is_valid():
+                new2.save()
 
 
 if __name__ == '__main__':
