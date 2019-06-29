@@ -26,7 +26,7 @@ SECRET_KEY = '5xf%m2oojzfhf-11@_)ym#*s1t$^+p6vn0l#@(hk3h3)*v1o(%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []  # 'tuerca13.ing.puc.cl' for production
+ALLOWED_HOSTS = ['tuerca13.ing.puc.cl']  # 'tuerca13.ing.puc.cl' for production
 
 APPEND_SLASH=False
 
@@ -94,17 +94,29 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 CELERY_BEAT_SCHEDULE = {
-    'main': {
-        'task': 'app.tasks.main',
-        'schedule': crontab(minute='*/20')
+    'renew_inventory': {
+        'task': 'app.tasks.renew_inventory',
+        'schedule': crontab(minute='7,22,37,52')
+    },
+    'post_inventory': {
+        'task': 'app.tasks.post_inventory',
+        'schedule': crontab(minute='*/10')
     },
     'ftp_ocs': {
         'task': 'app.tasks.ftp_ocs',
-        'schedule': crontab(minute='10,30,50')
+        'schedule': crontab(minute='3,13,23,33,43,53')
     },
     'dispatch_sushi': {
         'task': 'app.tasks.dispatch_sushi',
-        'schedule': crontab(minute='15,35,55')
+        'schedule': crontab(minute='*/4')
+    },
+    'clear_reception': {
+        'task': 'app.tasks.clear_reception',
+        'schedule': crontab(minute='5,20,35,50')
+    },
+    'clear_pulmon': {
+        'task': 'app.tasks.clear_pulmon',
+        'schedule': crontab(minute='25')
     }
 }
 # Password validation

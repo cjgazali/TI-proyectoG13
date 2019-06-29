@@ -1,40 +1,74 @@
 from collections import defaultdict
-from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes
-from app.services import obtener_productos_almacen, get_group_stock, fabricar_sin_pago
-from app.services import post_order, mover_entre_bodegas, min_raws_factor, crear_oc, ids_oc
-from app.services import recepcionar_oc, rechazar_oc, despachar_producto
-from app.models import Ingredient, Product, RawMaterial, Assigment, SushiOrder
+from app.services import obtener_almacenes, obtener_skus_disponibles, mover_entre_almacenes, obtener_productos_almacen
+from app.services import min_raws_factor, recepcionar_oc, rechazar_oc, despachar_producto
+from app.models import Product, RawMaterial, Assigment, SushiOrder
 from app.serializers import MarkSerializer, SushiOrderSerializer
 from app.subtasks_defs import lots_for_q, get_ingredients
 from app.subtasks_defs import post_to_all, manufacture_raws, try_manufacture
 from app.subtasks_defs import check_time_availability, check_will_produce_order, produce_order
-from datetime import datetime, timedelta
+from datetime import datetime
 
 """Funciones que se importan en tasks.py."""
 
 
-def empty_receptions():
-    """Vacía recepción y pulmón hacia bodegas extra."""
+def empty_reception():
+    """Vacía recepción hacia bodegas extra."""
     almacenes_extra = []
     almacenes = obtener_almacenes()
     for almacen in almacenes:
-         if almacen['pulmon'] == True and almacen["usedSpace"] > 0:
-             #print("Se cumple la condición")
-             pulmon = almacen
+        if almacen['recepcion']:
+            recepcion = almacen
+        elif not almacen["pulmon"] and not almacen["despacho"] and not almacen["cocina"]:
+            almacenes_extra.append(almacen)
 
-             for almacen_extra in almacenes:
-                 if almacen_extra["pulmon"] == False and almacen_extra["recepcion"] == False and almacen_extra["despacho"] == False and almacen_extra["cocina"] == False:
-                     almacenes_extra.append(almacen_extra)
+    if recepcion["usedSpace"] > 0:
+        skus = obtener_skus_disponibles(recepcion["_id"])
+        for sku in skus:
+            productos = obtener_productos_almacen(recepcion["_id"], sku["_id"])
+            for producto in productos:
+                if almacenes_extra[0]["usedSpace"] < almacenes_extra[0]["totalSpace"]:
+                    mover_entre_almacenes(producto["_id"], almacenes_extra[0]["_id"])
+                elif almacenes_extra[1]["usedSpace"] < almacenes_extra[1]["totalSpace"]:
+                    mover_entre_almacenes(producto["_id"], almacenes_extra[1]["_id"])
+                else:
+                    print("Alerta, almacenes extra llenos")
+                    return
 
-             skus = obtener_skus_disponibles(pulmon["_id"])
-             for sku in skus:
-                 productos = obtener_productos_almacen(pulmon["_id"], sku["_id"])
-                 for producto in productos:
-                     if almacenes_extra[0]["usedSpace"] < almacenes_extra[0]["totalSpace"]:
-                         mover_entre_almacenes(producto["_id"], almacenes_extra[0]["_id"])
-                     else:
-                         if almacenes_extra[1]["usedSpace"] < almacenes_extra[1]["totalSpace"]:
-                             mover_entre_almacenes(producto["_id"], almacenes_extra[1]["_id"])
+                almacenes_extra = []
+                almacenes = obtener_almacenes()
+                for almacen in almacenes:
+                    if not almacen['recepcion'] and not almacen["pulmon"] and not almacen["despacho"] and not almacen["cocina"]:
+                        almacenes_extra.append(almacen)
+
+
+def empty_pulmon():
+    """Vacía pulmon hacia bodegas extra."""
+    almacenes_extra = []
+    almacenes = obtener_almacenes()
+    for almacen in almacenes:
+        if almacen['pulmon']:
+            pulmon = almacen
+        elif not almacen["recepcion"] and not almacen["despacho"] and not almacen["cocina"]:
+            almacenes_extra.append(almacen)
+
+    if pulmon["usedSpace"] > 0:
+        skus = obtener_skus_disponibles(pulmon["_id"])
+        for sku in skus:
+            productos = obtener_productos_almacen(pulmon["_id"], sku["_id"])
+            for producto in productos:
+                if almacenes_extra[0]["usedSpace"] < almacenes_extra[0]["totalSpace"]:
+                    mover_entre_almacenes(producto["_id"], almacenes_extra[0]["_id"])
+                elif almacenes_extra[1]["usedSpace"] < almacenes_extra[1]["totalSpace"]:
+                    mover_entre_almacenes(producto["_id"], almacenes_extra[1]["_id"])
+                else:
+                    print("Alerta, almacenes extra llenos")
+                    return
+
+                almacenes_extra = []
+                almacenes = obtener_almacenes()
+                for almacen in almacenes:
+                    if not almacen['recepcion'] and not almacen["pulmon"] and not almacen["despacho"] and not almacen["cocina"]:
+                        almacenes_extra.append(almacen)
 
 
 def get_current_stock():
@@ -50,59 +84,38 @@ def get_current_stock():
     return totals
 
 
-def get_groups_stock():
-    """Entrega lista de diccionarios con default 0,
-    con { sku: total en bodega de otro grupo }"""
-    dicts = []
-    for n_group in range(1, 15):
-        totals = defaultdict(int)  # sku: total
-        if n_group == 13 or n_group == 10:  # diccionario vacío para nosotros
-            # y para grupo 10 xq de momento son mal negocio
-            dicts.append(totals)
-            continue
-        try:
-            group_stock = get_group_stock(n_group)
-        except:
-            # print("fail", n_group)
-            group_stock = []
-        for product in group_stock:
-            if isinstance(product, dict):
-                try:
-                    totals[product["sku"]] += product["total"]
-                except:
-                    # print("KeyError", n_group)
-                    break
-        dicts.append(totals)
-        # print(totals)
-    return dicts
+def review_inventory():
+    totals = get_current_stock()
 
-
-def review_inventory(totals, groups_stock):
-    # Primero, vemos que skus podemos fabricar
     query = Assigment.objects.filter(group__exact=13)
     skus_fabricables = []
     for dato in query:
         skus_fabricables.append(dato.sku.sku)
 
     productos = RawMaterial.objects.all()
-
     for materia in productos:
         desired_stock = min_raws_factor * materia.stock
         if totals[materia.sku.sku] < desired_stock:
-            # Calculo cuanto me falta para obtener lo que quiero
-            remaining = desired_stock - totals[materia.sku.sku]  # lo que me falta para tener lo que quiero
+            remaining = desired_stock - totals[materia.sku.sku]
+            remaining = int((remaining // 2) + 1)
+            product_lot = Product.objects.filter(sku=materia.sku.sku).values("production_lot")[0]["production_lot"]
+            if materia.material_type == 1:
+                if materia.sku.sku in skus_fabricables:
+                    manufacture_raws(materia.sku.sku, remaining, product_lot)
+            else:
+                try_manufacture(totals, materia.sku.sku, remaining, product_lot)
 
-            # Intento pedir a los grupos y actualizo la cantidad faltante
-            remaining = post_to_all(materia.sku.sku, remaining, groups_stock)
 
-            # Trato de fabricar si no me dieron suficiente
-            if remaining > 0:
-                product_lot = Product.objects.filter(sku=materia.sku.sku).values("production_lot")[0]["production_lot"]
-                if materia.material_type == 1:
-                    if materia.sku.sku in skus_fabricables:
-                        manufacture_raws(materia.sku.sku, remaining, product_lot)
-                else:
-                    try_manufacture(totals, materia.sku.sku, remaining, product_lot)
+def review_post():
+    totals = get_current_stock()
+
+    productos = RawMaterial.objects.filter(material_type=1)
+    for materia in productos:
+        desired_stock = min_raws_factor * materia.stock
+        if totals[materia.sku.sku] < desired_stock:
+            remaining = desired_stock - totals[materia.sku.sku]
+            # print("{} {} will post_to_all".format(materia.sku.sku, remaining))
+            post_to_all(materia.sku.sku, remaining)
 
 
 def review_order(oc_id, products, date, sku, amount, state):
@@ -126,11 +139,16 @@ def review_order(oc_id, products, date, sku, amount, state):
     will_produce_order = check_will_produce_order(products, lots, ingredients)
     if will_produce_order:
         if state == "creada":
-            print("review_order: oc accepted")
+            print("review_order: will produce")
+            # produce
+            produced = produce_order(sku, product_lot, lots, ingredients)
+            if not produced:
+                print("review_order: not produced")
+                return
             # accept
             recepcionar_oc(oc_id[0])
-            # produce
-            produce_order(sku, product_lot, lots, ingredients)
+            print("review_order: oc accepted")
+
             data = {'name': oc_id[1]}
             new = MarkSerializer(data=data)
             if new.is_valid():

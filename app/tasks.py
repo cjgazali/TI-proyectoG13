@@ -1,27 +1,28 @@
 from celery import shared_task
-from app.subtasks import get_current_stock, get_groups_stock, review_inventory
-from app.subtasks import review_order, find_and_dispatch_sushi
+from app.subtasks import get_current_stock, review_inventory, review_post
+from app.subtasks import review_order, find_and_dispatch_sushi, empty_reception, empty_pulmon
 from app.models import Mark
 from app.services import sftp_ocs, consultar_oc
 
 
 @shared_task
-def main():
-    # print("hello main")
+def renew_inventory():
+    # print("hello renew_inventory")
 
-    # empty_receptions()
-    # print("empty_receptions")
+    review_inventory()
+    # print("renew_inventory review_inventory")
 
-    totals = get_current_stock()
-    # print("main totals")
+    # print("bye renew_inventory")
 
-    groups_stock = get_groups_stock()
-    # print("main groups_stock")
 
-    review_inventory(totals, groups_stock)
-    # print("main review_inventory")
+@shared_task
+def post_inventory():
+    # print("hello post_inventory")
 
-    # print("bye main")
+    review_post()
+    # print("post_inventory review_post")
+
+    # print("bye post_inventory")
 
 
 @shared_task
@@ -52,3 +53,21 @@ def dispatch_sushi():
     # print("dispatch_sushi sushi ocs considered")
 
     # print("bye dispatch_sushi")
+
+
+@shared_task
+def clear_reception():
+    #print("hello clear_reception")
+
+    empty_reception()
+
+    # print("bye clear_reception")
+
+
+@shared_task
+def clear_pulmon():
+    #print("hello clear_pulmon")
+
+    empty_pulmon()
+
+    # print("bye clear_pulmon")
