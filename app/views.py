@@ -277,7 +277,7 @@ def generate_receipt(request):
     return redirect(redireccion)
 
 
-def mostrar_boleta(request, oc, bruto, total, iv):
+def mostrar_boleta(request, oc, bruto, total, iva):
     file_name = str(get_client_ip(request)) + ".json"
 
     with open(file_name) as outfile:
