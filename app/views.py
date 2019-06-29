@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view  # DRF improves function view to 
 from rest_framework import status
 from app.services import obtener_almacenes, obtener_skus_disponibles, obtener_productos_almacen, mover_entre_bodegas, consultar_oc
 from app.services import consultar_oc, ids_oc, rechazar_oc, recepcionar_oc, mover_entre_almacenes, receipt_url
-from app.subtasks_bonus import update_cart_file, address_to_coordinates, receipt_creation
+from app.subtasks_bonus import update_cart_file, address_to_coordinates, receipt_creation, fabricar_bonus
 from app.subtasks_bonus import get_client_ip, get_products_for_sale, add_to_cart_file, sku_with_name
 from app.models import Order, Product, RawMaterial
 from app.serializers import OrderSerializer
@@ -13,6 +13,7 @@ from app.subtasks import get_current_stock
 from app.subtasks_defs import get_almacenes_origenes_destino
 from app.subviews import check_group_oc_time
 from django.shortcuts import render, redirect
+from app.subtasks_defs import check_will_produce_order, lots_for_q, get_ingredients
 from django.contrib import messages
 import json
 import requests
@@ -215,8 +216,30 @@ def confirm_purchase(request):
     valores = request.GET.items()
     for key, value in valores:
         respuesta.update({key: value})
-    return render(request, 'app/purchase.html', {'coordenadas': (-70.6693, -33.4489), 'zoom': 9,
-                                                 'valor': respuesta['valor']})
+    # Revisar factibilidad del pedido
+    file_name = str(get_client_ip(request)) + ".json"
+    try:
+        products = get_current_stock()
+        with open(file_name) as outfile:
+            data = json.load(outfile)
+        infactibles = []
+        for elem in data:
+            product_lot = Product.objects.filter(sku=elem).values("production_lot")[0]["production_lot"]
+            lots = lots_for_q(data[elem], product_lot)
+            ingredients = get_ingredients(elem)
+            will_produce = check_will_produce_order(products, lots, ingredients)
+            if not will_produce:
+                infactibles.append(elem)
+
+        if len(infactibles) == 0:
+            return render(request, 'app/purchase.html', {'coordenadas': (-70.6693, -33.4489), 'zoom': 9,
+                                                         'valor': respuesta['valor']})
+        else:
+            return render(request, 'app/cart.html', {'carro': False})
+            # Aqui debemos retornar una alerta de que no tenemos stock suficiente para sushi con los ids en lista infactibles
+
+    except FileNotFoundError:
+        return render(request, 'app/cart.html', {'carro': False})
 
 
 def get_address(request):
@@ -235,11 +258,28 @@ def generate_receipt(request):
     for key, value in valores:
         respuesta.update({key: value})
     entregar = receipt_creation(respuesta['nombre'], respuesta['valor'])
-    # Aqui tenemos que llamar a receipt.html. Se debe codificar como url component
-    url_exitosa = "https://www.google.com"
+    oc = entregar["_id"]
+    bruto = entregar["bruto"]
+    total = entregar["total"]
+    iva = entregar["iva"]
+    url_exitosa = "http://tuerca13.ing.puc.cl%2Fboleta%2F{}%2F{}%2F{}%2F{}".format(oc, bruto, total, iva)
+
     # Avisar que no el pago falló. Se debe codificar como url component
-    url_fracaso = "tuerca13.ing.puc.cl/ventas/"
-    redireccion = receipt_url + '/web/pagoenlinea?callbackURL={}'.format(url_exitosa)
+    url_fracaso = "http://tuerca13.ing.puc.cl%2Fpayment_error"
+    redireccion = receipt_url + '/web/pagoenlinea?callbackUrl={}'.format(url_exitosa)
     redireccion += "&cancelUrl={}".format(url_fracaso)
-    redireccion += "&boletaId={}".format(entregar['_id'])
+    redireccion += "&boletaId={}".format(oc)
     return redirect(redireccion)
+
+
+def mostrar_boleta(request, oc, bruto, total, iva):
+    file_name = str(get_client_ip(request)) + ".json"
+
+    with open(file_name) as outfile:
+        data = json.load(outfile)
+
+    fabricar_bonus(data, oc)
+
+    # Deberiamos borrar el archivo json
+
+    return render(request, "app/receipt.html", {'oc': oc, 'bruto': bruto, 'total': total, 'iva': iva})
