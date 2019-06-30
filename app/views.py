@@ -262,7 +262,7 @@ def mostrar_boleta(request, oc, bruto, total, iva):
 
     fabricar_bonus(data, oc)
 
-    os.remove("./"+file_name)
+    os.remove("../"+file_name)
     return render(request, "app/receipt.html", {'oc': oc, 'bruto': bruto, 'total': total, 'iva': iva})
 
 def payment_error(request):
