@@ -4744,8 +4744,8 @@
         "model": "app.assigment",
         "pk": "21",
         "fields": {
-            "sku": "1003",
-            "group": 6
+            "sku": "1002",
+            "group": 13
         }
     },
     {
@@ -4753,7 +4753,7 @@
         "pk": "22",
         "fields": {
             "sku": "1003",
-            "group": 7
+            "group": 6
         }
     },
     {
@@ -4761,7 +4761,7 @@
         "pk": "23",
         "fields": {
             "sku": "1003",
-            "group": 8
+            "group": 7
         }
     },
     {
@@ -4769,7 +4769,7 @@
         "pk": "24",
         "fields": {
             "sku": "1003",
-            "group": 11
+            "group": 8
         }
     },
     {
@@ -4777,7 +4777,7 @@
         "pk": "25",
         "fields": {
             "sku": "1003",
-            "group": 12
+            "group": 11
         }
     },
     {
@@ -4785,15 +4785,15 @@
         "pk": "26",
         "fields": {
             "sku": "1003",
-            "group": 13
+            "group": 12
         }
     },
     {
         "model": "app.assigment",
         "pk": "27",
         "fields": {
-            "sku": "1004",
-            "group": 3
+            "sku": "1003",
+            "group": 13
         }
     },
     {
@@ -4801,7 +4801,7 @@
         "pk": "28",
         "fields": {
             "sku": "1004",
-            "group": 4
+            "group": 3
         }
     },
     {
@@ -4809,7 +4809,7 @@
         "pk": "29",
         "fields": {
             "sku": "1004",
-            "group": 9
+            "group": 4
         }
     },
     {
@@ -4817,7 +4817,7 @@
         "pk": "30",
         "fields": {
             "sku": "1004",
-            "group": 10
+            "group": 9
         }
     },
     {
@@ -4825,7 +4825,7 @@
         "pk": "31",
         "fields": {
             "sku": "1004",
-            "group": 13
+            "group": 10
         }
     },
     {
@@ -4833,15 +4833,15 @@
         "pk": "32",
         "fields": {
             "sku": "1004",
-            "group": 14
+            "group": 13
         }
     },
     {
         "model": "app.assigment",
         "pk": "33",
         "fields": {
-            "sku": "1005",
-            "group": 1
+            "sku": "1004",
+            "group": 14
         }
     },
     {
@@ -4849,7 +4849,7 @@
         "pk": "34",
         "fields": {
             "sku": "1005",
-            "group": 4
+            "group": 1
         }
     },
     {
@@ -4857,7 +4857,7 @@
         "pk": "35",
         "fields": {
             "sku": "1005",
-            "group": 5
+            "group": 4
         }
     },
     {
@@ -4865,7 +4865,7 @@
         "pk": "36",
         "fields": {
             "sku": "1005",
-            "group": 6
+            "group": 5
         }
     },
     {
@@ -4873,7 +4873,7 @@
         "pk": "37",
         "fields": {
             "sku": "1005",
-            "group": 8
+            "group": 6
         }
     },
     {
@@ -4881,23 +4881,23 @@
         "pk": "38",
         "fields": {
             "sku": "1005",
-            "group": 12
+            "group": 8
         }
     },
     {
         "model": "app.assigment",
         "pk": "39",
         "fields": {
-            "sku": "1006",
-            "group": 2
+            "sku": "1005",
+            "group": 12
         }
     },
     {
         "model": "app.assigment",
         "pk": "40",
         "fields": {
-            "sku": "1006",
-            "group": 3
+            "sku": "1005",
+            "group": 13
         }
     },
     {
@@ -4905,7 +4905,7 @@
         "pk": "41",
         "fields": {
             "sku": "1006",
-            "group": 4
+            "group": 2
         }
     },
     {
@@ -4913,7 +4913,7 @@
         "pk": "42",
         "fields": {
             "sku": "1006",
-            "group": 5
+            "group": 3
         }
     },
     {
@@ -4921,7 +4921,7 @@
         "pk": "43",
         "fields": {
             "sku": "1006",
-            "group": 7
+            "group": 4
         }
     },
     {
@@ -4929,31 +4929,31 @@
         "pk": "44",
         "fields": {
             "sku": "1006",
-            "group": 8
+            "group": 5
         }
     },
     {
         "model": "app.assigment",
         "pk": "45",
         "fields": {
-            "sku": "1007",
-            "group": 5
+            "sku": "1006",
+            "group": 7
         }
     },
     {
         "model": "app.assigment",
         "pk": "46",
         "fields": {
-            "sku": "1007",
-            "group": 6
+            "sku": "1006",
+            "group": 8
         }
     },
     {
         "model": "app.assigment",
         "pk": "47",
         "fields": {
-            "sku": "1007",
-            "group": 7
+            "sku": "1006",
+            "group": 13
         }
     },
     {
@@ -4961,7 +4961,7 @@
         "pk": "48",
         "fields": {
             "sku": "1007",
-            "group": 10
+            "group": 5
         }
     },
     {
@@ -4969,7 +4969,7 @@
         "pk": "49",
         "fields": {
             "sku": "1007",
-            "group": 11
+            "group": 6
         }
     },
     {
@@ -4977,31 +4977,31 @@
         "pk": "50",
         "fields": {
             "sku": "1007",
-            "group": 13
+            "group": 7
         }
     },
     {
         "model": "app.assigment",
         "pk": "51",
         "fields": {
-            "sku": "1008",
-            "group": 1
+            "sku": "1007",
+            "group": 10
         }
     },
     {
         "model": "app.assigment",
         "pk": "52",
         "fields": {
-            "sku": "1008",
-            "group": 5
+            "sku": "1007",
+            "group": 11
         }
     },
     {
         "model": "app.assigment",
         "pk": "53",
         "fields": {
-            "sku": "1008",
-            "group": 7
+            "sku": "1007",
+            "group": 13
         }
     },
     {
@@ -5009,7 +5009,7 @@
         "pk": "54",
         "fields": {
             "sku": "1008",
-            "group": 9
+            "group": 1
         }
     },
     {
@@ -5017,7 +5017,7 @@
         "pk": "55",
         "fields": {
             "sku": "1008",
-            "group": 10
+            "group": 5
         }
     },
     {
@@ -5025,39 +5025,39 @@
         "pk": "56",
         "fields": {
             "sku": "1008",
-            "group": 14
+            "group": 7
         }
     },
     {
         "model": "app.assigment",
         "pk": "57",
         "fields": {
-            "sku": "1009",
-            "group": 1
+            "sku": "1008",
+            "group": 9
         }
     },
     {
         "model": "app.assigment",
         "pk": "58",
         "fields": {
-            "sku": "1009",
-            "group": 4
+            "sku": "1008",
+            "group": 10
         }
     },
     {
         "model": "app.assigment",
         "pk": "59",
         "fields": {
-            "sku": "1009",
-            "group": 8
+            "sku": "1008",
+            "group": 14
         }
     },
     {
         "model": "app.assigment",
         "pk": "60",
         "fields": {
-            "sku": "1009",
-            "group": 9
+            "sku": "1008",
+            "group": 13
         }
     },
     {
@@ -5065,7 +5065,7 @@
         "pk": "61",
         "fields": {
             "sku": "1009",
-            "group": 12
+            "group": 1
         }
     },
     {
@@ -5073,47 +5073,47 @@
         "pk": "62",
         "fields": {
             "sku": "1009",
-            "group": 14
+            "group": 4
         }
     },
     {
         "model": "app.assigment",
         "pk": "63",
         "fields": {
-            "sku": "1010",
-            "group": 1
+            "sku": "1009",
+            "group": 8
         }
     },
     {
         "model": "app.assigment",
         "pk": "64",
         "fields": {
-            "sku": "1010",
-            "group": 2
+            "sku": "1009",
+            "group": 9
         }
     },
     {
         "model": "app.assigment",
         "pk": "65",
         "fields": {
-            "sku": "1010",
-            "group": 3
+            "sku": "1009",
+            "group": 12
         }
     },
     {
         "model": "app.assigment",
         "pk": "66",
         "fields": {
-            "sku": "1010",
-            "group": 9
+            "sku": "1009",
+            "group": 14
         }
     },
     {
         "model": "app.assigment",
         "pk": "67",
         "fields": {
-            "sku": "1010",
-            "group": 10
+            "sku": "1009",
+            "group": 13
         }
     },
     {
@@ -5121,14 +5121,14 @@
         "pk": "68",
         "fields": {
             "sku": "1010",
-            "group": 13
+            "group": 1
         }
     },
     {
         "model": "app.assigment",
         "pk": "69",
         "fields": {
-            "sku": "1011",
+            "sku": "1010",
             "group": 2
         }
     },
@@ -5136,23 +5136,23 @@
         "model": "app.assigment",
         "pk": "70",
         "fields": {
-            "sku": "1011",
-            "group": 5
+            "sku": "1010",
+            "group": 3
         }
     },
     {
         "model": "app.assigment",
         "pk": "71",
         "fields": {
-            "sku": "1011",
-            "group": 7
+            "sku": "1010",
+            "group": 9
         }
     },
     {
         "model": "app.assigment",
         "pk": "72",
         "fields": {
-            "sku": "1011",
+            "sku": "1010",
             "group": 10
         }
     },
@@ -5160,8 +5160,8 @@
         "model": "app.assigment",
         "pk": "73",
         "fields": {
-            "sku": "1011",
-            "group": 11
+            "sku": "1010",
+            "group": 13
         }
     },
     {
@@ -5169,12 +5169,60 @@
         "pk": "74",
         "fields": {
             "sku": "1011",
-            "group": 12
+            "group": 2
         }
     },
     {
         "model": "app.assigment",
         "pk": "75",
+        "fields": {
+            "sku": "1011",
+            "group": 5
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "76",
+        "fields": {
+            "sku": "1011",
+            "group": 7
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "77",
+        "fields": {
+            "sku": "1011",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "78",
+        "fields": {
+            "sku": "1011",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "79",
+        "fields": {
+            "sku": "1011",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "80",
+        "fields": {
+            "sku": "1011",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "81",
         "fields": {
             "sku": "1012",
             "group": 2
@@ -5182,7 +5230,7 @@
     },
     {
         "model": "app.assigment",
-        "pk": "76",
+        "pk": "82",
         "fields": {
             "sku": "1012",
             "group": 6
@@ -5190,7 +5238,7 @@
     },
     {
         "model": "app.assigment",
-        "pk": "77",
+        "pk": "83",
         "fields": {
             "sku": "1012",
             "group": 11
@@ -5198,7 +5246,7 @@
     },
     {
         "model": "app.assigment",
-        "pk": "78",
+        "pk": "84",
         "fields": {
             "sku": "1012",
             "group": 12
@@ -5206,57 +5254,9 @@
     },
     {
         "model": "app.assigment",
-        "pk": "79",
-        "fields": {
-            "sku": "1012",
-            "group": 13
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "80",
-        "fields": {
-            "sku": "1012",
-            "group": 14
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "81",
-        "fields": {
-            "sku": "1013",
-            "group": 7
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "82",
-        "fields": {
-            "sku": "1013",
-            "group": 9
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "83",
-        "fields": {
-            "sku": "1013",
-            "group": 10
-        }
-    },
-    {
-        "model": "app.assigment",
-        "pk": "84",
-        "fields": {
-            "sku": "1013",
-            "group": 11
-        }
-    },
-    {
-        "model": "app.assigment",
         "pk": "85",
         "fields": {
-            "sku": "1013",
+            "sku": "1012",
             "group": 13
         }
     },
@@ -5264,7 +5264,7 @@
         "model": "app.assigment",
         "pk": "86",
         "fields": {
-            "sku": "1013",
+            "sku": "1012",
             "group": 14
         }
     },
@@ -5272,63 +5272,63 @@
         "model": "app.assigment",
         "pk": "87",
         "fields": {
-            "sku": "1014",
-            "group": 2
+            "sku": "1013",
+            "group": 7
         }
     },
     {
         "model": "app.assigment",
         "pk": "88",
         "fields": {
-            "sku": "1014",
-            "group": 3
+            "sku": "1013",
+            "group": 9
         }
     },
     {
         "model": "app.assigment",
         "pk": "89",
         "fields": {
-            "sku": "1014",
-            "group": 4
+            "sku": "1013",
+            "group": 10
         }
     },
     {
         "model": "app.assigment",
         "pk": "90",
         "fields": {
-            "sku": "1014",
-            "group": 5
+            "sku": "1013",
+            "group": 11
         }
     },
     {
         "model": "app.assigment",
         "pk": "91",
         "fields": {
-            "sku": "1014",
-            "group": 8
+            "sku": "1013",
+            "group": 13
         }
     },
     {
         "model": "app.assigment",
         "pk": "92",
         "fields": {
-            "sku": "1014",
-            "group": 11
+            "sku": "1013",
+            "group": 14
         }
     },
     {
         "model": "app.assigment",
         "pk": "93",
         "fields": {
-            "sku": "1015",
-            "group": 1
+            "sku": "1014",
+            "group": 2
         }
     },
     {
         "model": "app.assigment",
         "pk": "94",
         "fields": {
-            "sku": "1015",
+            "sku": "1014",
             "group": 3
         }
     },
@@ -5336,7 +5336,7 @@
         "model": "app.assigment",
         "pk": "95",
         "fields": {
-            "sku": "1015",
+            "sku": "1014",
             "group": 4
         }
     },
@@ -5344,47 +5344,47 @@
         "model": "app.assigment",
         "pk": "96",
         "fields": {
-            "sku": "1015",
-            "group": 6
+            "sku": "1014",
+            "group": 5
         }
     },
     {
         "model": "app.assigment",
         "pk": "97",
         "fields": {
-            "sku": "1015",
-            "group": 12
+            "sku": "1014",
+            "group": 8
         }
     },
     {
         "model": "app.assigment",
         "pk": "98",
         "fields": {
-            "sku": "1015",
-            "group": 14
+            "sku": "1014",
+            "group": 11
         }
     },
     {
         "model": "app.assigment",
         "pk": "99",
         "fields": {
-            "sku": "1016",
-            "group": 1
+            "sku": "1014",
+            "group": 13
         }
     },
     {
         "model": "app.assigment",
         "pk": "100",
         "fields": {
-            "sku": "1016",
-            "group": 2
+            "sku": "1015",
+            "group": 1
         }
     },
     {
         "model": "app.assigment",
         "pk": "101",
         "fields": {
-            "sku": "1016",
+            "sku": "1015",
             "group": 3
         }
     },
@@ -5392,7 +5392,7 @@
         "model": "app.assigment",
         "pk": "102",
         "fields": {
-            "sku": "1016",
+            "sku": "1015",
             "group": 4
         }
     },
@@ -5400,32 +5400,32 @@
         "model": "app.assigment",
         "pk": "103",
         "fields": {
-            "sku": "1016",
-            "group": 5
+            "sku": "1015",
+            "group": 6
         }
     },
     {
         "model": "app.assigment",
         "pk": "104",
         "fields": {
-            "sku": "1016",
-            "group": 6
+            "sku": "1015",
+            "group": 12
         }
     },
     {
         "model": "app.assigment",
         "pk": "105",
         "fields": {
-            "sku": "1016",
-            "group": 7
+            "sku": "1015",
+            "group": 14
         }
     },
     {
         "model": "app.assigment",
         "pk": "106",
         "fields": {
-            "sku": "1016",
-            "group": 8
+            "sku": "1015",
+            "group": 13
         }
     },
     {
@@ -5433,7 +5433,7 @@
         "pk": "107",
         "fields": {
             "sku": "1016",
-            "group": 9
+            "group": 1
         }
     },
     {
@@ -5441,7 +5441,7 @@
         "pk": "108",
         "fields": {
             "sku": "1016",
-            "group": 10
+            "group": 2
         }
     },
     {
@@ -5449,7 +5449,7 @@
         "pk": "109",
         "fields": {
             "sku": "1016",
-            "group": 11
+            "group": 3
         }
     },
     {
@@ -5457,7 +5457,7 @@
         "pk": "110",
         "fields": {
             "sku": "1016",
-            "group": 12
+            "group": 4
         }
     },
     {
@@ -5465,12 +5465,76 @@
         "pk": "111",
         "fields": {
             "sku": "1016",
-            "group": 13
+            "group": 5
         }
     },
     {
         "model": "app.assigment",
         "pk": "112",
+        "fields": {
+            "sku": "1016",
+            "group": 6
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "113",
+        "fields": {
+            "sku": "1016",
+            "group": 7
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "114",
+        "fields": {
+            "sku": "1016",
+            "group": 8
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "115",
+        "fields": {
+            "sku": "1016",
+            "group": 9
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "116",
+        "fields": {
+            "sku": "1016",
+            "group": 10
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "117",
+        "fields": {
+            "sku": "1016",
+            "group": 11
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "118",
+        "fields": {
+            "sku": "1016",
+            "group": 12
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "119",
+        "fields": {
+            "sku": "1016",
+            "group": 13
+        }
+    },
+    {
+        "model": "app.assigment",
+        "pk": "120",
         "fields": {
             "sku": "1016",
             "group": 14
